@@ -26,7 +26,7 @@ export class DashboardServicesComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Service[]>('http://localhost:3000/api/services'));
+      const response = await lastValueFrom(this.http.get<Service[]>('/api/services'));
       this.services = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -36,7 +36,7 @@ export class DashboardServicesComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`http://localhost:3000/api/services/${id}`));
+      await lastValueFrom(this.http.delete(`/api/services/${id}`));
       this.services = this.services.filter(s => s._id !== id);
       this.toastService.success('Service deleted successfully');
       this.cdr.detectChanges();
@@ -62,8 +62,8 @@ export class DashboardServicesComponent implements OnInit {
     event.preventDefault();
     try {
       const url = this.editingId 
-        ? `http://localhost:3000/api/services/${this.editingId}`
-        : 'http://localhost:3000/api/services';
+        ? `/api/services/${this.editingId}`
+        : '/api/services';
       
       let updated: Service;
       if (this.editingId) {

@@ -28,7 +28,7 @@ export class DashboardEducationComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Education[]>('http://localhost:3000/api/education'));
+      const response = await lastValueFrom(this.http.get<Education[]>('/api/education'));
       this.educationList = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -38,7 +38,7 @@ export class DashboardEducationComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`http://localhost:3000/api/education/${id}`));
+      await lastValueFrom(this.http.delete(`/api/education/${id}`));
       this.educationList = this.educationList.filter(s => s._id !== id);
       this.toastService.success('Record deleted successfully');
       this.cdr.detectChanges();
@@ -74,8 +74,8 @@ export class DashboardEducationComponent implements OnInit {
       };
 
       const url = this.editingId 
-        ? `http://localhost:3000/api/education/${this.editingId}`
-        : 'http://localhost:3000/api/education';
+        ? `/api/education/${this.editingId}`
+        : '/api/education';
       
       let updated: Education;
       if (this.editingId) {

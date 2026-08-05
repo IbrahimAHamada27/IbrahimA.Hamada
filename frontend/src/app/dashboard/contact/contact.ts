@@ -23,7 +23,7 @@ export class DashboardContactComponent implements OnInit {
 
   async fetchSiteInfo() {
     try {
-      const response = await lastValueFrom(this.http.get<SiteInfo>('http://localhost:3000/api/siteinfo'));
+      const response = await lastValueFrom(this.http.get<SiteInfo>('/api/siteinfo'));
       this.siteInfo = response;
       if (!this.siteInfo.socialLinks) {
         this.siteInfo.socialLinks = [];
@@ -63,7 +63,7 @@ export class DashboardContactComponent implements OnInit {
     event.preventDefault();
     
     try {
-      await lastValueFrom(this.http.put('http://localhost:3000/api/siteinfo', this.siteInfo));
+      await lastValueFrom(this.http.put('/api/siteinfo', this.siteInfo));
       this.toastService.success('Contact settings saved successfully!');
     } catch (error) {
       console.error('Failed to update contact info', error);

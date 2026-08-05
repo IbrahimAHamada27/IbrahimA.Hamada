@@ -33,7 +33,7 @@ export class ListProjectsComponent implements OnInit {
 
   async fetchProjects() {
     try {
-      const response = await lastValueFrom(this.http.get<Project[]>('http://localhost:3000/api/projects'));
+      const response = await lastValueFrom(this.http.get<Project[]>('/api/projects'));
       this.projects = response;
     } catch (error) {
       console.error('Failed to fetch projects', error);
@@ -43,7 +43,7 @@ export class ListProjectsComponent implements OnInit {
   async deleteProject(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`http://localhost:3000/api/projects/${id}`));
+      await lastValueFrom(this.http.delete(`/api/projects/${id}`));
       this.projects = this.projects.filter(p => p._id !== id);
       this.toastService.success('Project deleted successfully');
       this.cdr.detectChanges();
@@ -86,8 +86,8 @@ export class ListProjectsComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `http://localhost:3000/api/projects/${this.editingId}`
-        : 'http://localhost:3000/api/projects';
+        ? `/api/projects/${this.editingId}`
+        : '/api/projects';
 
       let updatedItem: Project;
       if (this.editingId) {

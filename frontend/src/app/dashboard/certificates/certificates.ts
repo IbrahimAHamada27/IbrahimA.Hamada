@@ -26,7 +26,7 @@ export class DashboardCertificatesComponent implements OnInit {
 
   async fetchCertificates() {
     try {
-      const response = await lastValueFrom(this.http.get<Certificate[]>('http://localhost:3000/api/certificates'));
+      const response = await lastValueFrom(this.http.get<Certificate[]>('/api/certificates'));
       this.certificates = response;
     } catch (error) {
       console.error('Failed to fetch certificates', error);
@@ -36,7 +36,7 @@ export class DashboardCertificatesComponent implements OnInit {
   async deleteCertificate(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`http://localhost:3000/api/certificates/${id}`));
+      await lastValueFrom(this.http.delete(`/api/certificates/${id}`));
       this.certificates = this.certificates.filter(c => c._id !== id);
       this.toastService.success('Certificate deleted successfully');
       this.cdr.detectChanges();
@@ -70,8 +70,8 @@ export class DashboardCertificatesComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `http://localhost:3000/api/certificates/${this.editingId}`
-        : 'http://localhost:3000/api/certificates';
+        ? `/api/certificates/${this.editingId}`
+        : '/api/certificates';
 
       let updatedItem: Certificate;
       if (this.editingId) {

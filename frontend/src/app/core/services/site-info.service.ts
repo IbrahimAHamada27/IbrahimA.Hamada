@@ -7,7 +7,7 @@ import { SiteInfo } from '../models/site-info.model';
   providedIn: 'root'
 })
 export class SiteInfoService {
-  private apiUrl = 'http://localhost:3000/api/siteinfo';
+  private apiUrl = '/api/siteinfo';
 
   constructor(private http: HttpClient) {}
 

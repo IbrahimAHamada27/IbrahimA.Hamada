@@ -7,7 +7,7 @@ import { Testimonial } from '../models/testimonial.model';
   providedIn: 'root'
 })
 export class TestimonialService {
-  private apiUrl = 'http://localhost:3000/api/testimonials';
+  private apiUrl = '/api/testimonials';
 
   constructor(private http: HttpClient) {}
 

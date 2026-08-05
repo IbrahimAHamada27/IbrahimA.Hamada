@@ -21,7 +21,7 @@ export class FooterComponent implements OnInit {
 
   async fetchSiteInfo() {
     try {
-      const response = await lastValueFrom(this.http.get<SiteInfo>('http://localhost:3000/api/siteinfo'));
+      const response = await lastValueFrom(this.http.get<SiteInfo>('/api/siteinfo'));
       this.siteInfo = response;
     } catch (error) {
       console.error('Failed to fetch site info', error);

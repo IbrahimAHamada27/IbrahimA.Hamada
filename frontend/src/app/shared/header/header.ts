@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>('http://localhost:3000/api/siteinfo').subscribe({
+    this.http.get<SiteInfo>('/api/siteinfo').subscribe({
       next: (data) => {
         this.siteInfo = data;
         const iconUrl = data.logoImage || data.profileImage || 'https://github.com/ibrahimahamada27.png';
@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit {
 
   updateFavicon(iconUrl: string) {
     if (!iconUrl) return;
-    const finalUrl = iconUrl.startsWith('/uploads/') ? 'http://localhost:3000' + iconUrl : iconUrl;
+    const finalUrl = iconUrl.startsWith('/uploads/') ? '' + iconUrl : iconUrl;
     let links = document.querySelectorAll("link[rel*='icon']");
     if (links.length > 0) {
       links.forEach((link: any) => {

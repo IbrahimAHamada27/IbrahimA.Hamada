@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>('http://localhost:3000/api/siteinfo').subscribe({
+    this.http.get<SiteInfo>('/api/siteinfo').subscribe({
       next: (siteInfo) => {
         if (siteInfo.brandName) {
           this.titleService.setTitle(siteInfo.brandName);

@@ -31,6 +31,6 @@ export class DetailsModalComponent {
 
   getImageUrl(url?: string): string {
     if (!url) return '';
-    return url.startsWith('/uploads/') ? 'http://localhost:3000' + url : url;
+    return url.startsWith('/uploads/') ? '' + url : url;
   }
 }
