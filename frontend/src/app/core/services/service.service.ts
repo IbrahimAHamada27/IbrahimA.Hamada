@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Service } from '../models/service.model';
 
 @Injectable({
@@ -9,11 +9,15 @@ import { Service } from '../models/service.model';
 })
 export class ServiceService {
   private apiUrl = `${environment.apiUrl}/api/services`;
+  private cache$?: Observable<Service[]>;
 
   constructor(private http: HttpClient) {}
 
-  getServices(): Observable<Service[]> {
-    return this.http.get<Service[]>(this.apiUrl);
+  getServices(refresh = false): Observable<Service[]> {
+    if (!this.cache$ || refresh) {
+      this.cache$ = this.http.get<Service[]>(this.apiUrl).pipe(shareReplay(1));
+    }
+    return this.cache$;
   }
 
   addService(service: Service): Observable<Service> {

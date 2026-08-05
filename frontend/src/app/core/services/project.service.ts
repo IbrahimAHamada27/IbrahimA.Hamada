@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Project } from '../models/project.model';
 
 @Injectable({
@@ -9,11 +9,15 @@ import { Project } from '../models/project.model';
 })
 export class ProjectService {
   private apiUrl = `${environment.apiUrl}/api/projects`;
+  private cache$?: Observable<Project[]>;
 
- 
   constructor(private http: HttpClient) {}
 
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.apiUrl);
+  getProjects(refresh = false): Observable<Project[]> {
+    if (!this.cache$ || refresh) {
+      this.cache$ = this.http.get<Project[]>(this.apiUrl).pipe(shareReplay(1));
+    }
+    return this.cache$;
   }
 }
+

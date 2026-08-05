@@ -12,7 +12,7 @@
           <!-- Outer Card Image / Logo Banner -->
           @if (exp.imageUrl) {
             <div class="exp-banner-outer">
-              <img [src]="exp.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + exp.imageUrl : exp.imageUrl" [alt]="exp.role" class="exp-outer-img" />
+              <img [src]="exp.imageUrl | imgUrl" [alt]="exp.role" class="exp-outer-img" loading="lazy" decoding="async" />
             </div>
           }
 

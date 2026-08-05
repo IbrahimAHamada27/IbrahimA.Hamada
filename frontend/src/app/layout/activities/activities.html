@@ -11,7 +11,7 @@
           
           @if (item.imageUrl) {
             <div class="activity-banner-outer">
-              <img [src]="item.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + item.imageUrl : item.imageUrl" [alt]="item.title" class="activity-outer-img" />
+              <img [src]="item.imageUrl | imgUrl" [alt]="item.title" class="activity-outer-img" loading="lazy" decoding="async" />
             </div>
           }
 

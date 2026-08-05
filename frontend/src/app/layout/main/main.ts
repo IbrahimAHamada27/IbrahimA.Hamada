@@ -36,7 +36,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     AOS.init({
-      duration: 1000,
+      duration: 500,
       easing: 'ease-in-out',
       once: true,
       mirror: false
@@ -53,6 +53,7 @@ export class MainComponent implements OnInit, AfterViewInit {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
+      AOS.refresh();
     }, 150);
   }
 

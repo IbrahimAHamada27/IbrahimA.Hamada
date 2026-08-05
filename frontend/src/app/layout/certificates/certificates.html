@@ -12,7 +12,7 @@
           <!-- Outer Card Image / Badge Banner -->
           <div class="cert-banner-outer">
             @if (cert.imageUrl) {
-              <img [src]="cert.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + cert.imageUrl : cert.imageUrl" [alt]="cert.title" class="cert-outer-img" />
+              <img [src]="cert.imageUrl | imgUrl" [alt]="cert.title" class="cert-outer-img" loading="lazy" decoding="async" />
             } @else {
               <div class="cert-fallback-icon">
                 <i class="fa-solid fa-award"></i>

@@ -73,7 +73,7 @@
       <div class="about-avatar-card glass-card" data-aos="fade-right">
         <div class="avatar-glow-ring">
           @if (siteInfo.profileImage) {
-            <img [src]="siteInfo.profileImage" alt="Ibrahim A. Hamada Profile" class="avatar-img" />
+            <img [src]="siteInfo.profileImage | imgUrl" alt="Ibrahim A. Hamada Profile" class="avatar-img" loading="eager" fetchpriority="high" />
           } @else {
             <div class="avatar-placeholder">
               <i class="fa-solid fa-user-gear"></i>

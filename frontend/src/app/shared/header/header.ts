@@ -1,13 +1,14 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
+import { SiteInfoService } from '../../core/services/site-info.service';
+import { ImgUrlPipe } from '../pipes/img-url.pipe';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ImgUrlPipe],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   siteInfo: SiteInfo = {};
   activeSection = 'home';
 
-  constructor(private http: HttpClient) {}
+  constructor(private siteInfoService: SiteInfoService) {}
 
   ngOnInit() {
     this.fetchSiteInfo();
@@ -57,7 +58,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`).subscribe({
+    this.siteInfoService.getSiteInfo().subscribe({
       next: (data) => {
         this.siteInfo = data;
         const iconUrl = data.logoImage || data.profileImage || 'https://github.com/ibrahimahamada27.png';
@@ -72,7 +73,7 @@ export class HeaderComponent implements OnInit {
 
   updateFavicon(iconUrl: string) {
     if (!iconUrl) return;
-    const finalUrl = iconUrl.startsWith('/uploads/') ? '' + iconUrl : iconUrl;
+    const finalUrl = iconUrl.startsWith('/uploads/') ? `${environment.apiUrl}${iconUrl}` : iconUrl;
     let links = document.querySelectorAll("link[rel*='icon']");
     if (links.length > 0) {
       links.forEach((link: any) => {

@@ -3,11 +3,12 @@ import { Experience } from '../../core/models/experience.model';
 import { ExperienceService } from '../../core/services/experience.service';
 import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [DetailsModalComponent],
+  imports: [DetailsModalComponent, ImgUrlPipe],
   templateUrl: './experience.html',
   styleUrl: './experience.css'
 })

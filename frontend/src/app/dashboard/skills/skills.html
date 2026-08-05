@@ -50,7 +50,7 @@
           <tr>
             <td>
               @if (skill.iconUrl) {
-                <img [src]="skill.iconUrl.startsWith('http') ? skill.iconUrl : 'http://localhost:3000' + skill.iconUrl" width="36" height="36" style="border-radius: 8px; object-fit: contain;" alt="icon">
+                <img [src]="skill.iconUrl | imgUrl" width="36" height="36" style="border-radius: 8px; object-fit: contain;" alt="icon" loading="lazy">
               } @else {
                 <i class="fa-solid fa-code" style="font-size: 1.2rem; color: var(--primary-color);"></i>
               }

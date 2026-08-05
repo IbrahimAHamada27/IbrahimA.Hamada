@@ -3,11 +3,12 @@ import { Project } from '../../core/models/project.model';
 import { ProjectService } from '../../core/services/project.service';
 import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [DetailsModalComponent],
+  imports: [DetailsModalComponent, ImgUrlPipe],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })

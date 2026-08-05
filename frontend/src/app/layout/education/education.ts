@@ -3,11 +3,12 @@ import { Education } from '../../core/models/education.model';
 import { EducationService } from '../../core/services/education.service';
 import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [DetailsModalComponent],
+  imports: [DetailsModalComponent, ImgUrlPipe],
   templateUrl: './education.html',
   styleUrl: './education.css'
 })

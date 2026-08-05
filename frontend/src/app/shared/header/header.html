@@ -2,7 +2,7 @@
   <div class="header-container">
     <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="logo-brand">
       @if (siteInfo.logoImage || siteInfo.profileImage) {
-        <img [src]="siteInfo.logoImage || siteInfo.profileImage" alt="Logo" class="brand-avatar" />
+        <img [src]="(siteInfo.logoImage || siteInfo.profileImage) | imgUrl" alt="Logo" class="brand-avatar" />
       } @else {
         <div class="brand-initials">IH</div>
       }

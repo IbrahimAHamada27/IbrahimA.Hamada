@@ -20,7 +20,7 @@
             <div class="timeline-card glass-card">
               @if (item.imageUrl) {
                 <div class="edu-banner-outer">
-                  <img [src]="item.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + item.imageUrl : item.imageUrl" [alt]="item.title" class="edu-outer-img" />
+                  <img [src]="item.imageUrl | imgUrl" [alt]="item.title" class="edu-outer-img" loading="lazy" decoding="async" />
                 </div>
               }
               <div class="timeline-node"></div>
@@ -63,7 +63,7 @@
             <div class="timeline-card glass-card">
               @if (item.imageUrl) {
                 <div class="edu-banner-outer">
-                  <img [src]="item.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + item.imageUrl : item.imageUrl" [alt]="item.title" class="edu-outer-img" />
+                  <img [src]="item.imageUrl | imgUrl" [alt]="item.title" class="edu-outer-img" loading="lazy" decoding="async" />
                 </div>
               }
               <div class="timeline-node"></div>

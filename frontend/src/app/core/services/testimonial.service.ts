@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Testimonial } from '../models/testimonial.model';
 
 @Injectable({
@@ -9,11 +9,15 @@ import { Testimonial } from '../models/testimonial.model';
 })
 export class TestimonialService {
   private apiUrl = `${environment.apiUrl}/api/testimonials`;
+  private cache$?: Observable<Testimonial[]>;
 
   constructor(private http: HttpClient) {}
 
-  getTestimonials(): Observable<Testimonial[]> {
-    return this.http.get<Testimonial[]>(this.apiUrl);
+  getTestimonials(refresh = false): Observable<Testimonial[]> {
+    if (!this.cache$ || refresh) {
+      this.cache$ = this.http.get<Testimonial[]>(this.apiUrl).pipe(shareReplay(1));
+    }
+    return this.cache$;
   }
 
   addTestimonial(testimonial: Testimonial): Observable<Testimonial> {

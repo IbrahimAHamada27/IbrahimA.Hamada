@@ -3,11 +3,12 @@ import { Certificate } from '../../core/models/certificate.model';
 import { CertificateService } from '../../core/services/certificate.service';
 import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-certificates',
   standalone: true,
-  imports: [DetailsModalComponent],
+  imports: [DetailsModalComponent, ImgUrlPipe],
   templateUrl: './certificates.html',
   styleUrl: './certificates.css'
 })

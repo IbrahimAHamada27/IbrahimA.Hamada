@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Skill } from '../../core/models/skill.model';
 import { lastValueFrom } from 'rxjs';
 import { SkillService } from '../../core/services/skill.service';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [],
+  imports: [ImgUrlPipe],
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })

@@ -4,11 +4,12 @@ import { ActivityService } from '../../core/services/activity.service';
 import { Activity } from '../../core/models/activity.model';
 import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-activities',
   standalone: true,
-  imports: [CommonModule, DetailsModalComponent],
+  imports: [CommonModule, DetailsModalComponent, ImgUrlPipe],
   templateUrl: './activities.html',
   styleUrl: './activities.css'
 })

@@ -9,10 +9,8 @@
       @for (skill of skills; track skill._id; let idx = $index) {
         <div class="skill-card glass-card" [attr.data-aos]="'zoom-in'" [attr.data-aos-delay]="(idx % 6) * 50">
           <div class="skill-icon-box">
-            @if (skill.iconUrl && skill.iconUrl.startsWith('/uploads/')) {
-              <img [src]="'http://localhost:3000' + skill.iconUrl" [alt]="skill.name" class="skill-img" />
-            } @else if (skill.iconUrl && skill.iconUrl.startsWith('http')) {
-              <img [src]="skill.iconUrl" [alt]="skill.name" class="skill-img" />
+            @if (skill.iconUrl) {
+              <img [src]="skill.iconUrl | imgUrl" [alt]="skill.name" class="skill-img" loading="lazy" decoding="async" />
             } @else {
               <div class="skill-icon-fallback">
                 <i class="fa-solid fa-code"></i>

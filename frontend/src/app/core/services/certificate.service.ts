@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { Certificate } from '../models/certificate.model';
 
 @Injectable({
@@ -9,10 +9,15 @@ import { Certificate } from '../models/certificate.model';
 })
 export class CertificateService {
   private apiUrl = `${environment.apiUrl}/api/certificates`;
+  private cache$?: Observable<Certificate[]>;
 
   constructor(private http: HttpClient) {}
 
-  getCertificates(): Observable<Certificate[]> {
-    return this.http.get<Certificate[]>(this.apiUrl);
+  getCertificates(refresh = false): Observable<Certificate[]> {
+    if (!this.cache$ || refresh) {
+      this.cache$ = this.http.get<Certificate[]>(this.apiUrl).pipe(shareReplay(1));
+    }
+    return this.cache$;
   }
 }
+

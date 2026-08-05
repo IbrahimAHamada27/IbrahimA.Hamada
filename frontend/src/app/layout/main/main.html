@@ -2,11 +2,47 @@
   <section id="home"><app-home></app-home></section>
   <section id="education"><app-education></app-education></section>
   <section id="skills"><app-skills></app-skills></section>
-  <section id="experience"><app-experience></app-experience></section>
-  <section id="services"><app-services></app-services></section>
-  <section id="projects"><app-projects></app-projects></section>
-  <section id="certificates"><app-certificates></app-certificates></section>
-  <section id="activities"><app-activities></app-activities></section>
-  <section id="testimonials"><app-testimonials></app-testimonials></section>
-  <section id="contact"><app-contact></app-contact></section>
+
+  @defer (on viewport) {
+    <section id="experience"><app-experience></app-experience></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
+
+  @defer (on viewport) {
+    <section id="services"><app-services></app-services></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
+
+  @defer (on viewport) {
+    <section id="projects"><app-projects></app-projects></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
+
+  @defer (on viewport) {
+    <section id="certificates"><app-certificates></app-certificates></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
+
+  @defer (on viewport) {
+    <section id="activities"><app-activities></app-activities></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
+
+  @defer (on viewport) {
+    <section id="testimonials"><app-testimonials></app-testimonials></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
+
+  @defer (on viewport) {
+    <section id="contact"><app-contact></app-contact></section>
+  } @placeholder {
+    <div class="defer-section-placeholder"></div>
+  }
 </div>
+

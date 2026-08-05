@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SiteInfo } from '../../core/models/site-info.model';
 import { lastValueFrom } from 'rxjs';
 import { SiteInfoService } from '../../core/services/site-info.service';
+import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [ImgUrlPipe],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

@@ -11,7 +11,7 @@
           
           @if (project.imageUrl) {
             <div class="project-banner-outer">
-              <img [src]="project.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + project.imageUrl : project.imageUrl" [alt]="project.title" class="project-outer-img" />
+              <img [src]="project.imageUrl | imgUrl" [alt]="project.title" class="project-outer-img" loading="lazy" decoding="async" />
             </div>
           }
 
