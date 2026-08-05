@@ -7,7 +7,7 @@ import { Project } from '../models/project.model';
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = '/api/projects';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/projects';
 
  
   constructor(private http: HttpClient) {}

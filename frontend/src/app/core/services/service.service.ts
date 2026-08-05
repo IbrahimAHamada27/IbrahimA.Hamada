@@ -7,7 +7,7 @@ import { Service } from '../models/service.model';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = '/api/services';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/services';
 
   constructor(private http: HttpClient) {}
 

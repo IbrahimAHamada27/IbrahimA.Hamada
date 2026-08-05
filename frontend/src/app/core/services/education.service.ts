@@ -7,7 +7,7 @@ import { Education } from '../models/education.model';
   providedIn: 'root'
 })
 export class EducationService {
-  private apiUrl = '/api/education';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/education';
 
   constructor(private http: HttpClient) {}
 

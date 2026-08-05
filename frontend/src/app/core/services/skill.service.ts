@@ -7,7 +7,7 @@ import { Skill } from '../models/skill.model';
   providedIn: 'root'
 })
 export class SkillService {
-  private apiUrl = '/api/skills';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/skills';
 
   constructor(private http: HttpClient) {}
 

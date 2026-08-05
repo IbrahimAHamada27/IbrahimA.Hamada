@@ -26,7 +26,7 @@ export class DashboardServicesComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Service[]>('/api/services'));
+      const response = await lastValueFrom(this.http.get<Service[]>('https://portfoliobackend-orpin.vercel.app/api/services'));
       this.services = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -36,7 +36,7 @@ export class DashboardServicesComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/services/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/services/${id}`));
       this.services = this.services.filter(s => s._id !== id);
       this.toastService.success('Service deleted successfully');
       this.cdr.detectChanges();
@@ -62,8 +62,8 @@ export class DashboardServicesComponent implements OnInit {
     event.preventDefault();
     try {
       const url = this.editingId 
-        ? `/api/services/${this.editingId}`
-        : '/api/services';
+        ? `https://portfoliobackend-orpin.vercel.app/api/services/${this.editingId}`
+        : 'https://portfoliobackend-orpin.vercel.app/api/services';
       
       let updated: Service;
       if (this.editingId) {

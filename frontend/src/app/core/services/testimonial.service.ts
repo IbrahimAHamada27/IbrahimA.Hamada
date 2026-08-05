@@ -7,7 +7,7 @@ import { Testimonial } from '../models/testimonial.model';
   providedIn: 'root'
 })
 export class TestimonialService {
-  private apiUrl = '/api/testimonials';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/testimonials';
 
   constructor(private http: HttpClient) {}
 

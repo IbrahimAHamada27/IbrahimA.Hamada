@@ -33,7 +33,7 @@ export class ListProjectsComponent implements OnInit {
 
   async fetchProjects() {
     try {
-      const response = await lastValueFrom(this.http.get<Project[]>('/api/projects'));
+      const response = await lastValueFrom(this.http.get<Project[]>('https://portfoliobackend-orpin.vercel.app/api/projects'));
       this.projects = response;
     } catch (error) {
       console.error('Failed to fetch projects', error);
@@ -43,7 +43,7 @@ export class ListProjectsComponent implements OnInit {
   async deleteProject(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/projects/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/projects/${id}`));
       this.projects = this.projects.filter(p => p._id !== id);
       this.toastService.success('Project deleted successfully');
       this.cdr.detectChanges();
@@ -86,8 +86,8 @@ export class ListProjectsComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `/api/projects/${this.editingId}`
-        : '/api/projects';
+        ? `https://portfoliobackend-orpin.vercel.app/api/projects/${this.editingId}`
+        : 'https://portfoliobackend-orpin.vercel.app/api/projects';
 
       let updatedItem: Project;
       if (this.editingId) {

@@ -13,7 +13,7 @@ export interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = '/api/auth';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/auth';
   private tokenKey = 'admin_portfolio_token';
 
   constructor(private http: HttpClient, private router: Router) {}

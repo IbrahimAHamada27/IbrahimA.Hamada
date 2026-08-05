@@ -7,7 +7,7 @@ import { Message } from '../models/message.model';
   providedIn: 'root'
 })
 export class MessageService {
-  private apiUrl = '/api/messages';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/messages';
 
   constructor(private http: HttpClient) {}
 

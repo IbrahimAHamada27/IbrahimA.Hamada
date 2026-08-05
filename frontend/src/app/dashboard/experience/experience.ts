@@ -26,7 +26,7 @@ export class DashboardExperienceComponent implements OnInit {
 
   async fetchExperiences() {
     try {
-      const response = await lastValueFrom(this.http.get<Experience[]>('/api/experience'));
+      const response = await lastValueFrom(this.http.get<Experience[]>('https://portfoliobackend-orpin.vercel.app/api/experience'));
       this.experiences = response;
     } catch (error) {
       console.error('Failed to fetch experiences', error);
@@ -36,7 +36,7 @@ export class DashboardExperienceComponent implements OnInit {
   async deleteExperience(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/experience/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/experience/${id}`));
       this.experiences = this.experiences.filter(e => e._id !== id);
       this.toastService.success('Experience deleted successfully');
       this.cdr.detectChanges();
@@ -71,8 +71,8 @@ export class DashboardExperienceComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `/api/experience/${this.editingId}`
-        : '/api/experience';
+        ? `https://portfoliobackend-orpin.vercel.app/api/experience/${this.editingId}`
+        : 'https://portfoliobackend-orpin.vercel.app/api/experience';
 
       let updatedItem: Experience;
       if (this.editingId) {

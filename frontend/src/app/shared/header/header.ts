@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>('/api/siteinfo').subscribe({
+    this.http.get<SiteInfo>('https://portfoliobackend-orpin.vercel.app/api/siteinfo').subscribe({
       next: (data) => {
         this.siteInfo = data;
         const iconUrl = data.logoImage || data.profileImage || 'https://github.com/ibrahimahamada27.png';

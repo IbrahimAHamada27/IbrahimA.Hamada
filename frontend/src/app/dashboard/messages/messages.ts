@@ -23,7 +23,7 @@ export class MessagesComponent implements OnInit {
 
   async fetchMessages() {
     try {
-      const response = await lastValueFrom(this.http.get<Message[]>('/api/messages'));
+      const response = await lastValueFrom(this.http.get<Message[]>('https://portfoliobackend-orpin.vercel.app/api/messages'));
       this.messages = response;
     } catch (error) {
       console.error('Failed to fetch messages', error);
@@ -33,7 +33,7 @@ export class MessagesComponent implements OnInit {
   async deleteMessage(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/messages/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/messages/${id}`));
       this.messages = this.messages.filter(m => m._id !== id);
       this.toastService.success('Message deleted successfully');
     } catch (error) {

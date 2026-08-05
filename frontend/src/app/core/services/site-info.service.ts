@@ -7,7 +7,7 @@ import { SiteInfo } from '../models/site-info.model';
   providedIn: 'root'
 })
 export class SiteInfoService {
-  private apiUrl = '/api/siteinfo';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/siteinfo';
 
   constructor(private http: HttpClient) {}
 

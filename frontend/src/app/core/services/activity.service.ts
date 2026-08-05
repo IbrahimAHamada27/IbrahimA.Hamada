@@ -7,7 +7,7 @@ import { Activity } from '../models/activity.model';
   providedIn: 'root'
 })
 export class ActivityService {
-  private apiUrl = '/api/activities';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/activities';
 
   constructor(private http: HttpClient) {}
 

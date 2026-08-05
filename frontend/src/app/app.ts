@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>('/api/siteinfo').subscribe({
+    this.http.get<SiteInfo>('https://portfoliobackend-orpin.vercel.app/api/siteinfo').subscribe({
       next: (siteInfo) => {
         if (siteInfo.brandName) {
           this.titleService.setTitle(siteInfo.brandName);

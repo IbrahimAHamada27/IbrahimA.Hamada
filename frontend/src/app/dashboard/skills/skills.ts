@@ -27,7 +27,7 @@ export class SkillsComponent implements OnInit {
 
   async fetchSkills() {
     try {
-      const response = await lastValueFrom(this.http.get<Skill[]>('/api/skills'));
+      const response = await lastValueFrom(this.http.get<Skill[]>('https://portfoliobackend-orpin.vercel.app/api/skills'));
       this.skills = response;
     } catch (error) {
       console.error('Failed to fetch skills', error);
@@ -37,7 +37,7 @@ export class SkillsComponent implements OnInit {
   async deleteSkill(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/skills/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/skills/${id}`));
       this.skills = this.skills.filter(s => s._id !== id);
       this.toastService.success('Skill deleted successfully');
       this.cdr.detectChanges();
@@ -88,8 +88,8 @@ export class SkillsComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `/api/skills/${this.editingId}`
-        : '/api/skills';
+        ? `https://portfoliobackend-orpin.vercel.app/api/skills/${this.editingId}`
+        : 'https://portfoliobackend-orpin.vercel.app/api/skills';
 
       let updatedSkill: { skill: Skill };
       if (this.editingId) {

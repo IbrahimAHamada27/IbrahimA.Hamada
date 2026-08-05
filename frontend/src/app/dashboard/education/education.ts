@@ -28,7 +28,7 @@ export class DashboardEducationComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Education[]>('/api/education'));
+      const response = await lastValueFrom(this.http.get<Education[]>('https://portfoliobackend-orpin.vercel.app/api/education'));
       this.educationList = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -38,7 +38,7 @@ export class DashboardEducationComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/education/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/education/${id}`));
       this.educationList = this.educationList.filter(s => s._id !== id);
       this.toastService.success('Record deleted successfully');
       this.cdr.detectChanges();
@@ -74,8 +74,8 @@ export class DashboardEducationComponent implements OnInit {
       };
 
       const url = this.editingId 
-        ? `/api/education/${this.editingId}`
-        : '/api/education';
+        ? `https://portfoliobackend-orpin.vercel.app/api/education/${this.editingId}`
+        : 'https://portfoliobackend-orpin.vercel.app/api/education';
       
       let updated: Education;
       if (this.editingId) {

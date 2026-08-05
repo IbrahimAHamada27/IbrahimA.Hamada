@@ -27,7 +27,7 @@ export class DashboardTestimonialsComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Testimonial[]>('/api/testimonials'));
+      const response = await lastValueFrom(this.http.get<Testimonial[]>('https://portfoliobackend-orpin.vercel.app/api/testimonials'));
       this.testimonials = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -37,7 +37,7 @@ export class DashboardTestimonialsComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`/api/testimonials/${id}`));
+      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/testimonials/${id}`));
       this.testimonials = this.testimonials.filter(s => s._id !== id);
       this.toastService.success('Testimonial deleted successfully');
       this.cdr.detectChanges();
@@ -76,8 +76,8 @@ export class DashboardTestimonialsComponent implements OnInit {
     event.preventDefault();
     try {
       const url = this.editingId 
-        ? `/api/testimonials/${this.editingId}`
-        : '/api/testimonials';
+        ? `https://portfoliobackend-orpin.vercel.app/api/testimonials/${this.editingId}`
+        : 'https://portfoliobackend-orpin.vercel.app/api/testimonials';
       
       let updated: Testimonial;
       if (this.editingId) {

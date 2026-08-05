@@ -7,7 +7,7 @@ import { Certificate } from '../models/certificate.model';
   providedIn: 'root'
 })
 export class CertificateService {
-  private apiUrl = '/api/certificates';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/certificates';
 
   constructor(private http: HttpClient) {}
 

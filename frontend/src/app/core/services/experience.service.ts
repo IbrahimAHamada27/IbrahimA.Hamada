@@ -7,7 +7,7 @@ import { Experience } from '../models/experience.model';
   providedIn: 'root'
 })
 export class ExperienceService {
-  private apiUrl = '/api/experience';
+  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/experience';
 
   constructor(private http: HttpClient) {}
 
