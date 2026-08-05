@@ -1,0 +1,76 @@
+<div class="dashboard-card">
+  <h2><i class="fa-solid fa-quote-right"></i> Testimonials Management</h2>
+  <p>Manage client reviews, endorsements, and recommendations.</p>
+  
+  <button class="btn-primary" style="margin-bottom: 20px;" (click)="showForm ? cancelEdit() : showForm = true">
+    <i [class]="showForm ? 'fa-solid fa-xmark' : 'fa-solid fa-plus'"></i>
+    {{ showForm ? 'Cancel' : 'Add New Testimonial' }}
+  </button>
+
+  @if (showForm) {
+    <form class="dashboard-form" (submit)="onSubmit($event)">
+      <div class="form-group">
+        <label><i class="fa-solid fa-user"></i> Name</label>
+        <input type="text" name="name" [(ngModel)]="formData.name" required class="form-input" placeholder="Client or Lead Name">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-briefcase"></i> Position / Company</label>
+        <input type="text" name="position" [(ngModel)]="formData.position" class="form-input" placeholder="e.g. Lead QA / Project Manager">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-image"></i> Profile Image</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-input">
+        @if (formData.image) {
+          <img [src]="formData.image" alt="Preview" style="margin-top: 10px; width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+        }
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-comment-dots"></i> Testimonial Message</label>
+        <textarea name="message" [(ngModel)]="formData.message" required class="form-input" rows="3" placeholder="Endorsement text..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary full-width">
+        <i class="fa-solid fa-check"></i> {{ editingId ? 'Update Testimonial' : 'Save Testimonial' }}
+      </button>
+    </form>
+  }
+
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Message</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of testimonials; track item._id) {
+          <tr>
+            <td>
+              @if (item.image) {
+                <img [src]="item.image" width="36" height="36" alt="img" style="border-radius: 50%; object-fit: cover;">
+              } @else {
+                <i class="fa-solid fa-user-circle" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+              }
+            </td>
+            <td style="font-weight: 700;">{{ item.name }}</td>
+            <td>{{ item.position }}</td>
+            <td>{{ item.message | slice:0:60 }}...</td>
+            <td>
+              <div class="action-btns-cell">
+                <button class="btn-warning" (click)="editItem(item)"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                <button class="btn-danger" (click)="deleteItem(item._id)"><i class="fa-solid fa-trash"></i> Delete</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 24px;">No testimonials found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

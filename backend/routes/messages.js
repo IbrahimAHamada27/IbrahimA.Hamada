@@ -1,14 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-const MessageSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  message: { type: String, required: true }
-}, { timestamps: true });
-
-const Message =mongoose.model('Message', MessageSchema);
+const Message = require('../models/Message');
 
 // Get all messages
 router.get('/', async (req, res) => {
@@ -23,8 +15,9 @@ router.get('/', async (req, res) => {
 // Create a message
 router.post('/', async (req, res) => {
   try {
-    const result = await Message.collection.insertOne(req.body);
-    res.status(201).json(result);
+    const message = new Message(req.body);
+    await message.save();
+    res.status(201).json(message);
   } catch (error) {
     res.status(400).json({ error: 'Failed to save message' });
   }

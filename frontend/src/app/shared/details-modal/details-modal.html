@@ -1,0 +1,67 @@
+@if (isOpen && item) {
+  <div class="modal-backdrop" (click)="onClose()">
+    <div class="modal-card glass-card" (click)="$event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button class="modal-close-btn" (click)="onClose()" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Banner / Image Section at Top -->
+      @if (item.imageUrl) {
+        <div class="modal-banner-box">
+          <img [src]="getImageUrl(item.imageUrl)" [alt]="item.title" class="modal-banner-img" />
+          <div class="banner-overlay"></div>
+        </div>
+      }
+
+      <div class="modal-body-content">
+        <!-- Badges Row -->
+        <div class="modal-tags-row">
+          @if (item.category) {
+            <span class="modal-badge category-badge"><i class="fa-solid fa-layer-group"></i> {{ item.category | titlecase }}</span>
+          }
+          @if (item.date) {
+            <span class="modal-badge date-badge"><i class="fa-regular fa-calendar"></i> {{ item.date }}</span>
+          }
+        </div>
+
+        <h2 class="modal-item-title">{{ item.title }}</h2>
+
+        @if (item.subtitle) {
+          <h4 class="modal-item-subtitle"><i class="fa-solid fa-building-columns"></i> {{ item.subtitle }}</h4>
+        }
+
+        <!-- Description Text -->
+        @if (item.description) {
+          <div class="modal-section-box">
+            <h5 class="section-label"><i class="fa-solid fa-align-left"></i> Overview & Details</h5>
+            <p class="modal-description-text">{{ item.description }}</p>
+          </div>
+        }
+
+        <!-- Skills / Tags Learned -->
+        @if (item.tags && item.tags.length > 0) {
+          <div class="modal-section-box">
+            <h5 class="section-label"><i class="fa-solid fa-tags"></i> Key Competencies & Technologies</h5>
+            <div class="modal-pills-list">
+              @for (tag of item.tags; track tag) {
+                <span class="modal-pill"><i class="fa-solid fa-check"></i> {{ tag }}</span>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- External Link Button -->
+        @if (item.link) {
+          <div class="modal-footer-action">
+            <a [href]="item.link" target="_blank" rel="noopener noreferrer" class="btn-gradient modal-external-btn">
+              <span>Visit External Link / Verify Credential</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

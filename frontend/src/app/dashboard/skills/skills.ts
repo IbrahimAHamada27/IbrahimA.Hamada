@@ -1,15 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { SiteInfo } from '../../core/models/site-info.model';
-import { Project } from '../../core/models/project.model';
 import { Skill } from '../../core/models/skill.model';
-import { Message } from '../../core/models/message.model';
-import { Certificate } from '../../core/models/certificate.model';
-import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
-
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-skills',
@@ -25,7 +19,7 @@ export class SkillsComponent implements OnInit {
   formData = { name: '', description: '' as string | undefined, iconUrl: '' as string | undefined, category: '' };
   selectedFile: File | null = null;
 
-  constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
+  constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private toastService: ToastService) {}
 
   ngOnInit() {
     this.fetchSkills();
@@ -41,15 +35,15 @@ export class SkillsComponent implements OnInit {
   }
 
   async deleteSkill(id: string | undefined) {
-    if (!id || !confirm('Are you sure?')) return;
+    if (!id) return;
     try {
       await lastValueFrom(this.http.delete(`http://localhost:3000/api/skills/${id}`));
       this.skills = this.skills.filter(s => s._id !== id);
-        alert('Skill deleted successfully');
-        this.cdr.detectChanges();
+      this.toastService.success('Skill deleted successfully');
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Failed to delete skill', error);
-      alert('Failed to delete skill');
+      this.toastService.danger('Failed to delete skill');
     }
   }
 
@@ -82,6 +76,9 @@ export class SkillsComponent implements OnInit {
     const payload = new FormData();
     payload.append('name', this.formData.name);
     payload.append('category', this.formData.category);
+    if (this.formData.description) {
+      payload.append('description', this.formData.description);
+    }
     
     if (this.selectedFile) {
       payload.append('icon', this.selectedFile);
@@ -93,7 +90,6 @@ export class SkillsComponent implements OnInit {
       const url = this.editingId 
         ? `http://localhost:3000/api/skills/${this.editingId}`
         : 'http://localhost:3000/api/skills';
-      const method = this.editingId ? 'PUT' : 'POST';
 
       let updatedSkill: { skill: Skill };
       if (this.editingId) {
@@ -112,12 +108,12 @@ export class SkillsComponent implements OnInit {
       }
       this.skills = [...this.skills];
 
-      alert(`Item ${this.editingId ? 'updated' : 'added'} successfully`);
+      this.toastService.success(`Skill ${this.editingId ? 'updated' : 'added'} successfully`);
       this.cancelEdit();
       this.cdr.detectChanges();
     } catch (error) {
       console.error(`Failed to ${this.editingId ? 'update' : 'add'} skill`, error);
-      alert('Error connecting to backend');
+      this.toastService.danger('Error saving skill');
     }
   }
 }

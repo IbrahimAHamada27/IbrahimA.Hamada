@@ -1,16 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-const skillSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  category: { type: String, required: true },
-  description: { type: String, required: true },
-  iconUrl: { type: String, required: true },
-  createdAt: { type: Date }
-});
-
-const Skill =mongoose.model('Skill', skillSchema);
+const Skill = require('../models/Skill');
+const upload = require('../middlewares/upload');
 
 // Get all skills
 router.get('/', async (req, res) => {
@@ -22,18 +13,17 @@ router.get('/', async (req, res) => {
   }
 });
 
-const upload = require('../utilities/upload');
-
 // Create a skill
 router.post('/', upload.single('icon'), async (req, res) => {
   try {
     const { name, description, iconUrl } = req.body;
-    let finalIconUrl = iconUrl;
+    let finalIconUrl = iconUrl || '';
     if (req.file) {
       finalIconUrl = `/uploads/${req.file.filename}`;
     }
-    const result = await Skill.collection.insertOne({ name, description, iconUrl: finalIconUrl });
-    res.status(201).json({ message: 'Skill added successfully', skill: result });
+    const skill = new Skill({ name, description, iconUrl: finalIconUrl });
+    await skill.save();
+    res.status(201).json({ message: 'Skill added successfully', skill });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

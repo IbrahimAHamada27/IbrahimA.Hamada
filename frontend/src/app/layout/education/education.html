@@ -1,0 +1,104 @@
+<section id="education" class="education-section">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">Academic & <span class="gradient-text">Specialized Tracks</span></h2>
+      <p class="section-subtitle">Formal computer science degree and specialized professional accelerators.</p>
+    </div>
+
+    <div class="education-grid">
+      <!-- University Column -->
+      <div class="edu-column" data-aos="fade-right">
+        <div class="column-header">
+          <div class="header-icon-badge blue-glow">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3 class="column-title">University Degree</h3>
+        </div>
+
+        <div class="timeline">
+          @for (item of university; track item._id) {
+            <div class="timeline-card glass-card">
+              @if (item.imageUrl) {
+                <div class="edu-banner-outer">
+                  <img [src]="item.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + item.imageUrl : item.imageUrl" [alt]="item.title" class="edu-outer-img" />
+                </div>
+              }
+              <div class="timeline-node"></div>
+              <div class="card-header-row">
+                <span class="date-pill"><i class="fa-regular fa-calendar-days"></i> {{ item.date }}</span>
+                <span class="type-badge">Degree</span>
+              </div>
+              <h4 class="item-title">{{ item.title }}</h4>
+              <h5 class="item-institution"><i class="fa-solid fa-building-columns"></i> {{ item.institution }}</h5>
+              <p class="item-desc">{{ item.desc }}</p>
+
+              @if (item.skillsLearned && item.skillsLearned.length > 0) {
+                <div class="course-skills-list">
+                  @for (skill of item.skillsLearned; track skill) {
+                    <span class="course-skill-pill">{{ skill }}</span>
+                  }
+                </div>
+              }
+
+              <button class="btn-show-more" (click)="openDetails(item)">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Show Details</span>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Professional Courses Column -->
+      <div class="edu-column" data-aos="fade-left">
+        <div class="column-header">
+          <div class="header-icon-badge purple-glow">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h3 class="column-title">Specialized Programs & Courses</h3>
+        </div>
+
+        <div class="timeline">
+          @for (item of courses; track item._id) {
+            <div class="timeline-card glass-card">
+              @if (item.imageUrl) {
+                <div class="edu-banner-outer">
+                  <img [src]="item.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + item.imageUrl : item.imageUrl" [alt]="item.title" class="edu-outer-img" />
+                </div>
+              }
+              <div class="timeline-node"></div>
+              <div class="card-header-row">
+                <span class="date-pill"><i class="fa-regular fa-calendar-days"></i> {{ item.date }}</span>
+                @if (item.link) {
+                  <a [href]="item.link" target="_blank" rel="noopener noreferrer" class="type-badge course-badge link-badge">
+                    <span>Program Info</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                } @else {
+                  <span class="type-badge course-badge">Track</span>
+                }
+              </div>
+              <h4 class="item-title">{{ item.title }}</h4>
+              <h5 class="item-institution"><i class="fa-solid fa-landmark"></i> {{ item.institution }}</h5>
+              <p class="item-desc">{{ item.desc }}</p>
+
+              @if (item.skillsLearned && item.skillsLearned.length > 0) {
+                <div class="course-skills-list">
+                  @for (skill of item.skillsLearned; track skill) {
+                    <span class="course-skill-pill"><i class="fa-solid fa-check"></i> {{ skill }}</span>
+                  }
+                </div>
+              }
+
+              <button class="btn-show-more" (click)="openDetails(item)">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Show Details</span>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>

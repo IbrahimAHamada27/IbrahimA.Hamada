@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Project } from '../../core/models/project.model';
-import { lastValueFrom } from 'rxjs';
 import { ProjectService } from '../../core/services/project.service';
+import { lastValueFrom } from 'rxjs';
+import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [],
+  imports: [DetailsModalComponent],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })
 export class ProjectsComponent implements OnInit {
-  constructor(private projectService: ProjectService) {}
-
   projects: Project[] = [];
+  selectedItem: DetailItem | null = null;
+  isModalOpen = false;
+
+  constructor(private projectService: ProjectService) {}
 
   ngOnInit() {
     this.fetchProjects();
@@ -27,5 +29,17 @@ export class ProjectsComponent implements OnInit {
     } catch (error) {
       console.error('Failed to fetch projects', error);
     }
+  }
+
+  openDetails(project: Project) {
+    this.selectedItem = {
+      title: project.title,
+      category: 'Software & QA Automation Project',
+      description: project.description,
+      imageUrl: project.imageUrl,
+      link: project.link,
+      tags: project.technologies
+    };
+    this.isModalOpen = true;
   }
 }

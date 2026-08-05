@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
 import { SiteInfo } from '../../core/models/site-info.model';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import { SiteInfo } from '../../core/models/site-info.model';
 export class DashboardHomeComponent implements OnInit {
   siteInfo: SiteInfo = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastService: ToastService) {}
 
   ngOnInit() {
     this.fetchSiteInfo();
@@ -26,7 +27,7 @@ export class DashboardHomeComponent implements OnInit {
       this.siteInfo = response;
     } catch (error) {
       console.error('Failed to fetch site info', error);
-      alert('Failed to fetch site info');
+      this.toastService.danger('Failed to fetch site info');
     }
   }
 
@@ -36,7 +37,7 @@ export class DashboardHomeComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         if (e.target && typeof e.target.result === 'string') {
-          this.siteInfo.profileImage = e.target.result; // Base64 string
+          this.siteInfo.profileImage = e.target.result;
         }
       };
       reader.readAsDataURL(file);
@@ -49,7 +50,7 @@ export class DashboardHomeComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         if (e.target && typeof e.target.result === 'string') {
-          this.siteInfo.logoImage = e.target.result; // Base64 string
+          this.siteInfo.logoImage = e.target.result;
         }
       };
       reader.readAsDataURL(file);
@@ -58,20 +59,13 @@ export class DashboardHomeComponent implements OnInit {
 
   async onSubmit(event: Event) {
     event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const data = new FormData(form);
     
-    const payload = {
-      ...this.siteInfo,
-      ...(Object.fromEntries((data as any).entries()))
-    };
-
     try {
-      await lastValueFrom(this.http.put('http://localhost:3000/api/siteinfo', payload));
-      alert('Changes saved successfully!');
+      await lastValueFrom(this.http.put('http://localhost:3000/api/siteinfo', this.siteInfo));
+      this.toastService.success('Site information saved successfully!');
     } catch (error) {
       console.error('Failed to update site info', error);
-      alert('Failed to update site info.');
+      this.toastService.danger('Failed to update site info');
     }
   }
 }

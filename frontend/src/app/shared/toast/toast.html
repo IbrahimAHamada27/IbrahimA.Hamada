@@ -1,0 +1,21 @@
+<div class="toast-container">
+  @for (toast of toasts; track toast.id) {
+    <div class="toast-card" [class]="'toast-' + toast.type">
+      <div class="toast-icon">
+        @if (toast.type === 'success') {
+          <i class="fa-solid fa-circle-check"></i>
+        } @else if (toast.type === 'danger') {
+          <i class="fa-solid fa-circle-xmark"></i>
+        } @else if (toast.type === 'warning') {
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        } @else {
+          <i class="fa-solid fa-circle-info"></i>
+        }
+      </div>
+      <div class="toast-body">{{ toast.message }}</div>
+      <button class="toast-close" (click)="dismiss(toast.id)" aria-label="Close Toast">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  }
+</div>

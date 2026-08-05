@@ -1,35 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-const SiteInfoSchema = new mongoose.Schema({
-  brandName: { type: String, required: true },
-  heroTitle: { type: String, required: true },
-  heroDesc: { type: String, required: true },
-  aboutTitle: { type: String, required: true },
-  aboutDesc1: { type: String, required: true },
-  aboutDesc2: { type: String },
-  academicTitle: { type: String, required: true },
-  academicDesc: { type: String },
-  philosophyTitle: { type: String },
-  philosophyDesc: { type: String },
-  githubUrl: { type: String },
-  linkedinUrl: { type: String },
-  profileImage: { type: String },
-  logoImage: { type: String },
-  brandDesc: { type: String },
-  contactTitle: { type: String },
-  contactSubtitle: { type: String },
-  contactEmail: { type: String },
-  emailProvider: { type: String },
-  emailjsServiceId: { type: String },
-  emailjsTemplateId: { type: String },
-  emailjsPublicKey: { type: String },
-  formspreeUrl: { type: String },
-  web3formsAccessKey: { type: String }
-}, { timestamps: true });
-
-const SiteInfo =mongoose.model('SiteInfo', SiteInfoSchema);
+const SiteInfo = require('../models/SiteInfo');
 
 router.get('/', async (req, res) => {
   try {

@@ -1,15 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { SiteInfo } from '../../core/models/site-info.model';
 import { Project } from '../../core/models/project.model';
-import { Skill } from '../../core/models/skill.model';
-import { Message } from '../../core/models/message.model';
-import { Certificate } from '../../core/models/certificate.model';
-import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
-
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-list-projects',
@@ -27,10 +21,11 @@ export class ListProjectsComponent implements OnInit {
     title: '',
     description: '',
     link: '',
-    technologies: ''
+    technologies: '',
+    imageUrl: ''
   };
 
-  constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
+  constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private toastService: ToastService) {}
 
   ngOnInit() {
     this.fetchProjects();
@@ -46,15 +41,15 @@ export class ListProjectsComponent implements OnInit {
   }
 
   async deleteProject(id: string | undefined) {
-    if (!id || !confirm('Are you sure you want to delete this project?')) return;
+    if (!id) return;
     try {
       await lastValueFrom(this.http.delete(`http://localhost:3000/api/projects/${id}`));
       this.projects = this.projects.filter(p => p._id !== id);
-        alert('Project deleted successfully');
-        this.cdr.detectChanges();
+      this.toastService.success('Project deleted successfully');
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Failed to delete project', error);
-      alert('Failed to delete project');
+      this.toastService.danger('Failed to delete project');
     }
   }
 
@@ -64,7 +59,8 @@ export class ListProjectsComponent implements OnInit {
       title: project.title,
       description: project.description,
       link: project.link,
-      technologies: project.technologies.join(', ')
+      technologies: project.technologies.join(', '),
+      imageUrl: project.imageUrl || ''
     };
     this.showForm = true;
   }
@@ -72,7 +68,7 @@ export class ListProjectsComponent implements OnInit {
   cancelEdit() {
     this.showForm = false;
     this.editingId = undefined;
-    this.formData = { title: '', description: '', link: '', technologies: '' };
+    this.formData = { title: '', description: '', link: '', technologies: '', imageUrl: '' };
   }
 
   async onSubmit(event: Event) {
@@ -84,15 +80,14 @@ export class ListProjectsComponent implements OnInit {
       title: this.formData.title,
       description: this.formData.description,
       link: this.formData.link,
-      technologies: techs
+      technologies: techs,
+      imageUrl: this.formData.imageUrl
     };
 
     try {
       const url = this.editingId 
         ? `http://localhost:3000/api/projects/${this.editingId}`
         : 'http://localhost:3000/api/projects';
-        
-      const method = this.editingId ? 'PUT' : 'POST';
 
       let updatedItem: Project;
       if (this.editingId) {
@@ -109,14 +104,14 @@ export class ListProjectsComponent implements OnInit {
       } else {
         this.projects.unshift(updatedItem);
       }
-      this.projects = [...this.projects]; // Force array reference change
+      this.projects = [...this.projects];
 
-      alert(`Project ${this.editingId ? 'updated' : 'added'} successfully!`);
+      this.toastService.success(`Project ${this.editingId ? 'updated' : 'added'} successfully`);
       this.cancelEdit();
       this.cdr.detectChanges();
     } catch (error) {
       console.error(`Error ${this.editingId ? 'updating' : 'adding'} project:`, error);
-      alert('Error connecting to backend.');
+      this.toastService.danger('Error saving project');
     }
   }
 }

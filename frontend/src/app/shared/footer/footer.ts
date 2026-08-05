@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
-import { Project } from '../../core/models/project.model';
-import { Skill } from '../../core/models/skill.model';
-import { Message } from '../../core/models/message.model';
-import { Certificate } from '../../core/models/certificate.model';
-import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
-
 
 @Component({
   selector: 'app-footer',
@@ -18,9 +11,9 @@ import { lastValueFrom } from 'rxjs';
   styleUrl: './footer.css'
 })
 export class FooterComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-
   siteInfo: SiteInfo = {};
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.fetchSiteInfo();
@@ -32,6 +25,19 @@ export class FooterComponent implements OnInit {
       this.siteInfo = response;
     } catch (error) {
       console.error('Failed to fetch site info', error);
+    }
+  }
+
+  scrollToSection(sectionId: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+    }
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
     }
   }
 }

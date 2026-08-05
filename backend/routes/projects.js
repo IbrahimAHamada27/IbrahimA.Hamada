@@ -1,15 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-const ProjectSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  link: { type: String, required: true },
-  technologies: { type: [String], required: true }
-}, { timestamps: true });
-
-const Project = mongoose.model('Project', ProjectSchema);
+const Project = require('../models/Project');
 
 // Get all projects
 router.get('/', async (req, res) => {
@@ -24,8 +15,9 @@ router.get('/', async (req, res) => {
 // Create a project
 router.post('/', async (req, res) => {
   try {
-    const result = await Project.collection.insertOne(req.body);
-    res.status(201).json(result);
+    const project = new Project(req.body);
+    await project.save();
+    res.status(201).json(project);
   } catch (error) {
     res.status(400).json({ error: 'Failed to create project' });
   }

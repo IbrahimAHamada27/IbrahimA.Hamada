@@ -1,0 +1,98 @@
+<div class="dashboard-card">
+  <h2><i class="fa-solid fa-graduation-cap"></i> Education & Courses Management</h2>
+  <p>Manage university degrees, professional bootcamps, and specialized course tracks.</p>
+  
+  <button class="btn-primary" style="margin-bottom: 20px;" (click)="showForm ? cancelEdit() : showForm = true">
+    <i [class]="showForm ? 'fa-solid fa-xmark' : 'fa-solid fa-plus'"></i>
+    {{ showForm ? 'Cancel' : 'Add New Item' }}
+  </button>
+
+  @if (showForm) {
+    <form class="dashboard-form" (submit)="onSubmit($event)">
+      <div class="form-group">
+        <label><i class="fa-solid fa-book"></i> Title (Degree/Course Name)</label>
+        <input type="text" name="title" [(ngModel)]="formData.title" required class="form-input" placeholder="e.g. NTI MEAN Stack Track">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-landmark"></i> Institution / Provider</label>
+        <input type="text" name="institution" [(ngModel)]="formData.institution" required class="form-input" placeholder="e.g. NTI / Arab Open University">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-regular fa-calendar"></i> Date</label>
+        <input type="text" name="date" [(ngModel)]="formData.date" required class="form-input" placeholder="e.g. Jun 2026 - Present">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-layer-group"></i> Type</label>
+        <select name="type" [(ngModel)]="formData.type" class="form-input" required>
+          <option value="university">University Degree</option>
+          <option value="course">Specialized Course / Track</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-link"></i> Program Info / Certificate Link (URL)</label>
+        <input type="url" name="link" [(ngModel)]="formData.link" placeholder="https://course-info.com" class="form-input">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-image"></i> Badge / Image (URL)</label>
+        <input type="text" name="imageUrl" [(ngModel)]="formData.imageUrl" placeholder="https://image-url.com/badge.png" class="form-input">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-tags"></i> Skills / Topics Learned (comma-separated)</label>
+        <input type="text" name="skillsLearnedInput" [(ngModel)]="skillsLearnedInput" placeholder="Selenium, Java, REST APIs, TestNG" class="form-input">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-align-left"></i> Description</label>
+        <textarea name="desc" [(ngModel)]="formData.desc" class="form-input" rows="3" placeholder="Course syllabus or program overview..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary full-width">
+        <i class="fa-solid fa-check"></i> {{ editingId ? 'Update Record' : 'Save Record' }}
+      </button>
+    </form>
+  }
+
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Title</th>
+          <th>Institution</th>
+          <th>Date</th>
+          <th>Skills</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of educationList; track item._id) {
+          <tr>
+            <td>
+              <span class="badge" [style.background-color]="item.type === 'university' ? '#2563eb' : '#8b5cf6'" style="color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">
+                {{ item.type | uppercase }}
+              </span>
+            </td>
+            <td style="font-weight: 700;">{{ item.title }}</td>
+            <td>{{ item.institution }}</td>
+            <td>{{ item.date }}</td>
+            <td>
+              @if (item.skillsLearned && item.skillsLearned.length > 0) {
+                <span>{{ item.skillsLearned.join(', ') }}</span>
+              } @else {
+                <span style="opacity: 0.5;">None</span>
+              }
+            </td>
+            <td>
+              <div class="action-btns-cell">
+                <button class="btn-warning" (click)="editItem(item)"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                <button class="btn-danger" (click)="deleteItem(item._id)"><i class="fa-solid fa-trash"></i> Delete</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 24px;">No education records found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

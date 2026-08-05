@@ -1,15 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-const ExperienceSchema = new mongoose.Schema({
-  role: { type: String, required: true },
-  company: { type: String, required: true },
-  years: { type: String, required: true },
-  desc: { type: String, required: true }
-}, { timestamps: true });
-
-const Experience =mongoose.model('Experience', ExperienceSchema);
+const Experience = require('../models/Experience');
 
 // Get all experiences
 router.get('/', async (req, res) => {
@@ -24,8 +15,9 @@ router.get('/', async (req, res) => {
 // Create an experience
 router.post('/', async (req, res) => {
   try {
-    const result = await Experience.collection.insertOne(req.body);
-    res.status(201).json(result);
+    const experience = new Experience(req.body);
+    await experience.save();
+    res.status(201).json(experience);
   } catch (error) {
     res.status(400).json({ error: 'Failed to create experience' });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
@@ -14,12 +14,26 @@ export class HeaderComponent implements OnInit {
   isMobileMenuOpen = false;
   isDarkMode = false;
   siteInfo: SiteInfo = {};
+  activeSection = 'home';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.fetchSiteInfo();
     this.checkTheme();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    const sections = document.querySelectorAll('section');
+    let current = 'home';
+    sections.forEach((section: any) => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= (sectionTop - 220)) {
+        current = section.getAttribute('id') || 'home';
+      }
+    });
+    this.activeSection = current;
   }
 
   checkTheme() {
@@ -45,11 +59,46 @@ export class HeaderComponent implements OnInit {
     this.http.get<SiteInfo>('http://localhost:3000/api/siteinfo').subscribe({
       next: (data) => {
         this.siteInfo = data;
+        const iconUrl = data.logoImage || data.profileImage || 'https://github.com/ibrahimahamada27.png';
+        this.updateFavicon(iconUrl);
       },
       error: (error) => {
         console.error('Failed to fetch site info', error);
+        this.updateFavicon('https://github.com/ibrahimahamada27.png');
       }
     });
+  }
+
+  updateFavicon(iconUrl: string) {
+    if (!iconUrl) return;
+    const finalUrl = iconUrl.startsWith('/uploads/') ? 'http://localhost:3000' + iconUrl : iconUrl;
+    let links = document.querySelectorAll("link[rel*='icon']");
+    if (links.length > 0) {
+      links.forEach((link: any) => {
+        link.href = finalUrl;
+      });
+    } else {
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = finalUrl;
+      document.head.appendChild(link);
+    }
+  }
+
+  scrollToSection(sectionId: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+    }
+    this.activeSection = sectionId;
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (this.isMobileMenuOpen) {
+      this.isMobileMenuOpen = false;
+    }
+    window.history.replaceState(null, '', `/${sectionId}`);
   }
 
   toggleMobileMenu() {

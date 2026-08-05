@@ -1,31 +1,50 @@
-<section class="projects-section">
+<section id="projects" class="projects-section">
   <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">Here are some of the projects I've worked on recently.</p>
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">Featured <span class="gradient-text">Projects & QA Work</span></h2>
+      <p class="section-subtitle">Real-world web applications, automated testing frameworks, and API suites.</p>
     </div>
 
     <div class="projects-grid">
-      @for (project of projects; track project._id) {
-        <div class="card">
-          <div class="card-content">
-            <h3 class="card-title">{{ project.title }}</h3>
-            <p class="card-desc">{{ project.description }}</p>
-            <div class="tech-stack">
+      @for (project of projects; track project._id; let idx = $index) {
+        <div class="project-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
+          
+          @if (project.imageUrl) {
+            <div class="project-banner-outer">
+              <img [src]="project.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + project.imageUrl : project.imageUrl" [alt]="project.title" class="project-outer-img" />
+            </div>
+          }
+
+          <div class="project-card-body">
+            <div class="project-header">
+              <h3 class="project-title">{{ project.title }}</h3>
+              <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="project-external-link" title="Open Project">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+
+            <p class="project-desc">{{ project.description }}</p>
+
+            <div class="project-tech-tags">
               @for (tech of project.technologies; track tech) {
-                <span class="tech-badge">{{ tech }}</span>
+                <span class="tech-pill">{{ tech }}</span>
               }
             </div>
-            @if (project.link) {
-              <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="btn-outline" style="margin-top: auto;">
-                View Project
-              </a>
-            }
+
+            <button class="btn-show-more" (click)="openDetails(project)">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Show Details</span>
+            </button>
           </div>
         </div>
       } @empty {
-        <p class="no-projects">No projects found. Add some from the dashboard!</p>
+        <div class="empty-state glass-card" data-aos="fade-up">
+          <i class="fa-solid fa-laptop-code empty-icon"></i>
+          <p>No projects added yet.</p>
+        </div>
       }
     </div>
   </div>
 </section>
+
+<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>

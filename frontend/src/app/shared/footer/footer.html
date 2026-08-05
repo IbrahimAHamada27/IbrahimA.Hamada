@@ -1,22 +1,61 @@
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <span class="brand-name">{{ siteInfo.brandName }}</span>
-        <p class="brand-desc">{{ siteInfo.brandDesc }}</p>
+<footer class="footer-glass">
+  <div class="footer-container">
+    <div class="footer-main-grid">
+      <!-- Brand Info -->
+      <div class="footer-brand-col">
+        <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="footer-logo">
+          <span class="brand-text">Ibrahim A. <span class="gradient-text">Hamada</span></span>
+        </a>
+        <p class="footer-brand-desc">
+          Software Tester & Aspiring Full-Stack Web Developer specialized in Manual Testing, Test Automation (Selenium & Java), and MEAN Stack engineering.
+        </p>
+
+        <div class="footer-social-icons">
+          @if (siteInfo.githubUrl) {
+            <a [href]="siteInfo.githubUrl" target="_blank" class="footer-social-btn" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          }
+          @if (siteInfo.linkedinUrl) {
+            <a [href]="siteInfo.linkedinUrl" target="_blank" class="footer-social-btn" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          }
+          @if (siteInfo.contactEmail) {
+            <a [href]="'mailto:' + siteInfo.contactEmail" class="footer-social-btn" title="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          }
+        </div>
       </div>
 
-      <div class="social-links">
-        <a [href]="siteInfo.githubUrl" class="social-link" target="_blank" rel="noopener noreferrer">
-          <span>GitHub</span>
-        </a>
-        <a [href]="siteInfo.linkedinUrl" class="social-link" target="_blank" rel="noopener noreferrer">
-          <span>LinkedIn</span>
-        </a>
+      <!-- Quick Nav Links -->
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links-list">
+          <li><a href="javascript:void(0)" (click)="scrollToSection('home', $event)"><i class="fa-solid fa-chevron-right"></i> About Me</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('education', $event)"><i class="fa-solid fa-chevron-right"></i> Education</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('skills', $event)"><i class="fa-solid fa-chevron-right"></i> Technical Skills</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('experience', $event)"><i class="fa-solid fa-chevron-right"></i> Experience</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Portfolio & Work</h4>
+        <ul class="footer-links-list">
+          <li><a href="javascript:void(0)" (click)="scrollToSection('services', $event)"><i class="fa-solid fa-chevron-right"></i> Services Offered</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('projects', $event)"><i class="fa-solid fa-chevron-right"></i> Featured Projects</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)"><i class="fa-solid fa-chevron-right"></i> Credentials</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('contact', $event)"><i class="fa-solid fa-chevron-right"></i> Contact Form</a></li>
+        </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 {{ siteInfo.brandName }}. All rights reserved.</p>
+
+    <div class="footer-bottom-bar">
+      <p class="copyright-text">&copy; 2026 Ibrahim A. Hamada. All rights reserved.</p>
+      <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="scroll-top-btn" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
     </div>
   </div>
 </footer>

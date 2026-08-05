@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { SiteInfo } from '../../core/models/site-info.model';
-import { Project } from '../../core/models/project.model';
-import { Skill } from '../../core/models/skill.model';
 import { Message } from '../../core/models/message.model';
-import { Certificate } from '../../core/models/certificate.model';
-import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
-
 import { DatePipe } from '@angular/common';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-messages',
@@ -21,7 +15,7 @@ import { DatePipe } from '@angular/common';
 export class MessagesComponent implements OnInit {
   messages: Message[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastService: ToastService) {}
 
   ngOnInit() {
     this.fetchMessages();
@@ -37,14 +31,14 @@ export class MessagesComponent implements OnInit {
   }
 
   async deleteMessage(id: string | undefined) {
-    if (!id || !confirm('Are you sure you want to delete this message?')) return;
+    if (!id) return;
     try {
       await lastValueFrom(this.http.delete(`http://localhost:3000/api/messages/${id}`));
       this.messages = this.messages.filter(m => m._id !== id);
-      alert('Message deleted successfully');
+      this.toastService.success('Message deleted successfully');
     } catch (error) {
       console.error('Failed to delete message', error);
-      alert('Failed to delete message');
+      this.toastService.danger('Failed to delete message');
     }
   }
 }

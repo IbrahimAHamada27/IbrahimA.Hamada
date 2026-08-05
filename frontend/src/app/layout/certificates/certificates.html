@@ -1,23 +1,51 @@
-<section class="certificates-section">
+<section id="certificates" class="certificates-section">
   <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">My Certificates</h2>
-      <p class="section-subtitle">Credentials and courses I have completed.</p>
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">Verified <span class="gradient-text">Certificates & Credentials</span></h2>
+      <p class="section-subtitle">Professional certifications and accredited course completions.</p>
     </div>
 
     <div class="cert-grid">
-      @for (cert of certificates; track cert._id) {
-        <div class="cert-card">
-          <div class="cert-icon">📜</div>
-          <div class="cert-content">
-            <h3 class="cert-title">{{ cert.title }}</h3>
-            <div class="cert-issuer">{{ cert.issuer }}</div>
-            <div class="cert-date">{{ cert.date }}</div>
+      @for (cert of certificates; track cert._id; let idx = $index) {
+        <div class="cert-card glass-card" [attr.data-aos]="'zoom-in'" [attr.data-aos-delay]="(idx % 3) * 100">
+          
+          <!-- Outer Card Image / Badge Banner -->
+          <div class="cert-banner-outer">
+            @if (cert.imageUrl) {
+              <img [src]="cert.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + cert.imageUrl : cert.imageUrl" [alt]="cert.title" class="cert-outer-img" />
+            } @else {
+              <div class="cert-fallback-icon">
+                <i class="fa-solid fa-award"></i>
+              </div>
+            }
+          </div>
+
+          <div class="cert-details">
+            <div class="cert-meta-row">
+              <span class="cert-date-tag"><i class="fa-regular fa-calendar"></i> {{ cert.date }}</span>
+              @if (cert.link) {
+                <a [href]="cert.link" target="_blank" rel="noopener noreferrer" class="cert-link-badge" title="Verify Certificate">
+                  <span>Verify</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              }
+            </div>
+            <h3 class="cert-title-text">{{ cert.title }}</h3>
+            <span class="cert-issuer-name"><i class="fa-solid fa-shield-halved"></i> {{ cert.issuer }}</span>
+            
+            <button class="btn-show-more" (click)="openDetails(cert)">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Show Details</span>
+            </button>
           </div>
         </div>
       } @empty {
-        <p style="text-align: center; color: #6b7280; font-style: italic; grid-column: 1 / -1;">No certificates found.</p>
+        <div class="empty-state glass-card" data-aos="fade-up">
+          <i class="fa-solid fa-certificate empty-icon"></i>
+          <p>No certificates added yet.</p>
+        </div>
       }
     </div>
   </div>
 </section>
+
+<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>

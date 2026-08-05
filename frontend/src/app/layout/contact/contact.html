@@ -1,33 +1,81 @@
-<section class="contact-section">
+<section id="contact" class="contact-section">
   <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">{{ siteInfo.contactTitle }}</h2>
-      <p class="section-subtitle">{{ siteInfo.contactSubtitle }}</p>
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title"><span class="gradient-text">{{ siteInfo.contactTitle || 'Get In Touch' }}</span></h2>
+      <p class="section-subtitle">{{ siteInfo.contactSubtitle || 'Have a QA inquiry or web development opportunity? Send me a message!' }}</p>
     </div>
 
-    <div class="contact-layout">
-      <div class="contact-info">
-        <div class="info-card">
-          <div class="icon-wrapper">
-            <span class="icon">✉️</span>
-          </div>
-          <div>
-            <h4 class="info-title">Email</h4>
-            <a [href]="siteInfo.contactEmail ? 'mailto:' + siteInfo.contactEmail : null" class="info-link">{{ siteInfo.contactEmail }}</a>
+    <div class="contact-grid">
+      <!-- Left Info Box -->
+      <div class="contact-info-column" data-aos="fade-right">
+        <div class="contact-info-card glass-card">
+          <h3 class="info-card-heading">Contact Information</h3>
+          <p class="info-card-desc">Feel free to connect via email or my professional social profiles.</p>
+
+          <div class="info-items-list">
+            <div class="contact-item">
+              <div class="item-icon-box blue-box">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <span class="item-label">Direct Email</span>
+                <a [href]="'mailto:' + (siteInfo.contactEmail || 'ibrahima.hamada277@gmail.com')" class="item-val-link">
+                  {{ siteInfo.contactEmail || 'ibrahima.hamada277@gmail.com' }}
+                </a>
+              </div>
+            </div>
+
+            @if (siteInfo.linkedinUrl) {
+              <div class="contact-item">
+                <div class="item-icon-box purple-box">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+                <div>
+                  <span class="item-label">LinkedIn Profile</span>
+                  <a [href]="siteInfo.linkedinUrl" target="_blank" class="item-val-link">Connect on LinkedIn</a>
+                </div>
+              </div>
+            }
+
+            @if (siteInfo.githubUrl) {
+              <div class="contact-item">
+                <div class="item-icon-box dark-box">
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <div>
+                  <span class="item-label">GitHub Repositories</span>
+                  <a [href]="siteInfo.githubUrl" target="_blank" class="item-val-link">Explore Code & QA Projects</a>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>
 
-      <div class="contact-form-wrapper">
-        <h3 class="form-title">Send me a message</h3>
-        
-        <form class="contact-form" (submit)="onSubmit($event)">
-          <div class="form-grid">
-            <input type="text" name="name" placeholder="Your Name" class="form-input" required />
-            <input type="email" name="email" placeholder="Your Email" class="form-input" required />
+      <!-- Right Form Box -->
+      <div class="contact-form-column" data-aos="fade-left">
+        <form class="contact-form-card glass-card" (submit)="onSubmit($event)">
+          <h3 class="form-heading">Send a Message</h3>
+
+          <div class="form-input-group">
+            <label class="input-label"><i class="fa-solid fa-user"></i> Your Full Name</label>
+            <input type="text" name="name" [(ngModel)]="formData.name" placeholder="John Doe" class="custom-input" required />
           </div>
-          <textarea name="message" placeholder="Your Message" rows="5" class="form-textarea" required></textarea>
-          <button type="submit" class="btn-submit">Send Message</button>
+
+          <div class="form-input-group">
+            <label class="input-label"><i class="fa-solid fa-at"></i> Your Email Address</label>
+            <input type="email" name="email" [(ngModel)]="formData.email" placeholder="john@example.com" class="custom-input" required />
+          </div>
+
+          <div class="form-input-group">
+            <label class="input-label"><i class="fa-solid fa-message"></i> Message Details</label>
+            <textarea name="message" [(ngModel)]="formData.message" placeholder="Describe your project, job offer, or inquiry..." rows="5" class="custom-textarea" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-gradient submit-btn">
+            <span>Send Message</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
         </form>
       </div>
     </div>

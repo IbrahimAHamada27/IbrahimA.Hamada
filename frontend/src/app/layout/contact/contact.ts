@@ -1,26 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
 import { lastValueFrom } from 'rxjs';
 import { SiteInfoService } from '../../core/services/site-info.service';
 import { MessageService } from '../../core/services/message.service';
-
+import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './contact.html',
   styleUrl: './contact.css'
 })
 export class ContactComponent implements OnInit {
   siteInfo: SiteInfo = {};
+  formData = { name: '', email: '', message: '' };
 
   constructor(
     private http: HttpClient,
     private siteInfoService: SiteInfoService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit() {
@@ -87,14 +89,15 @@ export class ContactComponent implements OnInit {
       }
 
       if (emailSuccess) {
-        alert('Message sent successfully!');
+        this.toastService.success('Thank you! Your message has been sent successfully.');
+        this.formData = { name: '', email: '', message: '' };
         form.reset();
       } else {
-        alert('Saved locally, but failed to forward email.');
+        this.toastService.warning('Message saved, but email forwarding failed.');
       }
     } catch (error) {
       console.error('Failed to send message', error);
-      alert('Error connecting to server.');
+      this.toastService.danger('Error connecting to server.');
     }
   }
 }

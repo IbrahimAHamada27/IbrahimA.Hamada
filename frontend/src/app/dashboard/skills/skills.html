@@ -1,65 +1,75 @@
 <div class="dashboard-card">
-  <h2>Skills Management</h2>
+  <h2><i class="fa-solid fa-code"></i> Skills Management</h2>
+  <p>Manage programming languages, QA automation frameworks, and technical toolsets.</p>
   
-  <button class="btn-primary" style="margin-bottom: 16px;" (click)="showForm ? cancelEdit() : showForm = true">
+  <button class="btn-primary" style="margin-bottom: 20px;" (click)="showForm ? cancelEdit() : showForm = true">
+    <i [class]="showForm ? 'fa-solid fa-xmark' : 'fa-solid fa-plus'"></i>
     {{ showForm ? 'Cancel' : 'Add New Skill' }}
   </button>
 
   @if (showForm) {
-    <form class="dashboard-form" (submit)="onSubmit($event)" style="margin-bottom: 24px;">
+    <form class="dashboard-form" (submit)="onSubmit($event)">
       <div class="form-group">
-        <label>Skill Name</label>
-        <input type="text" name="name" [(ngModel)]="formData.name" required class="form-input" placeholder="e.g. Angular">
+        <label><i class="fa-solid fa-terminal"></i> Skill Name</label>
+        <input type="text" name="name" [(ngModel)]="formData.name" required class="form-input" placeholder="e.g. Selenium WebDriver">
       </div>
       <div class="form-group">
-        <label>Category</label>
-        <input type="text" name="category" [(ngModel)]="formData.category" required class="form-input" placeholder="e.g. Frontend">
+        <label><i class="fa-solid fa-folder"></i> Category</label>
+        <input type="text" name="category" [(ngModel)]="formData.category" required class="form-input" placeholder="e.g. QA Automation">
       </div>
       <div class="form-group">
-        <label>Description (Tools/Technologies)</label>
-        <textarea name="description" [(ngModel)]="formData.description" required class="form-input" rows="3" placeholder="e.g. HTML, CSS, React"></textarea>
+        <label><i class="fa-solid fa-link"></i> Icon URL (Optional)</label>
+        <input type="text" name="iconUrl" [(ngModel)]="formData.iconUrl" class="form-input" placeholder="https://icon-url.com/logo.png">
       </div>
       <div class="form-group">
-        <label>Icon URL (Optional if uploading file)</label>
-        <input type="text" name="iconUrl" [(ngModel)]="formData.iconUrl" class="form-input" placeholder="e.g. https://icon.url">
-      </div>
-      <div class="form-group">
-        <label>Upload Icon Image</label>
+        <label><i class="fa-solid fa-upload"></i> Upload Icon File</label>
         <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-input">
       </div>
-      <button type="submit" class="btn-primary">{{ editingId ? 'Update Skill' : 'Save Skill' }}</button>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-align-left"></i> Description (Tools/Technologies)</label>
+        <textarea name="description" [(ngModel)]="formData.description" required class="form-input" rows="3" placeholder="Core, Framework, Automation Testing"></textarea>
+      </div>
+      <button type="submit" class="btn-primary full-width">
+        <i class="fa-solid fa-check"></i> {{ editingId ? 'Update Skill' : 'Save Skill' }}
+      </button>
     </form>
   }
 
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Icon</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (skill of skills; track skill._id) {
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
         <tr>
-          <td>
-            @if (skill.iconUrl) {
-              <img [src]="skill.iconUrl.startsWith('http') ? skill.iconUrl : 'http://localhost:3000' + skill.iconUrl" width="40" height="40" alt="icon">
-            }
-          </td>
-          <td>{{ skill.name }}</td>
-          <td>{{ skill.description }}</td>
-          <td>
-            <button class="btn-primary" style="margin-right: 8px; background-color: #f59e0b;" (click)="editSkill(skill)">Edit</button>
-            <button class="btn-danger" (click)="deleteSkill(skill._id)">Delete</button>
-          </td>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
         </tr>
-      } @empty {
-        <tr>
-          <td colspan="4" style="text-align: center;">No skills found.</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (skill of skills; track skill._id) {
+          <tr>
+            <td>
+              @if (skill.iconUrl) {
+                <img [src]="skill.iconUrl.startsWith('http') ? skill.iconUrl : 'http://localhost:3000' + skill.iconUrl" width="36" height="36" style="border-radius: 8px; object-fit: contain;" alt="icon">
+              } @else {
+                <i class="fa-solid fa-code" style="font-size: 1.2rem; color: var(--primary-color);"></i>
+              }
+            </td>
+            <td style="font-weight: 700;">{{ skill.name }}</td>
+            <td>{{ skill.description }}</td>
+            <td>
+              <div class="action-btns-cell">
+                <button class="btn-warning" (click)="editSkill(skill)"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                <button class="btn-danger" (click)="deleteSkill(skill._id)"><i class="fa-solid fa-trash"></i> Delete</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" style="text-align: center; padding: 24px;">No skills found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

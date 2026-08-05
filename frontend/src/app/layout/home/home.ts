@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { SiteInfo } from '../../core/models/site-info.model';
 import { lastValueFrom } from 'rxjs';
 import { SiteInfoService } from '../../core/services/site-info.service';
@@ -12,9 +11,9 @@ import { SiteInfoService } from '../../core/services/site-info.service';
   styleUrl: './home.css'
 })
 export class HomeComponent implements OnInit {
-  constructor(private siteInfoService: SiteInfoService) {}
-
   siteInfo: SiteInfo = {};
+
+  constructor(private siteInfoService: SiteInfoService) {}
 
   ngOnInit() {
     this.fetchSiteInfo();
@@ -27,5 +26,16 @@ export class HomeComponent implements OnInit {
     } catch (error) {
       console.error('Failed to fetch site info', error);
     }
+  }
+
+  scrollToSection(sectionId: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+    }
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    window.history.replaceState(null, '', `/${sectionId}`);
   }
 }

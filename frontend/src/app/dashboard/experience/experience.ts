@@ -1,15 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { SiteInfo } from '../../core/models/site-info.model';
-import { Project } from '../../core/models/project.model';
-import { Skill } from '../../core/models/skill.model';
-import { Message } from '../../core/models/message.model';
-import { Certificate } from '../../core/models/certificate.model';
 import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
-
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-experience',
@@ -22,9 +16,9 @@ export class DashboardExperienceComponent implements OnInit {
   experiences: Experience[] = [];
   showForm = false;
   editingId: string | undefined = undefined;
-  formData = { role: '', company: '', years: '', desc: '' };
+  formData = { role: '', company: '', years: '', desc: '', imageUrl: '', link: '' };
 
-  constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
+  constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private toastService: ToastService) {}
 
   ngOnInit() {
     this.fetchExperiences();
@@ -40,15 +34,15 @@ export class DashboardExperienceComponent implements OnInit {
   }
 
   async deleteExperience(id: string | undefined) {
-    if (!id || !confirm('Are you sure?')) return;
+    if (!id) return;
     try {
       await lastValueFrom(this.http.delete(`http://localhost:3000/api/experience/${id}`));
       this.experiences = this.experiences.filter(e => e._id !== id);
-        alert('Experience deleted successfully');
-        this.cdr.detectChanges();
+      this.toastService.success('Experience deleted successfully');
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Failed to delete experience', error);
-      alert('Failed to delete experience');
+      this.toastService.danger('Failed to delete experience');
     }
   }
 
@@ -58,7 +52,9 @@ export class DashboardExperienceComponent implements OnInit {
       role: exp.role,
       company: exp.company,
       years: exp.years,
-      desc: exp.desc
+      desc: exp.desc,
+      imageUrl: exp.imageUrl || '',
+      link: exp.link || ''
     };
     this.showForm = true;
   }
@@ -66,7 +62,7 @@ export class DashboardExperienceComponent implements OnInit {
   cancelEdit() {
     this.showForm = false;
     this.editingId = undefined;
-    this.formData = { role: '', company: '', years: '', desc: '' };
+    this.formData = { role: '', company: '', years: '', desc: '', imageUrl: '', link: '' };
   }
 
   async onSubmit(event: Event) {
@@ -77,7 +73,6 @@ export class DashboardExperienceComponent implements OnInit {
       const url = this.editingId 
         ? `http://localhost:3000/api/experience/${this.editingId}`
         : 'http://localhost:3000/api/experience';
-      const method = this.editingId ? 'PUT' : 'POST';
 
       let updatedItem: Experience;
       if (this.editingId) {
@@ -96,12 +91,12 @@ export class DashboardExperienceComponent implements OnInit {
       }
       this.experiences = [...this.experiences];
 
-      alert(`Item ${this.editingId ? 'updated' : 'added'} successfully`);
+      this.toastService.success(`Experience record ${this.editingId ? 'updated' : 'added'} successfully`);
       this.cancelEdit();
       this.cdr.detectChanges();
     } catch (error) {
       console.error(`Failed to ${this.editingId ? 'update' : 'add'} experience`, error);
-      alert('Error connecting to backend');
+      this.toastService.danger('Error saving experience record');
     }
   }
 }

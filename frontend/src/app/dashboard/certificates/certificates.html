@@ -1,53 +1,77 @@
 <div class="dashboard-card">
-  <h2>Certificates Management</h2>
+  <h2><i class="fa-solid fa-certificate"></i> Certificates Management</h2>
+  <p>Add and edit verified certifications and credentials.</p>
   
-  <button class="btn-primary" style="margin-bottom: 16px;" (click)="showForm ? cancelEdit() : showForm = true">
+  <button class="btn-primary" style="margin-bottom: 20px;" (click)="showForm ? cancelEdit() : showForm = true">
+    <i [class]="showForm ? 'fa-solid fa-xmark' : 'fa-solid fa-plus'"></i>
     {{ showForm ? 'Cancel' : 'Add New Certificate' }}
   </button>
 
   @if (showForm) {
-    <form class="dashboard-form" (submit)="onSubmit($event)" style="margin-bottom: 24px;">
+    <form class="dashboard-form" (submit)="onSubmit($event)">
       <div class="form-group">
-        <label>Title</label>
-        <input type="text" name="title" [(ngModel)]="formData.title" required class="form-input">
+        <label><i class="fa-solid fa-award"></i> Title</label>
+        <input type="text" name="title" [(ngModel)]="formData.title" required class="form-input" placeholder="e.g. ISTQB Foundation Level">
       </div>
       <div class="form-group">
-        <label>Issuer</label>
-        <input type="text" name="issuer" [(ngModel)]="formData.issuer" required class="form-input">
+        <label><i class="fa-solid fa-building-columns"></i> Issuer</label>
+        <input type="text" name="issuer" [(ngModel)]="formData.issuer" required class="form-input" placeholder="e.g. DEPI / Orange Digital Center">
       </div>
       <div class="form-group">
-        <label>Date</label>
-        <input type="text" name="date" [(ngModel)]="formData.date" required class="form-input">
+        <label><i class="fa-regular fa-calendar"></i> Date</label>
+        <input type="text" name="date" [(ngModel)]="formData.date" required class="form-input" placeholder="e.g. Dec 2025">
       </div>
-      <button type="submit" class="btn-primary">{{ editingId ? 'Update Certificate' : 'Save Certificate' }}</button>
+      <div class="form-group">
+        <label><i class="fa-solid fa-link"></i> Verification Link (URL)</label>
+        <input type="url" name="link" [(ngModel)]="formData.link" placeholder="https://credential-url.com" class="form-input">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-image"></i> Image / Badge (URL)</label>
+        <input type="text" name="imageUrl" [(ngModel)]="formData.imageUrl" placeholder="https://image-url.com/cert.png" class="form-input">
+      </div>
+      <button type="submit" class="btn-primary full-width">
+        <i class="fa-solid fa-check"></i> {{ editingId ? 'Update Certificate' : 'Save Certificate' }}
+      </button>
     </form>
   }
 
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Issuer</th>
-        <th>Date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (cert of certificates; track cert._id) {
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
         <tr>
-          <td>{{ cert.title }}</td>
-          <td>{{ cert.issuer }}</td>
-          <td>{{ cert.date }}</td>
-          <td>
-            <button class="btn-primary" style="margin-right: 8px; background-color: #f59e0b;" (click)="editCertificate(cert)">Edit</button>
-            <button class="btn-danger" (click)="deleteCertificate(cert._id)">Delete</button>
-          </td>
+          <th>Title</th>
+          <th>Issuer</th>
+          <th>Date</th>
+          <th>Link</th>
+          <th>Actions</th>
         </tr>
-      } @empty {
-        <tr>
-          <td colspan="4" style="text-align: center;">No certificates found.</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (cert of certificates; track cert._id) {
+          <tr>
+            <td style="font-weight: 700;">{{ cert.title }}</td>
+            <td>{{ cert.issuer }}</td>
+            <td>{{ cert.date }}</td>
+            <td>
+              @if (cert.link) {
+                <a [href]="cert.link" target="_blank" style="color: var(--primary-color); font-weight: 700;">View Link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              } @else {
+                <span style="opacity: 0.5;">None</span>
+              }
+            </td>
+            <td>
+              <div class="action-btns-cell">
+                <button class="btn-warning" (click)="editCertificate(cert)"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                <button class="btn-danger" (click)="deleteCertificate(cert._id)"><i class="fa-solid fa-trash"></i> Delete</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 24px;">No certificates found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

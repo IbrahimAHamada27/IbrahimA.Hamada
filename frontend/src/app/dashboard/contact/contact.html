@@ -1,0 +1,83 @@
+<div class="edit-about-container">
+  <h2><i class="fa-solid fa-address-book"></i> Contact & Social Settings</h2>
+  <p>Update contact information, email provider keys, and dynamic social media links.</p>
+
+  <form (submit)="onSubmit($event)" class="about-form">
+    
+    <div class="form-section">
+      <h3><i class="fa-solid fa-envelope-open-text"></i> Contact Information</h3>
+      <div class="form-group">
+        <label><i class="fa-solid fa-heading"></i> Section Title</label>
+        <input type="text" name="contactTitle" [(ngModel)]="siteInfo.contactTitle" class="form-control" placeholder="Get in Touch">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-subscript"></i> Section Subtitle</label>
+        <input type="text" name="contactSubtitle" [(ngModel)]="siteInfo.contactSubtitle" class="form-control" placeholder="Feel free to reach out">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-at"></i> Contact Email</label>
+        <input type="email" name="contactEmail" [(ngModel)]="siteInfo.contactEmail" class="form-control" placeholder="ibrahima.hamada277@gmail.com">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3><i class="fa-solid fa-paper-plane"></i> Email Provider Configuration</h3>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-sliders"></i> Active Provider</label>
+        <select name="emailProvider" [(ngModel)]="siteInfo.emailProvider" class="form-control">
+          <option value="">Select Provider (Default Backend API)</option>
+          <option value="emailjs">EmailJS Service</option>
+          <option value="formspree">Formspree Endpoint</option>
+          <option value="web3forms">Web3Forms API</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>EmailJS Service ID</label>
+        <input type="text" name="emailjsServiceId" [(ngModel)]="siteInfo.emailjsServiceId" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>EmailJS Template ID</label>
+        <input type="text" name="emailjsTemplateId" [(ngModel)]="siteInfo.emailjsTemplateId" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>EmailJS Public Key</label>
+        <input type="text" name="emailjsPublicKey" [(ngModel)]="siteInfo.emailjsPublicKey" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Formspree URL</label>
+        <input type="text" name="formspreeUrl" [(ngModel)]="siteInfo.formspreeUrl" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3><i class="fa-solid fa-share-nodes"></i> Social Media & Profiles</h3>
+      
+      <div class="form-group">
+        <label><i class="fab fa-github"></i> GitHub URL</label>
+        <input type="text" name="githubUrl" [(ngModel)]="siteInfo.githubUrl" class="form-control">
+      </div>
+      <div class="form-group">
+        <label><i class="fab fa-linkedin"></i> LinkedIn URL</label>
+        <input type="text" name="linkedinUrl" [(ngModel)]="siteInfo.linkedinUrl" class="form-control">
+      </div>
+
+      <div class="full-width" style="margin-top: 16px;">
+        <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-color-dark); margin-bottom: 12px;">Dynamic Social Links</h4>
+        @for (link of siteInfo.socialLinks; track $index) {
+          <div class="social-link-row" style="display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 10px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--border-color); align-items: center;">
+            <input type="text" [name]="'linkName_' + $index" [(ngModel)]="link.name" placeholder="Platform Name" class="form-control" required>
+            <input type="url" [name]="'linkUrl_' + $index" [(ngModel)]="link.url" placeholder="Profile URL" class="form-control" required>
+            <button type="button" class="btn-danger" (click)="removeSocialLink($index)"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        }
+        <button type="button" class="btn-secondary" (click)="addSocialLink()" style="margin-top: 6px;">
+          <i class="fa-solid fa-plus"></i> Add Social Link
+        </button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary full-width" style="padding: 14px; font-size: 1.05rem;">
+      <i class="fa-solid fa-floppy-disk"></i> Save Contact Settings
+    </button>
+  </form>
+</div>

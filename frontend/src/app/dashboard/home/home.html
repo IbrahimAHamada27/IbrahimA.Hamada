@@ -1,144 +1,65 @@
 <div class="edit-about-container">
-  <h2>Edit Home / About Info</h2>
-  <p>Update the information displayed on the public home page.</p>
+  <h2><i class="fa-solid fa-house-laptop"></i> Site & About Information</h2>
+  <p>Update personal branding, hero titles, profile picture, and bio content displayed on your portfolio.</p>
 
   <form (submit)="onSubmit($event)" class="about-form">
     
     <div class="form-section">
-      <h3>Hero Section</h3>
+      <h3><i class="fa-solid fa-star"></i> Hero Section</h3>
       <div class="form-group">
-        <label>Brand Name</label>
+        <label><i class="fa-solid fa-signature"></i> Brand Name <span class="required-star">*</span> <span class="required-badge">Required</span></label>
         <input type="text" name="brandName" [(ngModel)]="siteInfo.brandName" required class="form-control" placeholder="e.g. Ibrahim A. Hamada">
       </div>
       <div class="form-group">
-        <label>Brand Description</label>
-        <textarea name="brandDesc" [(ngModel)]="siteInfo.brandDesc" class="form-control" rows="2"></textarea>
+        <label><i class="fa-solid fa-heading"></i> Hero Title <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <input type="text" name="heroTitle" [(ngModel)]="siteInfo.heroTitle" required class="form-control" placeholder="e.g. Software Tester & Web Developer">
       </div>
-      <div class="form-group">
-        <label>Hero Title</label>
-        <input type="text" name="heroTitle" [(ngModel)]="siteInfo.heroTitle" required class="form-control" placeholder="e.g. Full Stack Developer">
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-align-left"></i> Brand Tagline <span class="optional-badge">Optional</span></label>
+        <textarea name="brandDesc" [(ngModel)]="siteInfo.brandDesc" class="form-control" rows="2" placeholder="Short tagline under brand name..."></textarea>
       </div>
-      <div class="form-group">
-        <label>Hero Description</label>
-        <textarea name="heroDesc" [(ngModel)]="siteInfo.heroDesc" required class="form-control" rows="3"></textarea>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-quote-left"></i> Hero Description <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <textarea name="heroDesc" [(ngModel)]="siteInfo.heroDesc" required class="form-control" rows="3" placeholder="Lead paragraph on the hero section..."></textarea>
       </div>
     </div>
 
     <div class="form-section">
-      <h3>Images</h3>
+      <h3><i class="fa-solid fa-images"></i> Media & Profile Images</h3>
       <div class="form-group">
-        <label>Logo Image</label>
+        <label><i class="fa-solid fa-upload"></i> Logo Image <span class="optional-badge">Optional</span></label>
         <input type="file" (change)="onLogoSelected($event)" accept="image/*" class="form-control">
         @if (siteInfo.logoImage) {
-          <img [src]="siteInfo.logoImage" alt="Logo Preview" class="img-preview">
+          <img [src]="siteInfo.logoImage" alt="Logo Preview" class="img-preview" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-top: 8px;">
         }
       </div>
       <div class="form-group">
-        <label>Profile Image</label>
+        <label><i class="fa-solid fa-upload"></i> Profile Image <span class="optional-badge">Optional</span></label>
         <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control">
         @if (siteInfo.profileImage) {
-          <img [src]="siteInfo.profileImage" alt="Profile Preview" class="img-preview">
+          <img [src]="siteInfo.profileImage" alt="Profile Preview" class="img-preview" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-top: 8px;">
         }
       </div>
     </div>
 
     <div class="form-section">
-      <h3>About Section</h3>
-      <div class="form-group">
-        <label>About Title</label>
-        <input type="text" name="aboutTitle" [(ngModel)]="siteInfo.aboutTitle" required class="form-control">
+      <h3><i class="fa-solid fa-user"></i> About Me Section</h3>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-pen-nib"></i> About Title <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <input type="text" name="aboutTitle" [(ngModel)]="siteInfo.aboutTitle" required class="form-control" placeholder="Background & Expertise">
       </div>
-      <div class="form-group">
-        <label>About Description 1</label>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-paragraph"></i> About Bio Paragraph 1 <span class="required-star">*</span> <span class="required-badge">Required</span></label>
         <textarea name="aboutDesc1" [(ngModel)]="siteInfo.aboutDesc1" required class="form-control" rows="3"></textarea>
       </div>
-      <div class="form-group">
-        <label>About Description 2</label>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-paragraph"></i> About Bio Paragraph 2 <span class="optional-badge">Optional</span></label>
         <textarea name="aboutDesc2" [(ngModel)]="siteInfo.aboutDesc2" class="form-control" rows="3"></textarea>
       </div>
     </div>
 
-    <div class="form-section">
-      <h3>Academic & Philosophy</h3>
-      <div class="form-group">
-        <label>Academic Title</label>
-        <input type="text" name="academicTitle" [(ngModel)]="siteInfo.academicTitle" required class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Academic Description</label>
-        <textarea name="academicDesc" [(ngModel)]="siteInfo.academicDesc" class="form-control" rows="3"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Philosophy Title</label>
-        <input type="text" name="philosophyTitle" [(ngModel)]="siteInfo.philosophyTitle" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Philosophy Description</label>
-        <textarea name="philosophyDesc" [(ngModel)]="siteInfo.philosophyDesc" class="form-control" rows="3"></textarea>
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h3>Social Links</h3>
-      <div class="form-group">
-        <label>GitHub URL</label>
-        <input type="text" name="githubUrl" [(ngModel)]="siteInfo.githubUrl" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>LinkedIn URL</label>
-        <input type="text" name="linkedinUrl" [(ngModel)]="siteInfo.linkedinUrl" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h3>Contact Section</h3>
-      <div class="form-group">
-        <label>Contact Title</label>
-        <input type="text" name="contactTitle" [(ngModel)]="siteInfo.contactTitle" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Contact Subtitle</label>
-        <input type="text" name="contactSubtitle" [(ngModel)]="siteInfo.contactSubtitle" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Contact Email</label>
-        <input type="email" name="contactEmail" [(ngModel)]="siteInfo.contactEmail" class="form-control">
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h3>Email Provider Settings</h3>
-      <div class="form-group">
-        <label>Email Provider</label>
-        <select name="emailProvider" [(ngModel)]="siteInfo.emailProvider" class="form-control">
-          <option value="">Select Provider</option>
-          <option value="emailjs">EmailJS</option>
-          <option value="formspree">Formspree</option>
-          <option value="web3forms">Web3Forms</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>EmailJS Service ID</label>
-        <input type="text" name="emailjsServiceId" [(ngModel)]="siteInfo.emailjsServiceId" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>EmailJS Template ID</label>
-        <input type="text" name="emailjsTemplateId" [(ngModel)]="siteInfo.emailjsTemplateId" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>EmailJS Public Key</label>
-        <input type="text" name="emailjsPublicKey" [(ngModel)]="siteInfo.emailjsPublicKey" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Formspree URL</label>
-        <input type="text" name="formspreeUrl" [(ngModel)]="siteInfo.formspreeUrl" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Web3Forms Access Key</label>
-        <input type="text" name="web3formsAccessKey" [(ngModel)]="siteInfo.web3formsAccessKey" class="form-control">
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="submit" class="btn-primary full-width" style="padding: 14px; font-size: 1.05rem;">
+      <i class="fa-solid fa-floppy-disk"></i> Save Site Information
+    </button>
   </form>
 </div>

@@ -1,0 +1,31 @@
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">Professional <span class="gradient-text">Services</span></h2>
+      <p class="section-subtitle">Comprehensive QA testing, automation engineering, and custom web application development.</p>
+    </div>
+
+    <div class="services-grid">
+      @for (item of services; track item._id; let idx = $index) {
+        <div class="service-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
+          <div class="service-icon-box">
+            @if (item.icon && item.icon.startsWith('http')) {
+              <img [src]="item.icon" [alt]="item.title" class="service-img" />
+            } @else if (item.icon) {
+              <i [class]="item.icon"></i>
+            } @else {
+              <i class="fa-solid fa-gears"></i>
+            }
+          </div>
+          <h3 class="service-title">{{ item.title }}</h3>
+          <p class="service-desc">{{ item.description }}</p>
+        </div>
+      } @empty {
+        <div class="empty-state glass-card" data-aos="fade-up">
+          <i class="fa-solid fa-screwdriver-wrench empty-icon"></i>
+          <p>No services listed currently.</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

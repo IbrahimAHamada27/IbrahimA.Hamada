@@ -1,14 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-const CertificateSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  issuer: { type: String, required: true },
-  date: { type: String, required: true }
-}, { timestamps: true });
-
-const Certificate = mongoose.model('Certificate', CertificateSchema);
+const Certificate = require('../models/Certificate');
 
 // Get all certificates
 router.get('/', async (req, res) => {
@@ -23,8 +15,9 @@ router.get('/', async (req, res) => {
 // Create a certificate
 router.post('/', async (req, res) => {
   try {
-    const result = await Certificate.collection.insertOne(req.body);
-    res.status(201).json(result);
+    const certificate = new Certificate(req.body);
+    await certificate.save();
+    res.status(201).json(certificate);
   } catch (error) {
     res.status(400).json({ error: 'Failed to create certificate' });
   }

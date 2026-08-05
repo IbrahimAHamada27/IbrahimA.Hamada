@@ -1,0 +1,93 @@
+<div class="dashboard-card">
+  <h2><i class="fa-solid fa-users-gear"></i> Volunteering & Events Management</h2>
+  <p>Add, edit, or remove community workshops, hackathons, and volunteering activities.</p>
+  
+  <button class="btn-primary" style="margin-bottom: 20px;" (click)="showForm ? cancelEdit() : showForm = true">
+    <i [class]="showForm ? 'fa-solid fa-xmark' : 'fa-solid fa-plus'"></i>
+    {{ showForm ? 'Cancel' : 'Add New Activity / Event' }}
+  </button>
+
+  @if (showForm) {
+    <form class="dashboard-form" (submit)="onSubmit($event)">
+      <div class="form-group">
+        <label><i class="fa-solid fa-pen-nib"></i> Title (Activity / Event Name) <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <input type="text" name="title" [(ngModel)]="formData.title" required class="form-input" placeholder="e.g. DEPI Hackathon">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-building"></i> Organization / Club <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <input type="text" name="organization" [(ngModel)]="formData.organization" required class="form-input" placeholder="e.g. Digital Egypt Pioneers">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-user-tag"></i> Role <span class="optional-badge">Optional</span></label>
+        <input type="text" name="role" [(ngModel)]="formData.role" class="form-input" placeholder="e.g. Organizer / Participant">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-regular fa-calendar-days"></i> Date <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <input type="text" name="date" [(ngModel)]="formData.date" required class="form-input" placeholder="e.g. Nov 2025">
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-layer-group"></i> Category <span class="required-star">*</span> <span class="required-badge">Required</span></label>
+        <select name="category" [(ngModel)]="formData.category" class="form-input" required>
+          <option value="volunteering">Volunteering</option>
+          <option value="event">Event / Hackathon</option>
+          <option value="activity">Community Activity</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label><i class="fa-solid fa-link"></i> Event Link (URL) <span class="optional-badge">Optional</span></label>
+        <input type="url" name="link" [(ngModel)]="formData.link" placeholder="https://event-link.com" class="form-input">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-image"></i> Image / Banner (URL) <span class="optional-badge">Optional</span></label>
+        <input type="text" name="imageUrl" [(ngModel)]="formData.imageUrl" placeholder="https://image-url.com/banner.png" class="form-input">
+      </div>
+      <div class="form-group full-width">
+        <label><i class="fa-solid fa-align-left"></i> Description <span class="optional-badge">Optional</span></label>
+        <textarea name="desc" [(ngModel)]="formData.desc" class="form-input" rows="3" placeholder="Brief details about your role and achievements..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary full-width">
+        <i class="fa-solid fa-check"></i> {{ editingId ? 'Update Activity' : 'Save Activity' }}
+      </button>
+    </form>
+  }
+
+  <div class="table-responsive">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Title</th>
+          <th>Organization</th>
+          <th>Role</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of activities; track item._id) {
+          <tr>
+            <td>
+              <span class="badge" [style.background-color]="item.category === 'volunteering' ? '#10b981' : item.category === 'event' ? '#8b5cf6' : '#2563eb'" style="color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">
+                {{ item.category | uppercase }}
+              </span>
+            </td>
+            <td style="font-weight: 700;">{{ item.title }}</td>
+            <td>{{ item.organization }}</td>
+            <td>{{ item.role || 'N/A' }}</td>
+            <td>{{ item.date }}</td>
+            <td>
+              <div class="action-btns-cell">
+                <button class="btn-warning" (click)="editItem(item)"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                <button class="btn-danger" (click)="deleteItem(item._id)"><i class="fa-solid fa-trash"></i> Delete</button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 24px;">No activities or events found.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

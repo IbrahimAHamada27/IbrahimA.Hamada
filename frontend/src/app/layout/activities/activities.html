@@ -1,0 +1,52 @@
+<section id="activities" class="activities-section">
+  <div class="container">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">Volunteering & <span class="gradient-text">Events & Activities</span></h2>
+      <p class="section-subtitle">Community leadership, technical events, workshops, and extracurricular contributions.</p>
+    </div>
+
+    <div class="activities-grid">
+      @for (item of activities; track item._id; let idx = $index) {
+        <div class="activity-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
+          
+          @if (item.imageUrl) {
+            <div class="activity-banner-outer">
+              <img [src]="item.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + item.imageUrl : item.imageUrl" [alt]="item.title" class="activity-outer-img" />
+            </div>
+          }
+
+          <div class="activity-card-body">
+            <div class="activity-header">
+              <span class="category-badge" [ngClass]="getCategoryBadgeClass(item.category)">
+                <i class="fa-solid" [ngClass]="getCategoryIcon(item.category)"></i> {{ item.category | titlecase }}
+              </span>
+              <span class="activity-date"><i class="fa-regular fa-calendar"></i> {{ item.date }}</span>
+            </div>
+
+            <h3 class="activity-title">{{ item.title }}</h3>
+            <h4 class="activity-org">
+              <i class="fa-solid fa-building-flag"></i> {{ item.organization }}
+              @if (item.role) {
+                <span> • {{ item.role }}</span>
+              }
+            </h4>
+
+            <p class="activity-desc">{{ item.desc }}</p>
+
+            <button class="btn-show-more" (click)="openDetails(item)">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Show Details</span>
+            </button>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state glass-card" data-aos="fade-up">
+          <i class="fa-solid fa-people-group empty-icon"></i>
+          <p>No activities or events added yet.</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>

@@ -1,47 +1,118 @@
-<section class="hero-section">
-  <div class="container text-center">
-    <h1 class="hero-title">{{ siteInfo.heroTitle }}</h1>
-    <p class="hero-desc">{{ siteInfo.heroDesc }}</p>
-    <div class="hero-actions">
-      <a routerLink="/contact" class="btn-primary">Hire Me</a>
-      <a routerLink="/projects" class="btn-outline">View Work</a>
+<section id="home" class="hero-section">
+  <div class="hero-bg-glow glow-1"></div>
+  <div class="hero-bg-glow glow-2"></div>
+
+  <div class="hero-container">
+    <div class="hero-status-badge" data-aos="fade-down">
+      <span class="status-pulse"></span>
+      <span class="status-text">Available for Full-Time & Project Opportunities</span>
+    </div>
+
+    <h1 class="hero-main-title" data-aos="fade-up" data-aos-delay="100">
+      Hi, I'm <span class="gradient-text">Ibrahim A. Hamada</span>
+      <br />
+      <span class="title-sub">{{ siteInfo.heroTitle || 'Software Tester & Web Developer' }}</span>
+    </h1>
+
+    <p class="hero-lead-desc" data-aos="fade-up" data-aos-delay="200">
+      {{ siteInfo.heroDesc }}
+    </p>
+
+    <!-- Quick Skill Highlight Badges -->
+    <div class="hero-highlights" data-aos="fade-up" data-aos-delay="300">
+      <div class="highlight-chip">
+        <i class="fa-solid fa-vial-circle-check"></i>
+        <span>Selenium & TestNG</span>
+      </div>
+      <div class="highlight-chip">
+        <i class="fa-brands fa-angular"></i>
+        <span>MEAN Stack (Angular & Node)</span>
+      </div>
+      <div class="highlight-chip">
+        <i class="fa-solid fa-network-wired"></i>
+        <span>API & Postman Testing</span>
+      </div>
+      <div class="highlight-chip">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>ISTQB Principles</span>
+      </div>
+    </div>
+
+    <div class="hero-action-group" data-aos="fade-up" data-aos-delay="400">
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient hero-btn">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Contact Me</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="btn-glass hero-btn">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>View My Projects</span>
+      </a>
+      @if (siteInfo.githubUrl) {
+        <a [href]="siteInfo.githubUrl" target="_blank" class="social-icon-btn" title="GitHub Profile">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      }
+      @if (siteInfo.linkedinUrl) {
+        <a [href]="siteInfo.linkedinUrl" target="_blank" class="social-icon-btn" title="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      }
     </div>
   </div>
 </section>
 
-<section class="about-section">
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
   <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-subtitle">Get to know more about my background and philosophy.</p>
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      <p class="section-subtitle">Discover my engineering background, technical expertise, and career philosophy.</p>
     </div>
 
-    <div class="about-content">
-      <div class="about-image-wrapper">
-        @if (siteInfo.profileImage) {
-          <img [src]="siteInfo.profileImage" alt="Profile Image" class="about-img">
-        }
+    <div class="about-grid">
+      <div class="about-avatar-card glass-card" data-aos="fade-right">
+        <div class="avatar-glow-ring">
+          @if (siteInfo.profileImage) {
+            <img [src]="siteInfo.profileImage" alt="Ibrahim A. Hamada Profile" class="avatar-img" />
+          } @else {
+            <div class="avatar-placeholder">
+              <i class="fa-solid fa-user-gear"></i>
+            </div>
+          }
+        </div>
+        <div class="avatar-card-info">
+          <h3 class="avatar-name">Ibrahim A. Hamada</h3>
+          <span class="avatar-role">Software Tester & Web Developer</span>
+          <div class="avatar-tags">
+            <span class="tag"><i class="fa-solid fa-location-dot"></i> Egypt</span>
+            <span class="tag"><i class="fa-solid fa-user-graduate"></i> AOU Computer Science</span>
+          </div>
+        </div>
       </div>
-      
-      <div class="about-text-content">
-        <h3 class="about-title">{{ siteInfo.aboutTitle }}</h3>
-        <p class="about-desc">{{ siteInfo.aboutDesc1 }}</p>
-        <p class="about-desc">{{ siteInfo.aboutDesc2 }}</p>
-        
-        <div class="extra-info">
-          <div class="info-item">
-            <div class="info-icon">🎓</div>
+
+      <div class="about-details-content" data-aos="fade-left">
+        <h3 class="about-heading">{{ siteInfo.aboutTitle || 'Background & Expertise' }}</h3>
+        <p class="about-body-text">{{ siteInfo.aboutDesc1 }}</p>
+        <p class="about-body-text">{{ siteInfo.aboutDesc2 }}</p>
+
+        <div class="about-cards-grid">
+          <div class="feature-info-card glass-card">
+            <div class="card-icon-box blue-box">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
             <div>
-              <h4 class="info-title">{{ siteInfo.academicTitle }}</h4>
-              <p class="info-desc">{{ siteInfo.academicDesc }}</p>
+              <h4 class="card-info-title">{{ siteInfo.academicTitle || 'Academic Journey' }}</h4>
+              <p class="card-info-desc">{{ siteInfo.academicDesc }}</p>
             </div>
           </div>
-          
-          <div class="info-item">
-            <div class="info-icon">💡</div>
+
+          <div class="feature-info-card glass-card">
+            <div class="card-icon-box purple-box">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
             <div>
-              <h4 class="info-title">{{ siteInfo.philosophyTitle }}</h4>
-              <p class="info-desc">{{ siteInfo.philosophyDesc }}</p>
+              <h4 class="card-info-title">{{ siteInfo.philosophyTitle || 'Quality Philosophy' }}</h4>
+              <p class="card-info-desc">{{ siteInfo.philosophyDesc }}</p>
             </div>
           </div>
         </div>

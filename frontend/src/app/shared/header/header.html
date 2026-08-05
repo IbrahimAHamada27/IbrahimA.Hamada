@@ -1,42 +1,81 @@
-<header class="header">
-  <div class="container">
-    <a routerLink="/" class="logo">
-      @if (siteInfo.logoImage) {
-        <img [src]="siteInfo.logoImage" alt="Logo" class="logo-img" />
+<header class="header-glass">
+  <div class="header-container">
+    <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="logo-brand">
+      @if (siteInfo.logoImage || siteInfo.profileImage) {
+        <img [src]="siteInfo.logoImage || siteInfo.profileImage" alt="Logo" class="brand-avatar" />
+      } @else {
+        <div class="brand-initials">IH</div>
       }
+      <span class="brand-text">Ibrahim A. <span class="gradient-text">Hamada</span></span>
     </a>
 
     <nav class="nav-desktop">
-      <a routerLink="/home" class="nav-link">About</a>
-      <a routerLink="/skills" class="nav-link">Skills</a>
-      <a routerLink="/projects" class="nav-link">Projects</a>
-      <a routerLink="/certificates" class="nav-link">Certificates</a>
-      <a routerLink="/experience" class="nav-link">Experience</a>
-      <a routerLink="/contact" class="nav-link">Contact</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="nav-item" [class.active]="activeSection === 'about' || activeSection === 'home'" title="About">
+        <i class="fa-solid fa-user nav-icon"></i>
+        <span class="nav-text">About</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="nav-item" [class.active]="activeSection === 'education'" title="Education">
+        <i class="fa-solid fa-graduation-cap nav-icon"></i>
+        <span class="nav-text">Education</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="nav-item" [class.active]="activeSection === 'skills'" title="Skills">
+        <i class="fa-solid fa-code nav-icon"></i>
+        <span class="nav-text">Skills</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="nav-item" [class.active]="activeSection === 'experience'" title="Experience">
+        <i class="fa-solid fa-briefcase nav-icon"></i>
+        <span class="nav-text">Experience</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="nav-item" [class.active]="activeSection === 'services'" title="Services">
+        <i class="fa-solid fa-gears nav-icon"></i>
+        <span class="nav-text">Services</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="nav-item" [class.active]="activeSection === 'projects'" title="Projects">
+        <i class="fa-solid fa-laptop-code nav-icon"></i>
+        <span class="nav-text">Projects</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="nav-item" [class.active]="activeSection === 'certificates'" title="Certificates">
+        <i class="fa-solid fa-certificate nav-icon"></i>
+        <span class="nav-text">Certificates</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="nav-item" [class.active]="activeSection === 'activities'" title="Activities">
+        <i class="fa-solid fa-users-gear nav-icon"></i>
+        <span class="nav-text">Activities</span>
+      </a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="nav-item" [class.active]="activeSection === 'contact'" title="Contact">
+        <i class="fa-solid fa-paper-plane nav-icon"></i>
+        <span class="nav-text">Contact</span>
+      </a>
     </nav>
 
-    <div class="actions">
-      <button class="theme-toggle" (click)="toggleTheme()">
-        <span class="icon">{{ isDarkMode ? '🌙' : '☀' }}</span>
+    <div class="header-actions">
+      <button class="theme-toggle-btn" (click)="toggleTheme()" aria-label="Toggle Theme">
+        <i [class]="isDarkMode ? 'fa-solid fa-sun icon-sun' : 'fa-solid fa-moon icon-moon'"></i>
       </button>
 
-      <a routerLink="/contact" class="btn-primary">Get in Touch</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient header-cta">
+        <span>Get in Touch</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
 
-      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
-        <span class="icon">☰</span>
+      <button class="mobile-toggle-btn" (click)="toggleMobileMenu()" aria-label="Toggle Menu">
+        <i [class]="isMobileMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
       </button>
     </div>
   </div>
 
   @if (isMobileMenuOpen) {
-    <div class="mobile-menu">
-      <a routerLink="/home" class="nav-link" (click)="toggleMobileMenu()">About</a>
-      <a routerLink="/skills" class="nav-link" (click)="toggleMobileMenu()">Skills</a>
-      <a routerLink="/projects" class="nav-link" (click)="toggleMobileMenu()">Projects</a>
-      <a routerLink="/certificates" class="nav-link" (click)="toggleMobileMenu()">Certificates</a>
-      <a routerLink="/experience" class="nav-link" (click)="toggleMobileMenu()">Experience</a>
-      <a routerLink="/contact" class="nav-link" (click)="toggleMobileMenu()">Contact</a>
-      <a routerLink="/contact" class="btn-primary-mobile" (click)="toggleMobileMenu()">Get in Touch</a>
+    <div class="mobile-dropdown glass-card">
+      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="mobile-nav-link"><i class="fa-solid fa-user"></i> About</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="mobile-nav-link"><i class="fa-solid fa-code"></i> Skills</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="mobile-nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="mobile-nav-link"><i class="fa-solid fa-gears"></i> Services</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="mobile-nav-link"><i class="fa-solid fa-certificate"></i> Certificates</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="mobile-nav-link"><i class="fa-solid fa-users-gear"></i> Activities</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient mobile-cta">Get in Touch</a>
     </div>
   }
 </header>

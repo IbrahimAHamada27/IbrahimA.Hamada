@@ -1,23 +1,49 @@
-<section class="experience-section">
+<section id="experience" class="experience-section">
   <div class="container">
-    <div class="text-center">
-      <h2 class="section-title">My Experience</h2>
-      <p class="section-subtitle">A brief history of my professional journey.</p>
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
+      <p class="section-subtitle">Hands-on testing automation, QA engineering, and full-stack project executions.</p>
     </div>
 
-    <div class="timeline">
-      @for (exp of experiences; track exp._id) {
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3 class="exp-role">{{ exp.role }}</h3>
-            <div class="exp-company">{{ exp.company }} - {{ exp.years }}</div>
-            <p class="exp-desc">{{ exp.desc }}</p>
+    <div class="experience-grid">
+      @for (exp of experiences; track exp._id; let idx = $index) {
+        <div class="exp-card glass-card" [attr.data-aos]="idx % 2 === 0 ? 'fade-right' : 'fade-left'">
+          
+          <!-- Outer Card Image / Logo Banner -->
+          @if (exp.imageUrl) {
+            <div class="exp-banner-outer">
+              <img [src]="exp.imageUrl.startsWith('/uploads/') ? 'http://localhost:3000' + exp.imageUrl : exp.imageUrl" [alt]="exp.role" class="exp-outer-img" />
+            </div>
+          }
+
+          <div class="exp-card-body">
+            <div class="exp-header">
+              <div class="exp-role-box">
+                <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div>
+                  <h3 class="exp-role-title">{{ exp.role }}</h3>
+                  <span class="exp-company-name"><i class="fa-solid fa-building"></i> {{ exp.company }}</span>
+                </div>
+              </div>
+              <span class="years-pill"><i class="fa-regular fa-clock"></i> {{ exp.years }}</span>
+            </div>
+
+            <p class="exp-description">{{ exp.desc }}</p>
+
+            <button class="btn-show-more" (click)="openDetails(exp)">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Show Details</span>
+            </button>
           </div>
         </div>
       } @empty {
-        <p style="text-align: center; color: #6b7280; font-style: italic;">No experience found.</p>
+        <div class="empty-state glass-card" data-aos="fade-up">
+          <i class="fa-solid fa-folder-open empty-icon"></i>
+          <p>No experience records available yet.</p>
+        </div>
       }
     </div>
   </div>
 </section>
+
+<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>

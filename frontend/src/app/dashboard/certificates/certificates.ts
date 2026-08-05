@@ -1,15 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { SiteInfo } from '../../core/models/site-info.model';
-import { Project } from '../../core/models/project.model';
-import { Skill } from '../../core/models/skill.model';
-import { Message } from '../../core/models/message.model';
 import { Certificate } from '../../core/models/certificate.model';
-import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
-
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-certificates',
@@ -22,10 +16,9 @@ export class DashboardCertificatesComponent implements OnInit {
   certificates: Certificate[] = [];
   showForm = false;
   editingId: string | undefined = undefined;
-  formData = { title: '', issuer: '', date: '' };
-  selectedFile: File | null = null;
+  formData = { title: '', issuer: '', date: '', link: '', imageUrl: '' };
 
-  constructor(private cdr: ChangeDetectorRef, private http: HttpClient) {}
+  constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private toastService: ToastService) {}
 
   ngOnInit() {
     this.fetchCertificates();
@@ -41,15 +34,15 @@ export class DashboardCertificatesComponent implements OnInit {
   }
 
   async deleteCertificate(id: string | undefined) {
-    if (!id || !confirm('Are you sure?')) return;
+    if (!id) return;
     try {
       await lastValueFrom(this.http.delete(`http://localhost:3000/api/certificates/${id}`));
       this.certificates = this.certificates.filter(c => c._id !== id);
-        alert('Certificate deleted successfully');
-        this.cdr.detectChanges();
+      this.toastService.success('Certificate deleted successfully');
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Failed to delete certificate', error);
-      alert('Failed to delete certificate');
+      this.toastService.danger('Failed to delete certificate');
     }
   }
 
@@ -58,7 +51,9 @@ export class DashboardCertificatesComponent implements OnInit {
     this.formData = {
       title: cert.title,
       issuer: cert.issuer,
-      date: cert.date
+      date: cert.date,
+      link: cert.link || '',
+      imageUrl: cert.imageUrl || ''
     };
     this.showForm = true;
   }
@@ -66,7 +61,7 @@ export class DashboardCertificatesComponent implements OnInit {
   cancelEdit() {
     this.showForm = false;
     this.editingId = undefined;
-    this.formData = { title: '', issuer: '', date: '' };
+    this.formData = { title: '', issuer: '', date: '', link: '', imageUrl: '' };
   }
 
   async onSubmit(event: Event) {
@@ -77,31 +72,26 @@ export class DashboardCertificatesComponent implements OnInit {
       const url = this.editingId 
         ? `http://localhost:3000/api/certificates/${this.editingId}`
         : 'http://localhost:3000/api/certificates';
-      const method = this.editingId ? 'PUT' : 'POST';
 
       let updatedItem: Certificate;
       if (this.editingId) {
         updatedItem = await lastValueFrom(this.http.put<Certificate>(url, payload));
+        const idx = this.certificates.findIndex(c => c._id === this.editingId);
+        if (idx !== -1) {
+          this.certificates[idx] = updatedItem;
+        }
       } else {
         updatedItem = await lastValueFrom(this.http.post<Certificate>(url, payload));
+        this.certificates.unshift(updatedItem);
       }
-      if (this.editingId) {
-          const idx = this.certificates.findIndex(c => c._id === this.editingId);
-          if (idx !== -1) {
-            this.certificates[idx] = updatedItem;} else {
-          this.certificates.unshift(updatedItem);
-        }
-      this.certificates = [...this.certificates]; // Force array reference change
+      this.certificates = [...this.certificates];
 
-        alert(`Certificate ${this.editingId ? 'updated' : 'added'} successfully`);
-        this.cancelEdit();
-        this.cdr.detectChanges();
-      } else {
-        alert(`Failed to ${this.editingId ? 'update' : 'add'} certificate`);
-      }
+      this.toastService.success(`Certificate ${this.editingId ? 'updated' : 'added'} successfully`);
+      this.cancelEdit();
+      this.cdr.detectChanges();
     } catch (error) {
       console.error(`Failed to ${this.editingId ? 'update' : 'add'} certificate`, error);
-      alert('Error connecting to backend');
+      this.toastService.danger('Error saving certificate');
     }
   }
 }

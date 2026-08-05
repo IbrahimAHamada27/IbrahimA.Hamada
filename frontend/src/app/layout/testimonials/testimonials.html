@@ -1,0 +1,31 @@
+<section class="section-padding section-bg" id="testimonials">
+  <div class="container">
+    <div class="section-title text-center" data-aos="fade-up">
+      <h2>Testimonials</h2>
+      <p>What people say about my work</p>
+    </div>
+
+    <div class="testimonials-grid">
+      @for (item of testimonials; track item._id) {
+        <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="100">
+          <div class="testimonial-content">
+            <p>
+              <i class="fa-solid fa-quote-left quote-icon"></i>
+              {{ item.message }}
+              <i class="fa-solid fa-quote-right quote-icon"></i>
+            </p>
+          </div>
+          <div class="testimonial-author">
+            @if (item.image) {
+              <img [src]="item.image" alt="Author" class="author-img">
+            }
+            <div class="author-info">
+              <h4>{{ item.name }}</h4>
+              <span>{{ item.position }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
