@@ -13,6 +13,7 @@ const corsOptions = {
       'http://localhost:4200',
       'http://localhost:3000',
       'https://ibrahimahamada.vercel.app',
+      'https://portfoliobackend-liard-nu.vercel.app',
       'https://portfoliobackend-orpin.vercel.app'
     ];
     // Allow requests with no origin (mobile apps, curl, etc)
@@ -27,6 +28,16 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 app.use(cors(corsOptions));
+
+// Security Headers Middleware
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
