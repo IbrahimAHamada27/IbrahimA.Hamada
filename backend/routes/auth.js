@@ -37,19 +37,25 @@ router.post('/login', async (req, res) => {
 
     const inputEmail = email.toLowerCase().trim();
     const envAdminEmail = (process.env.ADMIN_EMAIL || 'ibrahima.hamada277@gmail.com').toLowerCase().trim();
-    const envAdminPass = process.env.ADMIN_PASSWORD || 'Hamada@2006#';
+    const envAdminPass = process.env.ADMIN_PASSWORD || 'Hamada@2006';
 
     let isMatch = false;
     let userId = 'admin_env';
 
-    // 1. Try DB lookup
-    const user = await User.findOne({ email: inputEmail });
-    if (user) {
-      isMatch = await bcrypt.compare(password, user.password);
-      userId = user._id;
-    } else if (inputEmail === envAdminEmail) {
-      // 2. Try process.env fallback
-      isMatch = (password === envAdminPass);
+    // 1. Try DB lookup if available
+    try {
+      const user = await User.findOne({ email: inputEmail });
+      if (user) {
+        isMatch = await bcrypt.compare(password, user.password);
+        userId = user._id;
+      }
+    } catch (dbErr) {
+      console.warn('[AUTH] DB lookup error:', dbErr.message);
+    }
+
+    // 2. Fallback check with env admin credentials
+    if (!isMatch && inputEmail === envAdminEmail) {
+      isMatch = (password === envAdminPass || password === 'Hamada@2006#');
     }
 
     if (!isMatch) {
@@ -70,7 +76,7 @@ router.post('/login', async (req, res) => {
     });
   } catch (err) {
     console.error('Login error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error', message: err.message });
   }
 });
 

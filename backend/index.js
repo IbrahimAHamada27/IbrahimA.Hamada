@@ -42,11 +42,41 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
-// Connect to MongoDB
+// Connect to MongoDB (Serverless-ready with caching)
 const MONGODB_URI = process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('✅ Connected to MongoDB successfully'))
-  .catch((err) => console.error('❌ Error connecting to MongoDB:', err));
+let connPromise = null;
+
+const connectDB = async () => {
+  if (mongoose.connection.readyState === 1) {
+    return;
+  }
+  if (connPromise) {
+    await connPromise;
+    return;
+  }
+  connPromise = mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 10000,
+    connectTimeoutMS: 10000
+  }).then((m) => {
+    console.log('✅ Connected to MongoDB successfully');
+    return m;
+  }).catch((err) => {
+    connPromise = null;
+    console.error('❌ Error connecting to MongoDB:', err.message);
+  });
+
+  await connPromise;
+};
+
+// Database Connection Middleware for Vercel
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('Database connection middleware warning:', err.message);
+  }
+  next();
+});
 
 // Middlewares
 const authMiddleware = require('./middlewares/authMiddleware');
@@ -67,7 +97,7 @@ const activitiesRoutes = require('./routes/activities');
 // Public Auth Route
 app.use('/api/auth', authRoutes);
 
-// Apply Security Middleware to protecting endpoints
+// Apply Security Middleware to protected endpoints
 app.use('/api/siteinfo', authMiddleware, siteInfoRoutes);
 app.use('/api/projects', authMiddleware, projectsRoutes);
 app.use('/api/certificates', authMiddleware, certificatesRoutes);

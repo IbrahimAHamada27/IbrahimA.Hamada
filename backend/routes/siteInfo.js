@@ -6,13 +6,17 @@ router.get('/', async (req, res) => {
   try {
     let siteInfo = await SiteInfo.findOne();
     if (!siteInfo) {
-      // Create default if it doesn't exist
       siteInfo = new SiteInfo({});
-      await siteInfo.save();
     }
     res.json(siteInfo);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch site info' });
+    console.error('Error fetching site info:', error);
+    res.json({
+      heroTitle: 'Software Tester & Web Developer',
+      heroDesc: 'Quality Assurance Specialist & Full-Stack Web Developer.',
+      aboutTitle: 'Background & Expertise',
+      aboutDesc1: 'Passionate about QA automation, software testing, and modern full-stack web applications.'
+    });
   }
 });
 

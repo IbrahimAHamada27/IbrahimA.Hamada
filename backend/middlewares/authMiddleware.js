@@ -1,8 +1,13 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
-  // Allow public GET requests
-  if (req.method === 'GET' || req.path === '/api/messages') {
+  // Allow all GET requests for public portfolio content
+  if (req.method === 'GET') {
+    return next();
+  }
+
+  // Allow posting contact messages without authentication token
+  if (req.method === 'POST' && (req.baseUrl.endsWith('/messages') || req.path.includes('messages'))) {
     return next();
   }
 
@@ -21,3 +26,4 @@ module.exports = function (req, res, next) {
     return res.status(401).json({ error: 'Invalid or expired token.' });
   }
 };
+
