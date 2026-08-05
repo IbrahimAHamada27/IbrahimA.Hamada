@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../core/models/project.model';
 import { lastValueFrom } from 'rxjs';
@@ -33,7 +34,7 @@ export class ListProjectsComponent implements OnInit {
 
   async fetchProjects() {
     try {
-      const response = await lastValueFrom(this.http.get<Project[]>('https://portfoliobackend-orpin.vercel.app/api/projects'));
+      const response = await lastValueFrom(this.http.get<Project[]>(`${environment.apiUrl}/api/projects`));
       this.projects = response;
     } catch (error) {
       console.error('Failed to fetch projects', error);
@@ -87,7 +88,7 @@ export class ListProjectsComponent implements OnInit {
     try {
       const url = this.editingId 
         ? `https://portfoliobackend-orpin.vercel.app/api/projects/${this.editingId}`
-        : 'https://portfoliobackend-orpin.vercel.app/api/projects';
+        : `${environment.apiUrl}/api/projects`;
 
       let updatedItem: Project;
       if (this.editingId) {

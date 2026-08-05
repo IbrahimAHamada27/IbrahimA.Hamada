@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from '../models/message.model';
@@ -7,7 +8,7 @@ import { Message } from '../models/message.model';
   providedIn: 'root'
 })
 export class MessageService {
-  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/messages';
+  private apiUrl = `${environment.apiUrl}/api/messages`;
 
   constructor(private http: HttpClient) {}
 

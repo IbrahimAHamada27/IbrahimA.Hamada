@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
@@ -27,7 +28,7 @@ export class DashboardTestimonialsComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Testimonial[]>('https://portfoliobackend-orpin.vercel.app/api/testimonials'));
+      const response = await lastValueFrom(this.http.get<Testimonial[]>(`${environment.apiUrl}/api/testimonials`));
       this.testimonials = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -77,7 +78,7 @@ export class DashboardTestimonialsComponent implements OnInit {
     try {
       const url = this.editingId 
         ? `https://portfoliobackend-orpin.vercel.app/api/testimonials/${this.editingId}`
-        : 'https://portfoliobackend-orpin.vercel.app/api/testimonials';
+        : `${environment.apiUrl}/api/testimonials`;
       
       let updated: Testimonial;
       if (this.editingId) {

@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
@@ -56,7 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>('https://portfoliobackend-orpin.vercel.app/api/siteinfo').subscribe({
+    this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`).subscribe({
       next: (data) => {
         this.siteInfo = data;
         const iconUrl = data.logoImage || data.profileImage || 'https://github.com/ibrahimahamada27.png';

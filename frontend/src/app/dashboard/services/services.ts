@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
@@ -26,7 +27,7 @@ export class DashboardServicesComponent implements OnInit {
 
   async fetchData() {
     try {
-      const response = await lastValueFrom(this.http.get<Service[]>('https://portfoliobackend-orpin.vercel.app/api/services'));
+      const response = await lastValueFrom(this.http.get<Service[]>(`${environment.apiUrl}/api/services`));
       this.services = response;
     } catch (error) {
       console.error('Failed to fetch data', error);
@@ -63,7 +64,7 @@ export class DashboardServicesComponent implements OnInit {
     try {
       const url = this.editingId 
         ? `https://portfoliobackend-orpin.vercel.app/api/services/${this.editingId}`
-        : 'https://portfoliobackend-orpin.vercel.app/api/services';
+        : `${environment.apiUrl}/api/services`;
       
       let updated: Service;
       if (this.editingId) {

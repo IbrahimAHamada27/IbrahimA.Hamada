@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Certificate } from '../../core/models/certificate.model';
 import { lastValueFrom } from 'rxjs';
@@ -26,7 +27,7 @@ export class DashboardCertificatesComponent implements OnInit {
 
   async fetchCertificates() {
     try {
-      const response = await lastValueFrom(this.http.get<Certificate[]>('https://portfoliobackend-orpin.vercel.app/api/certificates'));
+      const response = await lastValueFrom(this.http.get<Certificate[]>(`${environment.apiUrl}/api/certificates`));
       this.certificates = response;
     } catch (error) {
       console.error('Failed to fetch certificates', error);
@@ -71,7 +72,7 @@ export class DashboardCertificatesComponent implements OnInit {
     try {
       const url = this.editingId 
         ? `https://portfoliobackend-orpin.vercel.app/api/certificates/${this.editingId}`
-        : 'https://portfoliobackend-orpin.vercel.app/api/certificates';
+        : `${environment.apiUrl}/api/certificates`;
 
       let updatedItem: Certificate;
       if (this.editingId) {

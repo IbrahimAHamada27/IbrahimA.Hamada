@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { lastValueFrom } from 'rxjs';
@@ -23,7 +24,7 @@ export class DashboardHomeComponent implements OnInit {
 
   async fetchSiteInfo() {
     try {
-      const response = await lastValueFrom(this.http.get<SiteInfo>('https://portfoliobackend-orpin.vercel.app/api/siteinfo'));
+      const response = await lastValueFrom(this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`));
       this.siteInfo = response;
     } catch (error) {
       console.error('Failed to fetch site info', error);
@@ -61,7 +62,7 @@ export class DashboardHomeComponent implements OnInit {
     event.preventDefault();
     
     try {
-      await lastValueFrom(this.http.put('https://portfoliobackend-orpin.vercel.app/api/siteinfo', this.siteInfo));
+      await lastValueFrom(this.http.put(`${environment.apiUrl}/api/siteinfo`, this.siteInfo));
       this.toastService.success('Site information saved successfully!');
     } catch (error) {
       console.error('Failed to update site info', error);

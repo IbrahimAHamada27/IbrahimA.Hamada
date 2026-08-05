@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Experience } from '../../core/models/experience.model';
 import { lastValueFrom } from 'rxjs';
@@ -26,7 +27,7 @@ export class DashboardExperienceComponent implements OnInit {
 
   async fetchExperiences() {
     try {
-      const response = await lastValueFrom(this.http.get<Experience[]>('https://portfoliobackend-orpin.vercel.app/api/experience'));
+      const response = await lastValueFrom(this.http.get<Experience[]>(`${environment.apiUrl}/api/experience`));
       this.experiences = response;
     } catch (error) {
       console.error('Failed to fetch experiences', error);
@@ -72,7 +73,7 @@ export class DashboardExperienceComponent implements OnInit {
     try {
       const url = this.editingId 
         ? `https://portfoliobackend-orpin.vercel.app/api/experience/${this.editingId}`
-        : 'https://portfoliobackend-orpin.vercel.app/api/experience';
+        : `${environment.apiUrl}/api/experience`;
 
       let updatedItem: Experience;
       if (this.editingId) {

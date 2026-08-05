@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Skill } from '../models/skill.model';
@@ -7,7 +8,7 @@ import { Skill } from '../models/skill.model';
   providedIn: 'root'
 })
 export class SkillService {
-  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/skills';
+  private apiUrl = `${environment.apiUrl}/api/skills`;
 
   constructor(private http: HttpClient) {}
 

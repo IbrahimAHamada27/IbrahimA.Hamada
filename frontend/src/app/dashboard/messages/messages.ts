@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Message } from '../../core/models/message.model';
 import { lastValueFrom } from 'rxjs';
@@ -23,7 +24,7 @@ export class MessagesComponent implements OnInit {
 
   async fetchMessages() {
     try {
-      const response = await lastValueFrom(this.http.get<Message[]>('https://portfoliobackend-orpin.vercel.app/api/messages'));
+      const response = await lastValueFrom(this.http.get<Message[]>(`${environment.apiUrl}/api/messages`));
       this.messages = response;
     } catch (error) {
       console.error('Failed to fetch messages', error);

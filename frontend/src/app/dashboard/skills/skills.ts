@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Skill } from '../../core/models/skill.model';
 import { lastValueFrom } from 'rxjs';
@@ -27,7 +28,7 @@ export class SkillsComponent implements OnInit {
 
   async fetchSkills() {
     try {
-      const response = await lastValueFrom(this.http.get<Skill[]>('https://portfoliobackend-orpin.vercel.app/api/skills'));
+      const response = await lastValueFrom(this.http.get<Skill[]>(`${environment.apiUrl}/api/skills`));
       this.skills = response;
     } catch (error) {
       console.error('Failed to fetch skills', error);
@@ -89,7 +90,7 @@ export class SkillsComponent implements OnInit {
     try {
       const url = this.editingId 
         ? `https://portfoliobackend-orpin.vercel.app/api/skills/${this.editingId}`
-        : 'https://portfoliobackend-orpin.vercel.app/api/skills';
+        : `${environment.apiUrl}/api/skills`;
 
       let updatedSkill: { skill: Skill };
       if (this.editingId) {

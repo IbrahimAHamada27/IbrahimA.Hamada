@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Testimonial } from '../models/testimonial.model';
@@ -7,7 +8,7 @@ import { Testimonial } from '../models/testimonial.model';
   providedIn: 'root'
 })
 export class TestimonialService {
-  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/testimonials';
+  private apiUrl = `${environment.apiUrl}/api/testimonials`;
 
   constructor(private http: HttpClient) {}
 

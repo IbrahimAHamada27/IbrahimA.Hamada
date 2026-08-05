@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
 import { lastValueFrom } from 'rxjs';
@@ -21,7 +22,7 @@ export class FooterComponent implements OnInit {
 
   async fetchSiteInfo() {
     try {
-      const response = await lastValueFrom(this.http.get<SiteInfo>('https://portfoliobackend-orpin.vercel.app/api/siteinfo'));
+      const response = await lastValueFrom(this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`));
       this.siteInfo = response;
     } catch (error) {
       console.error('Failed to fetch site info', error);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>('https://portfoliobackend-orpin.vercel.app/api/siteinfo').subscribe({
+    this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`).subscribe({
       next: (siteInfo) => {
         if (siteInfo.brandName) {
           this.titleService.setTitle(siteInfo.brandName);

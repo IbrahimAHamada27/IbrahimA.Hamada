@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Activity } from '../models/activity.model';
@@ -7,7 +8,7 @@ import { Activity } from '../models/activity.model';
   providedIn: 'root'
 })
 export class ActivityService {
-  private apiUrl = 'https://portfoliobackend-orpin.vercel.app/api/activities';
+  private apiUrl = `${environment.apiUrl}/api/activities`;
 
   constructor(private http: HttpClient) {}
 
