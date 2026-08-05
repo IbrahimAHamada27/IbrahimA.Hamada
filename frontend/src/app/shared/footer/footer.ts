@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
 import { lastValueFrom } from 'rxjs';

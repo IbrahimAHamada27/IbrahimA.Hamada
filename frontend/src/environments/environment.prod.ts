@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://portfoliobackend-orpin.vercel.app'
+  apiUrl: 'https://portfoliobackend-liard-nu.vercel.app'
 };

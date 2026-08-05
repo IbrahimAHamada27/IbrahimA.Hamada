@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SiteInfo } from '../../core/models/site-info.model';
