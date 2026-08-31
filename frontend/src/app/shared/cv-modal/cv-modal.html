@@ -1,0 +1,266 @@
+@if (isOpen) {
+  <div class="cv-modal-backdrop" (click)="onClose()">
+    <div class="cv-modal-container glass-card" (click)="$event.stopPropagation()">
+      <!-- Modal Top Bar -->
+      <div class="cv-modal-header">
+        <div class="header-left">
+          <div class="cv-badge font-mono">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Curriculum Vitae</span>
+          </div>
+          <span class="applicant-name">Ibrahim Atef Hamada</span>
+        </div>
+
+        <div class="header-right-actions">
+          <a href="CV_Ibrahim_A_Hamada.pdf" download="CV_Ibrahim_A_Hamada.pdf" target="_blank" class="action-btn download-btn" title="Download Official PDF File">
+            <i class="fa-solid fa-download"></i>
+            <span>Download PDF</span>
+          </a>
+          <button class="action-btn print-btn" (click)="downloadOrPrintCv()" title="Print CV">
+            <i class="fa-solid fa-print"></i>
+          </button>
+          <button class="action-btn close-btn" (click)="onClose()" title="Close (Esc)" aria-label="Close CV">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- CV Document Body -->
+      <div class="cv-modal-body printable-cv">
+        <div class="cv-page">
+          <!-- CV Header -->
+          <header class="cv-doc-header">
+            <h1 class="cv-name">Ibrahim Atef Abdelsatar Ahmed Hamada</h1>
+            <p class="cv-location"><i class="fa-solid fa-location-dot"></i> El-Obour City, Qalyubia, Egypt</p>
+            <div class="cv-contact-bar font-mono">
+              <a href="tel:+201112540997" class="cv-contact-link"><i class="fa-solid fa-phone"></i> (+20) 1112540997</a>
+              <span class="sep">•</span>
+              <a href="mailto:ibrahima.hamada277@gmail.com" class="cv-contact-link"><i class="fa-solid fa-envelope"></i> ibrahima.hamada277&#64;gmail.com</a>
+              <span class="sep">•</span>
+              <a href="https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/" target="_blank" rel="noopener noreferrer" class="cv-contact-link"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/ibrahim-a-hamada</a>
+              <span class="sep">•</span>
+              <a href="https://github.com/IbrahimAHamada27" target="_blank" rel="noopener noreferrer" class="cv-contact-link"><i class="fa-brands fa-github"></i> Portfolio & Code</a>
+            </div>
+          </header>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: EDUCATION -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">EDUCATION</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">Arab Open University (AOU), Faculty of Computer Studies</span>
+                  <span class="cv-entry-date font-mono">Sep 2025 – Present</span>
+                </div>
+                <div class="cv-entry-sub">Department of Computer Science</div>
+                <p class="cv-entry-desc">Pursuing second-year undergraduate studies in Computer Science focusing on data structures, algorithms, and software engineering.</p>
+              </div>
+            </div>
+          </section>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: SUMMARY -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">SUMMARY</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <p class="cv-summary-text">
+                Software Tester and Aspiring Full-Stack Web Developer with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. Trained through DEPI, Orange Digital Center, and NTI programs, with expertise spanning software quality assurance and MEAN Stack development (MongoDB, Express.js, Angular, Node.js). Skilled in designing test cases, reporting defects, building RESTful APIs, and developing modern web applications. Eager to contribute to innovative teams while continuously expanding technical and professional capabilities.
+              </p>
+            </div>
+          </section>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: EXPERIENCE -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">EXPERIENCE</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <!-- Item 1 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">E-Commerce Automation Testing</span>
+                </div>
+                <div class="cv-entry-sub">DeFacto, Noon, Seoudi Supermarket</div>
+                <ul class="cv-bullet-list">
+                  <li>Engineered robust automation frameworks and authored test scripts using Selenium and Java to validate critical user flows and UI functionality.</li>
+                </ul>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">Commercial Web Development</span>
+                </div>
+                <div class="cv-entry-sub">Restaurants & Cafes</div>
+                <ul class="cv-bullet-list">
+                  <li>Deployed three fully functional, responsive websites utilizing AI-driven Vibe Coding, prioritizing modern UI/UX and client business requirements.</li>
+                </ul>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">RESTful-Booker API Testing</span>
+                </div>
+                <ul class="cv-bullet-list">
+                  <li>Executed manual API testing via Postman on the authentication endpoint, formulating test cases and tracking defects using Excel.</li>
+                </ul>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">ISTQB Foundation Practice</span>
+                </div>
+                <div class="cv-entry-sub">Demo Site</div>
+                <ul class="cv-bullet-list">
+                  <li>Implemented ISTQB-aligned manual testing and SDLC principles, executing structured test cases and generating detailed documentation.</li>
+                </ul>
+              </div>
+
+              <!-- Item 5 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">Personal Portfolio</span>
+                </div>
+                <ul class="cv-bullet-list">
+                  <li>Programmed a responsive portfolio leveraging HTML, Tailwind CSS, Angular, and JavaScript, featuring Dark/Light modes and API integrations.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: SCHOLARSHIP AND TRAINING -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">SCHOLARSHIP & TRAINING</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <!-- Training 1 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">NTI MEAN Stack: Web Developer Career Accelerator</span>
+                  <span class="cv-entry-date font-mono">Jun 2026 – Aug 2026</span>
+                </div>
+                <ul class="cv-bullet-list">
+                  <li>Participating in a 210-hour professional training program focused on MEAN Stack web development.</li>
+                  <li>Developing full-stack applications using MongoDB, Express.js, Angular, Node.js, and TypeScript.</li>
+                  <li>Building secure RESTful APIs, implementing authentication, database management, and modern front-end architectures.</li>
+                  <li>Applying web security, UI/UX, project management, and freelancing best practices in real-world projects.</li>
+                </ul>
+              </div>
+
+              <!-- Training 2 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">Digital Egypt Pioneers Initiative (DEPI) Software Testing Track</span>
+                  <span class="cv-entry-date font-mono">Jun 2025 – Dec 2025</span>
+                </div>
+                <ul class="cv-bullet-list">
+                  <li>Graduated from a six-month intensive program sponsored by the Ministry of Communications and Information Technology (MCIT).</li>
+                  <li>Mastered the full Software Development Life Cycle (SDLC) and ISTQB-aligned fundamentals, encompassing static/dynamic techniques and test design.</li>
+                  <li>Performed manual, exploratory, and API testing (Postman), and programmed automated test scripts using Selenium and Java.</li>
+                  <li>Administered test cases and bug tracking via Jira and Excel, leveraging foundational Java and prompt engineering for AI-integrated workflows.</li>
+                </ul>
+              </div>
+
+              <!-- Training 3 -->
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">Automation Testing Training</span>
+                  <span class="cv-entry-date font-mono">Feb 2026</span>
+                </div>
+                <div class="cv-entry-sub">Orange Digital Center Egypt & Instant Software Solutions</div>
+                <ul class="cv-bullet-list">
+                  <li>Participated in a collaborative training program integrating automation testing concepts into practical, real-world scenarios.</li>
+                  <li>Formulated and constructed automation frameworks, elevating practical skills with industry-standard tools.</li>
+                  <li>Adhered to QA best practices and test automation standards to achieve professional-level proficiency.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: HONORS & ACTIVITIES -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">HONORS & ACTIVITIES</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">Microsoft Student Club (MSC), AOU</span>
+                  <span class="cv-entry-date font-mono">Dec 2025 – Present</span>
+                </div>
+                <div class="cv-entry-sub">Tech Team Member (Web Committee)</div>
+              </div>
+
+              <div class="cv-entry">
+                <div class="cv-entry-head">
+                  <span class="cv-entry-title">NASA Space Apps Challenge, Benha</span>
+                  <span class="cv-entry-date font-mono">May 2025 – Oct 2025</span>
+                </div>
+                <div class="cv-entry-sub">Head of Logistics, OC & Building</div>
+                <ul class="cv-bullet-list">
+                  <li>Spearheaded event preparations, logistics planning, and cross-functional team coordination over a six-month term.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: SKILLS -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">SKILLS</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <div class="cv-skills-block">
+                <h4 class="skills-category-name">Technical Skills:</h4>
+                <ul class="cv-skills-list">
+                  <li><b>Programming & Web Technologies:</b> Java (Core), JavaScript (ES6+), TypeScript, HTML5, CSS3, Node.js, Express.js, Angular, MongoDB, Dart (Basics), C++ (Basics), LaTeX (Basics).</li>
+                  <li><b>Testing & QA Tools:</b> Selenium WebDriver, TestNG, Postman, Jira (Xray), API Testing, Manual Testing, Test Case Design, Bug Reporting.</li>
+                  <li><b>Development Tools:</b> Git & GitHub, Visual Studio Code, IntelliJ IDEA, MongoDB Compass, npm, Maven, Microsoft Office.</li>
+                  <li><b>Concepts:</b> OOP, RESTful APIs, SDLC, STLC, Database Design, Agile Methodology, Web Security Fundamentals, UI/UX Principles, Authentication & Authorization.</li>
+                  <li><b>Other:</b> Prompt Engineering, Freelancing Fundamentals, Project Management Basics, Basic Video/Photo Editing.</li>
+                </ul>
+              </div>
+
+              <div class="cv-skills-block">
+                <h4 class="skills-category-name">Personal Skills:</h4>
+                <p class="skills-inline-text">Leadership & Teamwork, Problem Solving, Time Management, Continuous Learning, Adaptability.</p>
+              </div>
+            </div>
+          </section>
+
+          <hr class="cv-divider" />
+
+          <!-- SECTION: LANGUAGES -->
+          <section class="cv-section">
+            <div class="cv-section-title-col">
+              <h2 class="cv-section-title">LANGUAGES</h2>
+            </div>
+            <div class="cv-section-content-col">
+              <p class="cv-languages-text">
+                <b>Arabic:</b> Native &nbsp;•&nbsp; <b>English:</b> Intermediate (Reading & Writing), Conversational (Speaking)
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+}

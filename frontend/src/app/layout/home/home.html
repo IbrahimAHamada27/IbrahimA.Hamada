@@ -33,7 +33,7 @@
         <div class="terminal-line"><span class="cmd-prompt">➜</span> <span class="cmd-run">run-qa-suite --framework=selenium-java --api=postman</span></div>
         <div class="terminal-line text-qa"><i class="fa-solid fa-check-double"></i> <b>Selenium E2E Tests:</b> Cross-browser POM suites validated across Chrome, Firefox & Edge</div>
         <div class="terminal-line text-cyan"><i class="fa-solid fa-bolt"></i> <b>RESTful API Asserter:</b> 28+ Postman collections passing with strict JSON schema compliance</div>
-        <div class="terminal-line text-primary"><i class="fa-solid fa-layer-group"></i> <b>MEAN Stack Architecture:</b> Angular 18 Signals + Express Node.js Engine operational</div>
+        <div class="terminal-line text-primary"><i class="fa-solid fa-layer-group"></i> <b>MEAN Stack Architecture:</b> Angular 21 Signals + Express Node.js Engine operational</div>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
       </div>
       <div class="highlight-chip">
         <i class="fa-brands fa-angular"></i>
-        <span>MEAN Stack (Angular & Node)</span>
+        <span>MEAN Stack (Angular 21 & Node)</span>
       </div>
       <div class="highlight-chip">
         <i class="fa-solid fa-network-wired"></i>
@@ -58,7 +58,11 @@
     </div>
 
     <div class="hero-action-group" data-aos="fade-up" data-aos-delay="400">
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient hero-btn">
+      <button (click)="openCvModal()" class="btn-gradient hero-btn cv-action-btn">
+        <i class="fa-solid fa-file-pdf"></i>
+        <span>View CV / Resume</span>
+      </button>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-glass hero-btn">
         <i class="fa-solid fa-paper-plane"></i>
         <span>Contact Me</span>
       </a>
@@ -119,6 +123,10 @@
             <span class="tag"><i class="fa-solid fa-location-dot"></i> Egypt</span>
             <span class="tag"><i class="fa-solid fa-user-graduate"></i> AOU Computer Science</span>
           </div>
+          <button (click)="openCvModal()" class="btn-gradient about-cv-btn">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>Preview Official CV</span>
+          </button>
         </div>
       </div>
 
@@ -152,3 +160,6 @@
     </div>
   </div>
 </section>
+
+<!-- Interactive CV Viewer Modal -->
+<app-cv-modal [isOpen]="isCvModalOpen" (close)="isCvModalOpen = false"></app-cv-modal>

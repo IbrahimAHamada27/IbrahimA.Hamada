@@ -31,21 +31,23 @@ async function seedData() {
     // 1. Site Info
     await SiteInfo.create({
       brandName: "Ibrahim A. Hamada",
-      heroTitle: "QA Automation Engineer & Full-Stack Web Developer",
-      heroDesc: "Passionate about software quality, test automation, manual testing, API validation with Postman, and building scalable web applications with the MEAN Stack (Angular 18, Node.js, Express, MongoDB). DEPI Graduate, NTI Trainee, and AOU CS student.",
-      aboutTitle: "Engineering Background & Quality Philosophy",
-      aboutDesc1: "Software Tester and Full-Stack Web Developer with hands-on experience in manual exploratory testing, TestNG/Selenium test frameworks, API validation, and modern web application development. Trained through MCIT Digital Egypt Pioneers Initiative (DEPI), Orange Digital Center, and National Telecommunication Institute (NTI).",
-      aboutDesc2: "Proficient in formulating test plans, boundary value analysis, tracking defect lifecycles, and engineering clean RESTful APIs. Dedicated to delivering reliable, bug-free software and continuous technical growth.",
-      academicTitle: "Academic & Professional Journey",
-      academicDesc: "Undergraduate in Computer Science at Arab Open University (AOU), DEPI Software Testing Specialist, and NTI MEAN Stack Web Developer Career Accelerator graduate.",
-      philosophyTitle: "Software Quality & Testing Mindset",
-      philosophyDesc: "Believing that QA is not just about finding bugs, but designing maintainable, resilient architectures with automated test coverage from unit to end-to-end user journeys.",
+      fullName: "Ibrahim Atef Abdelsatar Ahmed Hamada",
+      heroTitle: "Software Tester & Aspiring Full-Stack Web Developer",
+      heroDesc: "Software Tester and Aspiring Full-Stack Web Developer with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. DEPI Graduate, NTI MEAN Stack Graduate, and AOU CS student with expertise spanning software quality assurance and full-stack MEAN development (MongoDB, Express.js, Angular 21, Node.js).",
+      aboutTitle: "Professional Summary & Background",
+      aboutDesc1: "Software Tester and Aspiring Full-Stack Web Developer with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. Trained through DEPI (Ministry of Communications and Information Technology), Orange Digital Center, and NTI programs, with expertise spanning software quality assurance and MEAN Stack development (MongoDB, Express.js, Angular 21, Node.js).",
+      aboutDesc2: "Skilled in designing structured test cases, reporting defects via Jira and Excel, building secure RESTful APIs, and developing modern, responsive web applications. Eager to contribute to innovative engineering teams while continuously expanding technical and professional capabilities.",
+      academicTitle: "Academic Education & Degrees",
+      academicDesc: "Arab Open University (AOU), Faculty of Computer Studies, Department of Computer Science (Sep 2025 - Present) — Pursuing second-year undergraduate studies in Computer Science.",
+      philosophyTitle: "Software Quality & Engineering Standards",
+      philosophyDesc: "ISTQB-aligned testing principles, structured SDLC & STLC execution, automated regression validation with Page Object Model, and clean RESTful API architectures with Angular 21 & Node.js.",
       contactTitle: "Get in Touch",
-      contactSubtitle: "Available for QA testing, automation engineering, or full-stack web development roles & projects.",
+      contactSubtitle: "Available for Software Testing, QA Automation, and MEAN Stack Web Development opportunities.",
       contactEmail: "ibrahima.hamada277@gmail.com",
       phone: "+20 111 254 0997",
+      location: "El-Obour City, Qalyubia, Egypt",
       githubUrl: "https://github.com/IbrahimAHamada27",
-      linkedinUrl: "https://www.linkedin.com/in/ibrahimahamada/",
+      linkedinUrl: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/",
       facebookUrl: "https://web.facebook.com/ibrahima.hamada27",
       instagramUrl: "https://www.instagram.com/ibrahim_a._hamada/",
       telegramUrl: "https://t.me/+201112540997",
@@ -53,7 +55,7 @@ async function seedData() {
       profileImage: "https://github.com/ibrahimahamada27.png",
       logoImage: "https://github.com/ibrahimahamada27.png",
       socialLinks: [
-        { name: "LinkedIn", url: "https://www.linkedin.com/in/ibrahimahamada/", icon: "fab fa-linkedin" },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/", icon: "fab fa-linkedin" },
         { name: "GitHub", url: "https://github.com/IbrahimAHamada27", icon: "fab fa-github" },
         { name: "WhatsApp", url: "https://wa.me/201112540997", icon: "fab fa-whatsapp" },
         { name: "Telegram", url: "https://t.me/+201112540997", icon: "fab fa-telegram" },
@@ -62,104 +64,118 @@ async function seedData() {
       ]
     });
 
-    // 2. Experience
+    // 2. Experience (Directly from CV)
     const experiences = [
       {
         role: "E-Commerce Automation Testing",
         company: "DeFacto, Noon, Seoudi Supermarket",
-        years: "Recent",
-        desc: "Engineered robust automation frameworks and authored test scripts using Selenium and Java to validate critical user flows and UI functionality."
+        years: "Practical Project Experience",
+        desc: "Engineered robust automation frameworks and authored test scripts using Selenium WebDriver and Java to validate critical user flows, checkout pipelines, and UI functionality."
       },
       {
         role: "Commercial Web Development",
-        company: "Restaurants & Cafes",
-        years: "Recent",
-        desc: "Deployed three fully functional, responsive websites utilizing AI-driven Vibe Coding, prioritizing modern UI/UX and client business requirements."
+        company: "Restaurants & Cafes (Double Shot, The Face Coffee, Yuki Cafe)",
+        years: "Commercial Projects",
+        desc: "Deployed three fully functional, responsive websites utilizing AI-driven Vibe Coding, prioritizing modern UI/UX, mobile responsiveness, and client business requirements."
       },
       {
         role: "RESTful-Booker API Testing",
-        company: "Demo Site",
-        years: "Recent",
-        desc: "Executed manual API testing via Postman on the authentication endpoint, formulating test cases and tracking defects using Excel."
+        company: "API Testing Project",
+        years: "API Validation",
+        desc: "Executed manual and automated API testing via Postman on the authentication and booking endpoints, formulating comprehensive test cases, validating payload schemas, and tracking defects using Excel."
       },
       {
         role: "ISTQB Foundation Practice",
-        company: "Demo Site",
-        years: "Recent",
-        desc: "Implemented ISTQB-aligned manual testing and SDLC principles, executing structured test cases and generating detailed documentation."
+        company: "Demo Site & Quality Assurance",
+        years: "QA Fundamentals",
+        desc: "Implemented ISTQB-aligned manual testing and SDLC principles, executing structured test cases, boundary value analysis, equivalence partitioning, and generating detailed defect documentation."
+      },
+      {
+        role: "Personal Portfolio Development",
+        company: "Personal Project",
+        years: "Frontend Architecture",
+        desc: "Programmed a responsive modern portfolio leveraging HTML, Tailwind CSS, Angular 21, and JavaScript, featuring Dark/Light mode theming and contact integrations."
       }
     ];
     await Experience.insertMany(experiences);
 
-    // 3. Education & Courses
+    // 3. Education & Scholarships / Training (Directly from CV)
     const educations = [
       {
-        title: "Computer Science (Undergraduate)",
-        institution: "Arab Open University (AOU)",
+        title: "Undergraduate in Computer Science",
+        institution: "Arab Open University (AOU), Faculty of Computer Studies",
         date: "Sep 2025 - Present",
-        desc: "Pursuing second-year undergraduate studies in Computer Science focusing on software engineering principles, algorithms, and database management systems.",
+        desc: "Pursuing second-year undergraduate studies in Computer Science, Department of Computer Science. Deep focus on algorithms, data structures, OOP, database design, and software engineering.",
         type: "university",
-        skillsLearned: ["Algorithms", "Data Structures", "OOP", "Database Design"]
+        skillsLearned: ["Algorithms", "Data Structures", "OOP", "Database Design", "Computer Science Fundamentals"]
       },
       {
         title: "NTI MEAN Stack: Web Developer Career Accelerator",
         institution: "National Telecommunication Institute (NTI)",
-        date: "Jun 2026 - Present",
-        desc: "210-hour intensive professional training program focused on MEAN Stack web development. Developing scalable full-stack applications using MongoDB, Express.js, Angular, Node.js, and TypeScript.",
+        date: "Jun 2026 - Aug 2026",
+        desc: "Graduated from a 210-hour intensive professional training program focused on MEAN Stack web development. Developing full-stack applications using MongoDB, Express.js, Angular 21, Node.js, and TypeScript. Building secure RESTful APIs, implementing authentication, database management, web security, UI/UX principles, and freelancing best practices.",
         type: "course",
         link: "https://nti.sci.eg/",
-        skillsLearned: ["MongoDB", "Express.js", "Angular 18", "Node.js", "TypeScript", "REST APIs"]
+        skillsLearned: ["MongoDB", "Express.js", "Angular 21", "Node.js", "TypeScript", "RESTful APIs", "Authentication", "Web Security"]
       },
       {
-        title: "Software Testing Track",
-        institution: "Digital Egypt Pioneers Initiative (DEPI)",
+        title: "Digital Egypt Pioneers Initiative (DEPI) — Software Testing Track",
+        institution: "Ministry of Communications and Information Technology (MCIT)",
         date: "Jun 2025 - Dec 2025",
-        desc: "Six-month intensive program sponsored by MCIT. Mastered SDLC and ISTQB-aligned fundamentals. Performed manual, exploratory, and API testing (Postman), and programmed automated test scripts using Selenium and Java.",
+        desc: "Graduated from a six-month intensive program sponsored by MCIT. Mastered the full Software Development Life Cycle (SDLC) and ISTQB-aligned fundamentals (static/dynamic techniques, test design). Performed manual, exploratory, and API testing (Postman), and programmed automated test scripts using Selenium and Java. Administered test cases and bug tracking via Jira and Excel.",
         type: "course",
         link: "https://depi.gov.eg/",
-        skillsLearned: ["Software Testing", "Selenium WebDriver", "Java Automation", "Postman API", "Defect Tracking", "ISTQB Standards"]
+        skillsLearned: ["Software Testing", "Selenium WebDriver", "Java Automation", "Postman API", "Jira / Xray", "Defect Tracking", "ISTQB Standards", "SDLC / STLC"]
       },
       {
         title: "Automation Testing Training",
         institution: "Orange Digital Center Egypt & Instant Software Solutions",
         date: "Feb 2026",
-        desc: "Formulated and constructed automation frameworks, elevating practical skills with industry-standard test runner tools and assertions.",
+        desc: "Participated in a collaborative training program. Integrated automation testing concepts into practical, real-world scenarios. Formulated and constructed automation frameworks, elevating practical skills with industry-standard tools and QA best practices.",
         type: "course",
-        skillsLearned: ["TestNG", "Page Object Model", "Automation Frameworks", "CI/CD Basics"]
+        skillsLearned: ["TestNG", "Selenium Frameworks", "Automation Standards", "Test Design Patterns"]
       }
     ];
     await Education.insertMany(educations);
 
-    // 4. Skills
+    // 4. Skills (Directly categorized from CV)
     const skills = [
-      { name: "Java", description: "Core & Automation Scripts", iconUrl: "" },
-      { name: "JavaScript / TypeScript", description: "ES6+ Modern Syntax", iconUrl: "" },
-      { name: "HTML5 / CSS3", description: "Frontend markup & Responsive Styling", iconUrl: "" },
-      { name: "Angular 18", description: "Frontend Framework & Standalone Components", iconUrl: "" },
-      { name: "Node.js / Express.js", description: "Backend REST API Development", iconUrl: "" },
-      { name: "MongoDB", description: "NoSQL Database & Mongoose ORM", iconUrl: "" },
-      { name: "Selenium WebDriver", description: "Web Test Automation", iconUrl: "" },
-      { name: "TestNG", description: "Test Execution & Reporting Framework", iconUrl: "" },
-      { name: "Postman / API Testing", description: "API Endpoint Validation", iconUrl: "" },
-      { name: "Manual & QA Testing", description: "Test Plans & Defect Reporting", iconUrl: "" },
-      { name: "Git & GitHub", description: "Version Control & Collaboration", iconUrl: "" }
+      { name: "Java (Core & Test Automation)", description: "OOP, Selenium Scripts & POM", iconUrl: "" },
+      { name: "Selenium WebDriver", description: "Automated Browser Testing & UI Flows", iconUrl: "" },
+      { name: "TestNG", description: "Test Framework, Annotations & Reports", iconUrl: "" },
+      { name: "Postman & REST API Testing", description: "Endpoint Validation & Schema Tests", iconUrl: "" },
+      { name: "Manual Testing & ISTQB", description: "Test Case Design, SDLC & STLC", iconUrl: "" },
+      { name: "Jira (Xray) & Bug Reporting", description: "Defect Tracking & Agile Sprints", iconUrl: "" },
+      { name: "Angular 21", description: "Signals, Standalone & Reactive UI", iconUrl: "" },
+      { name: "Node.js & Express.js", description: "Backend Services & REST APIs", iconUrl: "" },
+      { name: "MongoDB & Database Design", description: "NoSQL Schemas & Mongoose ORM", iconUrl: "" },
+      { name: "TypeScript & JavaScript (ES6+)", description: "Typed Full-Stack Development", iconUrl: "" },
+      { name: "HTML5 & CSS3 / Tailwind", description: "Modern Responsive Web Layouts", iconUrl: "" },
+      { name: "Git, GitHub & Maven", description: "Version Control & Build Automation", iconUrl: "" }
     ];
     await Skill.insertMany(skills);
 
     // 5. Certificates
     const certificates = [
       {
-        title: "Software Testing & Automation Specialist",
-        issuer: "Digital Egypt Pioneers Initiative (DEPI)",
+        title: "Software Testing Track Certificate",
+        issuer: "Digital Egypt Pioneers Initiative (DEPI) / MCIT",
         date: "Dec 2025",
         link: "https://depi.gov.eg/",
         imageUrl: ""
       },
       {
-        title: "Automation Testing Certificate",
+        title: "Automation Testing Training Certificate",
         issuer: "Orange Digital Center Egypt & Instant Software Solutions",
         date: "Feb 2026",
         link: "https://www.orangedigitalcenters.com/",
+        imageUrl: ""
+      },
+      {
+        title: "NTI MEAN Stack Web Developer Certificate",
+        issuer: "National Telecommunication Institute (NTI)",
+        date: "Aug 2026",
+        link: "https://nti.sci.eg/",
         imageUrl: ""
       },
       {
@@ -179,34 +195,25 @@ async function seedData() {
     ];
     await Certificate.insertMany(certificates);
 
-    // 6. Volunteering, Events & Activities
+    // 6. University & Extracurricular Activities (Directly from CV)
     const activities = [
       {
-        title: "Community Tech Workshop Lead & Organizer",
-        organization: "Student Tech Club",
-        role: "Event Coordinator & Workshop Lead",
-        date: "Oct 2025 - Present",
-        desc: "Organized technical workshops on web development basics and software testing fundamentals for university students.",
-        category: "volunteering",
-        link: "https://github.com/ibrahimahamada27"
-      },
-      {
-        title: "DEPI Hackathon & Technical Showcase",
-        organization: "Digital Egypt Pioneers Initiative",
-        role: "Participant & Project Presenter",
-        date: "Nov 2025",
-        desc: "Participated in the annual technical showcase presenting test automation frameworks and web application solutions.",
-        category: "event",
-        link: "https://depi.gov.eg/"
-      },
-      {
-        title: "Open Source QA & Testing Contributor",
-        organization: "Open Source Community",
-        role: "Volunteer QA Tester",
-        date: "Jan 2026 - Present",
-        desc: "Contributed bug reports, exploratory test scripts, and UI test cases for open-source community projects.",
+        title: "Tech Team Member (Web Committee)",
+        organization: "Microsoft Student Club (MSC), AOU",
+        role: "Web Team Developer & Tech Committee",
+        date: "Dec 2025 – Present",
+        desc: "Active member in the Web Committee at Microsoft Student Club (MSC) - Arab Open University, contributing to technical development projects, web workshops, and collaborative coding initiatives.",
         category: "activity",
-        link: "https://github.com/ibrahimahamada27"
+        link: "https://github.com/IbrahimAHamada27"
+      },
+      {
+        title: "Head of Logistics, OC & Building",
+        organization: "NASA Space Apps Challenge, Benha",
+        role: "Head of Logistics & Organizing Committee",
+        date: "May 2025 – Oct 2025",
+        desc: "Spearheaded event preparations, logistics planning, on-ground organization, and cross-functional team coordination over a six-month term for the global hackathon.",
+        category: "volunteering",
+        link: "https://www.spaceappschallenge.org/"
       }
     ];
     await Activity.insertMany(activities);
@@ -319,7 +326,7 @@ async function seedData() {
       },
       {
         title: "Full-Stack Web Development (MEAN Stack)",
-        description: "Building scalable, high-performance web applications using Angular 18 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.",
+        description: "Building scalable, high-performance web applications using Angular 21 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.",
         icon: "fa-solid fa-layer-group"
       },
       {

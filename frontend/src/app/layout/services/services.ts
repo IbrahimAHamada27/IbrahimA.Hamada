@@ -32,7 +32,7 @@ export class ServicesComponent implements OnInit {
     {
       _id: 'srv-4',
       title: 'Full-Stack Web Development (MEAN Stack)',
-      description: 'Building scalable, high-performance web applications using Angular 18 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.',
+      description: 'Building scalable, high-performance web applications using Angular 21 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.',
       icon: 'fa-solid fa-layer-group'
     },
     {

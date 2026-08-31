@@ -3,28 +3,31 @@ import { SiteInfo } from '../../core/models/site-info.model';
 import { lastValueFrom } from 'rxjs';
 import { SiteInfoService } from '../../core/services/site-info.service';
 import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
+import { CvModalComponent } from '../../shared/cv-modal/cv-modal';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ImgUrlPipe],
+  imports: [ImgUrlPipe, CvModalComponent],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class HomeComponent implements OnInit {
+  isCvModalOpen = false;
+
   siteInfo: SiteInfo = {
     brandName: "Ibrahim A. Hamada",
-    heroTitle: "QA Automation Engineer & Full-Stack Web Developer",
-    heroDesc: "Passionate about software quality, test automation, manual testing, API validation with Postman, and building scalable web applications with the MEAN Stack (Angular 18, Node.js, Express, MongoDB). DEPI Graduate, NTI Trainee, and AOU CS student.",
-    aboutTitle: "Engineering Background & Quality Philosophy",
-    aboutDesc1: "Software Tester and Full-Stack Web Developer with hands-on experience in manual exploratory testing, TestNG/Selenium test frameworks, API validation, and modern web application development. Trained through MCIT Digital Egypt Pioneers Initiative (DEPI), Orange Digital Center, and National Telecommunication Institute (NTI).",
-    aboutDesc2: "Proficient in formulating test plans, boundary value analysis, tracking defect lifecycles, and engineering clean RESTful APIs. Dedicated to delivering reliable, bug-free software and continuous technical growth.",
-    academicTitle: "Academic & Professional Journey",
-    academicDesc: "Undergraduate in Computer Science at Arab Open University (AOU), DEPI Software Testing Specialist, and NTI MEAN Stack Web Developer Career Accelerator graduate.",
-    philosophyTitle: "Software Quality & Testing Mindset",
-    philosophyDesc: "Believing that QA is not just about finding bugs, but designing maintainable, resilient architectures with automated test coverage from unit to end-to-end user journeys.",
+    heroTitle: "Software Tester & Aspiring Full-Stack Web Developer",
+    heroDesc: "Software Tester and Aspiring Full-Stack Web Developer with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. DEPI Graduate, NTI MEAN Stack Graduate, and AOU CS student with expertise spanning software quality assurance and full-stack MEAN development (MongoDB, Express.js, Angular 21, Node.js).",
+    aboutTitle: "Professional Summary & Background",
+    aboutDesc1: "Software Tester and Aspiring Full-Stack Web Developer with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. Trained through DEPI (Ministry of Communications and Information Technology), Orange Digital Center, and NTI programs, with expertise spanning software quality assurance and MEAN Stack development (MongoDB, Express.js, Angular 21, Node.js).",
+    aboutDesc2: "Skilled in designing structured test cases, reporting defects via Jira and Excel, building secure RESTful APIs, and developing modern, responsive web applications. Eager to contribute to innovative engineering teams while continuously expanding technical and professional capabilities.",
+    academicTitle: "Academic Education & Degrees",
+    academicDesc: "Arab Open University (AOU), Faculty of Computer Studies, Department of Computer Science (Sep 2025 - Present) — Pursuing second-year undergraduate studies in Computer Science.",
+    philosophyTitle: "Software Quality & Engineering Standards",
+    philosophyDesc: "ISTQB-aligned testing principles, structured SDLC & STLC execution, automated regression validation with Page Object Model, and clean RESTful API architectures with Angular 21 & Node.js.",
     contactTitle: "Get in Touch",
-    contactSubtitle: "Available for QA testing, automation engineering, or full-stack web development roles & projects.",
+    contactSubtitle: "Available for Software Testing, QA Automation, and MEAN Stack Web Development opportunities.",
     contactEmail: "ibrahima.hamada277@gmail.com",
     phone: "+20 111 254 0997",
     githubUrl: "https://github.com/IbrahimAHamada27",
@@ -52,6 +55,10 @@ export class HomeComponent implements OnInit {
     } catch (error) {
       console.warn('Using default site info', error);
     }
+  }
+
+  openCvModal() {
+    this.isCvModalOpen = true;
   }
 
   scrollToSection(sectionId: string, event?: Event) {
