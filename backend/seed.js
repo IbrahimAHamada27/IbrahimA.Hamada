@@ -11,7 +11,7 @@ const Activity = require('./models/Activity');
 const Project = require('./models/Project');
 const Service = require('./models/Service');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
+const MONGODB_URI = process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
 
 async function seedData() {
   try {
