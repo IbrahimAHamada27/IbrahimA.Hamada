@@ -20,6 +20,7 @@ export interface SiteInfo {
   contactTitle?: string;
   contactSubtitle?: string;
   contactEmail?: string;
+  phone?: string;
   emailProvider?: string;
   emailjsServiceId?: string;
   emailjsTemplateId?: string;

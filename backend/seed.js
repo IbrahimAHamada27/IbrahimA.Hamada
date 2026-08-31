@@ -31,19 +31,27 @@ async function seedData() {
     // 1. Site Info
     await SiteInfo.create({
       brandName: "Ibrahim A. Hamada",
-      heroTitle: "Software Tester & Web Developer",
-      heroDesc: "I am an Aspiring Full-Stack Web Developer and Software Tester with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. Skilled in MEAN Stack development.",
-      aboutTitle: "About Me",
-      aboutDesc1: "Software Tester and Aspiring Full-Stack Web Developer with practical experience in Manual Testing, API Testing, Database Testing, and Test Automation using Selenium, TestNG, and Java. Trained through DEPI, Orange Digital Center, and NTI programs.",
-      aboutDesc2: "Skilled in designing test cases, reporting defects, building RESTful APIs, and developing modern web applications. Eager to contribute to innovative teams while continuously expanding technical and professional capabilities.",
+      heroTitle: "QA Automation Engineer & Full-Stack Web Developer",
+      heroDesc: "Passionate about software quality, test automation, manual testing, API validation with Postman, and building scalable web applications with the MEAN Stack (Angular 18, Node.js, Express, MongoDB). DEPI Graduate, NTI Trainee, and AOU CS student.",
+      aboutTitle: "Engineering Background & Quality Philosophy",
+      aboutDesc1: "Software Tester and Full-Stack Web Developer with hands-on experience in manual exploratory testing, TestNG/Selenium test frameworks, API validation, and modern web application development. Trained through MCIT Digital Egypt Pioneers Initiative (DEPI), Orange Digital Center, and National Telecommunication Institute (NTI).",
+      aboutDesc2: "Proficient in formulating test plans, boundary value analysis, tracking defect lifecycles, and engineering clean RESTful APIs. Dedicated to delivering reliable, bug-free software and continuous technical growth.",
+      academicTitle: "Academic & Professional Journey",
+      academicDesc: "Undergraduate in Computer Science at Arab Open University (AOU), DEPI Software Testing Specialist, and NTI MEAN Stack Web Developer Career Accelerator graduate.",
+      philosophyTitle: "Software Quality & Testing Mindset",
+      philosophyDesc: "Believing that QA is not just about finding bugs, but designing maintainable, resilient architectures with automated test coverage from unit to end-to-end user journeys.",
       contactTitle: "Get in Touch",
-      contactSubtitle: "Feel free to reach out to me for QA testing, automation, or full-stack web development projects.",
+      contactSubtitle: "Available for QA testing, automation engineering, or full-stack web development roles & projects.",
       contactEmail: "ibrahima.hamada277@gmail.com",
-      githubUrl: "https://github.com/ibrahimahamada27",
-      linkedinUrl: "https://www.linkedin.com/in/ibrahim-a-hamada",
+      phone: "+20 111 254 0997",
+      githubUrl: "https://github.com/IbrahimAHamada27",
+      linkedinUrl: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/",
+      profileImage: "https://github.com/ibrahimahamada27.png",
+      logoImage: "https://github.com/ibrahimahamada27.png",
       socialLinks: [
-        { name: "LinkedIn", url: "https://www.linkedin.com/in/ibrahim-a-hamada", icon: "fab fa-linkedin" },
-        { name: "GitHub", url: "https://github.com/ibrahimahamada27", icon: "fab fa-github" }
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/", icon: "fab fa-linkedin" },
+        { name: "GitHub", url: "https://github.com/IbrahimAHamada27", icon: "fab fa-github" },
+        { name: "WhatsApp", url: "https://wa.me/201112540997", icon: "fab fa-whatsapp" }
       ]
     });
 
@@ -215,7 +223,7 @@ async function seedData() {
       {
         title: "Hedera Hashgraph Interactive 3D Experience",
         description: "Interactive cinematic 3D educational web app developed for MLSA AOU Hedera Track. Visualizes Hedera consensus algorithms, token services (HTS), and live HBAR transfer simulations with WebGL.",
-        link: "https://github.com/IbrahimAHamada27/hedera-hashgraph-interactive-session",
+        link: "https://ibrahimahamada27.github.io/hedera-hashgraph-interactive-session/",
         technologies: ["React", "Three.js", "React Three Fiber", "Framer Motion", "TailwindCSS", "WebGL"],
         imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60"
       },
@@ -257,7 +265,7 @@ async function seedData() {
       {
         title: "The Face Coffee & Smart QR Ordering",
         description: "Commercial cafe ordering system and interactive digital QR menu with customizable modifiers, live order calculations, and administrative menu controls.",
-        link: "https://github.com/IbrahimAHamada27/thefacecoffee",
+        link: "https://ibrahimahamada27.github.io/thefacecoffee/",
         technologies: ["Python", "FastAPI / Flask", "Modern Web", "QR System", "REST API"],
         imageUrl: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=60"
       },
@@ -271,14 +279,14 @@ async function seedData() {
       {
         title: "Double Shot Cafe Digital Experience",
         description: "High-conversion commercial cafe showcase featuring responsive visual menus, signature specialty drink cards, customer reviews, and location mapping.",
-        link: "https://github.com/IbrahimAHamada27/double.shot",
+        link: "https://ibrahimahamada27.github.io/double.shot/",
         technologies: ["HTML5", "CSS3", "JavaScript", "Mobile-First", "Vibe Coding"],
         imageUrl: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format&fit=crop&q=60"
       },
       {
         title: "Interactive Luxury Wedding Invitation Suite",
         description: "Luxury digital wedding invitation with real-time countdown timers, interactive RSVP forms, venue location coordinates, and smooth multimedia ambient sound effects.",
-        link: "https://github.com/IbrahimAHamada27/Mostafa_And_Yasmine_Wedding_Invitation",
+        link: "https://ibrahimahamada27.github.io/Mostafa_And_Yasmine_Wedding_Invitation/",
         technologies: ["HTML5", "CSS3 Keyframes", "JavaScript", "Audio API", "Responsive UX"],
         imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=60"
       }

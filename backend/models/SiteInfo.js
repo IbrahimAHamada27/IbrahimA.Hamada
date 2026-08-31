@@ -24,6 +24,7 @@ const SiteInfoSchema = new mongoose.Schema({
   contactTitle: { type: String },
   contactSubtitle: { type: String },
   contactEmail: { type: String },
+  phone: { type: String },
   emailProvider: { type: String },
   emailjsServiceId: { type: String },
   emailjsTemplateId: { type: String },

@@ -34,7 +34,7 @@ export class ProjectsComponent implements OnInit {
       _id: 'proj-3',
       title: 'Hedera Hashgraph Interactive 3D Experience',
       description: 'Interactive cinematic 3D educational web app developed for MLSA AOU Hedera Track. Visualizes Hedera consensus algorithms, token services (HTS), and live HBAR transfer simulations with WebGL.',
-      link: 'https://github.com/IbrahimAHamada27/hedera-hashgraph-interactive-session',
+      link: 'https://ibrahimahamada27.github.io/hedera-hashgraph-interactive-session/',
       technologies: ['React', 'Three.js', 'React Three Fiber', 'Framer Motion', 'TailwindCSS', 'WebGL'],
       imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60'
     },
@@ -82,7 +82,7 @@ export class ProjectsComponent implements OnInit {
       _id: 'proj-9',
       title: 'The Face Coffee & Smart QR Ordering',
       description: 'Commercial cafe ordering system and interactive digital QR menu with customizable modifiers, live order calculations, and administrative menu controls.',
-      link: 'https://github.com/IbrahimAHamada27/thefacecoffee',
+      link: 'https://ibrahimahamada27.github.io/thefacecoffee/',
       technologies: ['Python', 'FastAPI / Flask', 'Modern Web', 'QR System', 'REST API'],
       imageUrl: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=60'
     },
@@ -98,7 +98,7 @@ export class ProjectsComponent implements OnInit {
       _id: 'proj-11',
       title: 'Double Shot Cafe Digital Experience',
       description: 'High-conversion commercial cafe showcase featuring responsive visual menus, signature specialty drink cards, customer reviews, and location mapping.',
-      link: 'https://github.com/IbrahimAHamada27/double.shot',
+      link: 'https://ibrahimahamada27.github.io/double.shot/',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Mobile-First', 'Vibe Coding'],
       imageUrl: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format&fit=crop&q=60'
     },
@@ -106,7 +106,7 @@ export class ProjectsComponent implements OnInit {
       _id: 'proj-12',
       title: 'Interactive Luxury Wedding Invitation Suite',
       description: 'Luxury digital wedding invitation with real-time countdown timers, interactive RSVP forms, venue location coordinates, and smooth multimedia ambient sound effects.',
-      link: 'https://github.com/IbrahimAHamada27/Mostafa_And_Yasmine_Wedding_Invitation',
+      link: 'https://ibrahimahamada27.github.io/Mostafa_And_Yasmine_Wedding_Invitation/',
       technologies: ['HTML5', 'CSS3 Keyframes', 'JavaScript', 'Audio API', 'Responsive UX'],
       imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=60'
     }

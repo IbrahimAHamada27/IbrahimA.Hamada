@@ -15,7 +15,14 @@ import { ToastService } from '../../core/services/toast.service';
   styleUrl: './contact.css'
 })
 export class ContactComponent implements OnInit {
-  siteInfo: SiteInfo = {};
+  siteInfo: SiteInfo = {
+    contactTitle: 'Get in Touch',
+    contactSubtitle: 'Have a QA inquiry, testing framework consultation, or web development opportunity? Reach out directly!',
+    contactEmail: 'ibrahima.hamada277@gmail.com',
+    phone: '+20 111 254 0997',
+    linkedinUrl: 'https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/',
+    githubUrl: 'https://github.com/IbrahimAHamada27'
+  };
   formData = { name: '', email: '', message: '' };
 
   constructor(
@@ -32,9 +39,11 @@ export class ContactComponent implements OnInit {
   async fetchSiteInfo() {
     try {
       const response = await lastValueFrom(this.siteInfoService.getSiteInfo());
-      this.siteInfo = response;
+      if (response && (response.contactEmail || response.contactTitle)) {
+        this.siteInfo = { ...this.siteInfo, ...response };
+      }
     } catch (error) {
-      console.error('Failed to fetch site info', error);
+      console.warn('Using default contact info', error);
     }
   }
 
