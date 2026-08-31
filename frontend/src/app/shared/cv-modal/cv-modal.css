@@ -364,6 +364,34 @@
   color: var(--text-color);
 }
 
+/* Mobile Viewport Optimizations */
+@media (max-width: 480px) {
+  .cv-modal-backdrop {
+    padding: 8px;
+  }
+  .cv-modal-container {
+    max-height: 96vh;
+    border-radius: 14px;
+  }
+  .cv-modal-header {
+    padding: 10px 12px;
+  }
+  .action-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+  .cv-badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  .cv-page {
+    padding: 18px 14px;
+  }
+  .cv-name {
+    font-size: 1.25rem;
+  }
+}
+
 /* Print Styles */
 @media print {
   body * {
