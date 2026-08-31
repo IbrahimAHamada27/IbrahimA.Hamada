@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
     phone: "+20 111 254 0997",
     githubUrl: "https://github.com/IbrahimAHamada27",
     linkedinUrl: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/",
+    facebookUrl: "https://web.facebook.com/ibrahima.hamada27",
+    instagramUrl: "https://www.instagram.com/ibrahim_a._hamada/",
+    telegramUrl: "https://t.me/+201112540997",
+    whatsappUrl: "https://wa.me/201112540997",
     profileImage: "https://github.com/ibrahimahamada27.png",
     logoImage: "https://github.com/ibrahimahamada27.png"
   };

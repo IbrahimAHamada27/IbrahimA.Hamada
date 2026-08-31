@@ -39,6 +39,19 @@
               </div>
             </div>
 
+            <!-- Telegram Direct -->
+            <div class="contact-item">
+              <div class="item-icon-box telegram-box" style="background: rgba(0, 136, 204, 0.15); border: 1px solid rgba(0, 136, 204, 0.3); color: #0088cc;">
+                <i class="fa-brands fa-telegram"></i>
+              </div>
+              <div>
+                <span class="item-label">Telegram Direct</span>
+                <a [href]="siteInfo.telegramUrl || 'https://t.me/+201112540997'" target="_blank" rel="noopener noreferrer" class="item-val-link">
+                  Message on Telegram
+                </a>
+              </div>
+            </div>
+
             <!-- Email -->
             <div class="contact-item">
               <div class="item-icon-box blue-box">
@@ -70,7 +83,7 @@
                 </div>
                 <div>
                   <span class="item-label">LinkedIn Profile</span>
-                  <a [href]="siteInfo.linkedinUrl" target="_blank" class="item-val-link">Connect on LinkedIn</a>
+                  <a [href]="siteInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Connect on LinkedIn</a>
                 </div>
               </div>
             }
@@ -82,7 +95,31 @@
                 </div>
                 <div>
                   <span class="item-label">GitHub Repositories</span>
-                  <a [href]="siteInfo.githubUrl" target="_blank" class="item-val-link">Explore Code & QA Projects</a>
+                  <a [href]="siteInfo.githubUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Explore Code & QA Projects</a>
+                </div>
+              </div>
+            }
+
+            @if (siteInfo.facebookUrl) {
+              <div class="contact-item">
+                <div class="item-icon-box facebook-box" style="background: rgba(24, 119, 242, 0.15); border: 1px solid rgba(24, 119, 242, 0.3); color: #1877f2;">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div>
+                  <span class="item-label">Facebook Profile</span>
+                  <a [href]="siteInfo.facebookUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Visit Facebook Page</a>
+                </div>
+              </div>
+            }
+
+            @if (siteInfo.instagramUrl) {
+              <div class="contact-item">
+                <div class="item-icon-box instagram-box" style="background: rgba(225, 48, 108, 0.15); border: 1px solid rgba(225, 48, 108, 0.3); color: #e1306c;">
+                  <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div>
+                  <span class="item-label">Instagram Profile</span>
+                  <a [href]="siteInfo.instagramUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Follow on Instagram</a>
                 </div>
               </div>
             }

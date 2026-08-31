@@ -13,6 +13,10 @@ const SiteInfoSchema = new mongoose.Schema({
   philosophyDesc: { type: String },
   githubUrl: { type: String },
   linkedinUrl: { type: String },
+  facebookUrl: { type: String },
+  instagramUrl: { type: String },
+  telegramUrl: { type: String },
+  whatsappUrl: { type: String },
   socialLinks: [{
     name: { type: String, required: true },
     url: { type: String, required: true },

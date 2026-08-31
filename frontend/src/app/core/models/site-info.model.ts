@@ -13,6 +13,10 @@ export interface SiteInfo {
   philosophyDesc?: string;
   githubUrl?: string;
   linkedinUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  telegramUrl?: string;
+  whatsappUrl?: string;
   socialLinks?: { name: string; url: string; icon?: string }[];
   profileImage?: string;
   logoImage?: string;

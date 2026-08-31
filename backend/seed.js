@@ -45,13 +45,20 @@ async function seedData() {
       contactEmail: "ibrahima.hamada277@gmail.com",
       phone: "+20 111 254 0997",
       githubUrl: "https://github.com/IbrahimAHamada27",
-      linkedinUrl: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/",
+      linkedinUrl: "https://www.linkedin.com/in/ibrahimahamada/",
+      facebookUrl: "https://web.facebook.com/ibrahima.hamada27",
+      instagramUrl: "https://www.instagram.com/ibrahim_a._hamada/",
+      telegramUrl: "https://t.me/+201112540997",
+      whatsappUrl: "https://wa.me/201112540997",
       profileImage: "https://github.com/ibrahimahamada27.png",
       logoImage: "https://github.com/ibrahimahamada27.png",
       socialLinks: [
-        { name: "LinkedIn", url: "https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/", icon: "fab fa-linkedin" },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/ibrahimahamada/", icon: "fab fa-linkedin" },
         { name: "GitHub", url: "https://github.com/IbrahimAHamada27", icon: "fab fa-github" },
-        { name: "WhatsApp", url: "https://wa.me/201112540997", icon: "fab fa-whatsapp" }
+        { name: "WhatsApp", url: "https://wa.me/201112540997", icon: "fab fa-whatsapp" },
+        { name: "Telegram", url: "https://t.me/+201112540997", icon: "fab fa-telegram" },
+        { name: "Facebook", url: "https://web.facebook.com/ibrahima.hamada27", icon: "fab fa-facebook" },
+        { name: "Instagram", url: "https://www.instagram.com/ibrahim_a._hamada/", icon: "fab fa-instagram" }
       ]
     });
 

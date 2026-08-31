@@ -21,7 +21,11 @@ export class ContactComponent implements OnInit {
     contactEmail: 'ibrahima.hamada277@gmail.com',
     phone: '+20 111 254 0997',
     linkedinUrl: 'https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/',
-    githubUrl: 'https://github.com/IbrahimAHamada27'
+    githubUrl: 'https://github.com/IbrahimAHamada27',
+    facebookUrl: 'https://web.facebook.com/ibrahima.hamada27',
+    instagramUrl: 'https://www.instagram.com/ibrahim_a._hamada/',
+    telegramUrl: 'https://t.me/+201112540997',
+    whatsappUrl: 'https://wa.me/201112540997'
   };
   formData = { name: '', email: '', message: '' };
 
