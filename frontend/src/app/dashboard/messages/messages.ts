@@ -34,7 +34,7 @@ export class MessagesComponent implements OnInit {
   async deleteMessage(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/messages/${id}`));
+      await lastValueFrom(this.http.delete(`${environment.apiUrl}/api/messages/${id}`));
       this.messages = this.messages.filter(m => m._id !== id);
       this.toastService.success('Message deleted successfully');
     } catch (error) {

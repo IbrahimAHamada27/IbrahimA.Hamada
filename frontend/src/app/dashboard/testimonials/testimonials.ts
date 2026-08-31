@@ -38,7 +38,7 @@ export class DashboardTestimonialsComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/testimonials/${id}`));
+      await lastValueFrom(this.http.delete(`${environment.apiUrl}/api/testimonials/${id}`));
       this.testimonials = this.testimonials.filter(s => s._id !== id);
       this.toastService.success('Testimonial deleted successfully');
       this.cdr.detectChanges();
@@ -77,7 +77,7 @@ export class DashboardTestimonialsComponent implements OnInit {
     event.preventDefault();
     try {
       const url = this.editingId 
-        ? `https://portfoliobackend-orpin.vercel.app/api/testimonials/${this.editingId}`
+        ? `${environment.apiUrl}/api/testimonials/${this.editingId}`
         : `${environment.apiUrl}/api/testimonials`;
       
       let updated: Testimonial;

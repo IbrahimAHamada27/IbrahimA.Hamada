@@ -45,8 +45,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // Scroll to target section if path matches section id
-    setTimeout(() => {
-      let path = window.location.pathname.replace(/^\//, '');
+    const handleInitialScroll = () => {
+      const path = window.location.pathname.replace(/^\//, '');
       if (path && path !== 'admin') {
         const element = document.getElementById(path);
         if (element) {
@@ -54,7 +54,10 @@ export class MainComponent implements OnInit, AfterViewInit {
         }
       }
       AOS.refresh();
-    }, 150);
+    };
+
+    setTimeout(handleInitialScroll, 100);
+    setTimeout(handleInitialScroll, 500);
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -75,5 +78,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         window.history.replaceState(null, '', targetPath);
       }
     }
+    AOS.refresh();
   }
 }

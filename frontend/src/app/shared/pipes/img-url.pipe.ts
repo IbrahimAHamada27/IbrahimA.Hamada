@@ -10,8 +10,14 @@ export class ImgUrlPipe implements PipeTransform {
     if (!value) {
       return '';
     }
+    if (value.startsWith('data:') || value.startsWith('http://') || value.startsWith('https://') || value.startsWith('assets/')) {
+      return value;
+    }
     if (value.startsWith('/uploads/')) {
       return `${environment.apiUrl}${value}`;
+    }
+    if (value.startsWith('uploads/')) {
+      return `${environment.apiUrl}/${value}`;
     }
     return value;
   }

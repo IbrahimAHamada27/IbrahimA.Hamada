@@ -37,7 +37,7 @@ export class DashboardCertificatesComponent implements OnInit {
   async deleteCertificate(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/certificates/${id}`));
+      await lastValueFrom(this.http.delete(`${environment.apiUrl}/api/certificates/${id}`));
       this.certificates = this.certificates.filter(c => c._id !== id);
       this.toastService.success('Certificate deleted successfully');
       this.cdr.detectChanges();
@@ -71,7 +71,7 @@ export class DashboardCertificatesComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `https://portfoliobackend-orpin.vercel.app/api/certificates/${this.editingId}`
+        ? `${environment.apiUrl}/api/certificates/${this.editingId}`
         : `${environment.apiUrl}/api/certificates`;
 
       let updatedItem: Certificate;

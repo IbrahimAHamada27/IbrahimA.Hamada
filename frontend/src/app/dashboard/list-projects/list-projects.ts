@@ -44,7 +44,7 @@ export class ListProjectsComponent implements OnInit {
   async deleteProject(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/projects/${id}`));
+      await lastValueFrom(this.http.delete(`${environment.apiUrl}/api/projects/${id}`));
       this.projects = this.projects.filter(p => p._id !== id);
       this.toastService.success('Project deleted successfully');
       this.cdr.detectChanges();
@@ -87,7 +87,7 @@ export class ListProjectsComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `https://portfoliobackend-orpin.vercel.app/api/projects/${this.editingId}`
+        ? `${environment.apiUrl}/api/projects/${this.editingId}`
         : `${environment.apiUrl}/api/projects`;
 
       let updatedItem: Project;

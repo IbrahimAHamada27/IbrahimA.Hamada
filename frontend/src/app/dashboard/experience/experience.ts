@@ -37,7 +37,7 @@ export class DashboardExperienceComponent implements OnInit {
   async deleteExperience(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/experience/${id}`));
+      await lastValueFrom(this.http.delete(`${environment.apiUrl}/api/experience/${id}`));
       this.experiences = this.experiences.filter(e => e._id !== id);
       this.toastService.success('Experience deleted successfully');
       this.cdr.detectChanges();
@@ -72,7 +72,7 @@ export class DashboardExperienceComponent implements OnInit {
 
     try {
       const url = this.editingId 
-        ? `https://portfoliobackend-orpin.vercel.app/api/experience/${this.editingId}`
+        ? `${environment.apiUrl}/api/experience/${this.editingId}`
         : `${environment.apiUrl}/api/experience`;
 
       let updatedItem: Experience;

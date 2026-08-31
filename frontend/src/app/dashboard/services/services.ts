@@ -37,7 +37,7 @@ export class DashboardServicesComponent implements OnInit {
   async deleteItem(id: string | undefined) {
     if (!id) return;
     try {
-      await lastValueFrom(this.http.delete(`https://portfoliobackend-orpin.vercel.app/api/services/${id}`));
+      await lastValueFrom(this.http.delete(`${environment.apiUrl}/api/services/${id}`));
       this.services = this.services.filter(s => s._id !== id);
       this.toastService.success('Service deleted successfully');
       this.cdr.detectChanges();
@@ -63,7 +63,7 @@ export class DashboardServicesComponent implements OnInit {
     event.preventDefault();
     try {
       const url = this.editingId 
-        ? `https://portfoliobackend-orpin.vercel.app/api/services/${this.editingId}`
+        ? `${environment.apiUrl}/api/services/${this.editingId}`
         : `${environment.apiUrl}/api/services`;
       
       let updated: Service;

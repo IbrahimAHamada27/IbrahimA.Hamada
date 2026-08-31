@@ -1,27 +1,44 @@
-# FrontendNg
+# 🎨 Portfolio Frontend (Angular 18)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+<div align="center">
 
-## Development server
+[![Angular](https://img.shields.io/badge/Angular-18.2-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![RxJS](https://img.shields.io/badge/RxJS-Reactive-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)](https://rxjs.dev/)
+[![AOS](https://img.shields.io/badge/AOS-Animations-FF6F61?style=for-the-badge)](https://michalsnik.github.io/aos/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+</div>
 
-## Code scaffolding
+Frontend client for **Ibrahim A. Hamada's Portfolio & QA Management System**, built using **Angular 18** standalone components, modern reactive design, glassmorphism styles, and mobile-first responsiveness.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 📂 Key Architecture & Components
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Standalone Components**: Clean modular architecture with zero `NgModule` boilerplate.
+- **Layout Modules**:
+  - `HeroComponent`: Dynamic greeting, animated typography, and CTA buttons.
+  - `AboutComponent`: Professional summary, education journey (AOU, NTI, DEPI), and core focus.
+  - `ProjectsComponent`: 12 featured projects & QA automation frameworks with interactive modal inspection.
+  - `SkillsComponent`: Categorized skill bars and tech pills.
+  - `ExperienceComponent`: Detailed timeline of QA and web development engagements.
+  - `CertificatesComponent`: Interactive certifications viewer.
+  - `ActivitiesComponent`: Volunteering, community tech workshops, and hackathons.
+  - `ContactComponent`: Interactive contact form with API integration.
+- **Admin Dashboard**:
+  - `DashboardComponent`: Real-time management interface for projects, certificates, skills, and messages.
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🛠️ Development & Build
 
-## Running end-to-end tests
+```bash
+# Install dependencies
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Run local development server
+ng serve
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Build for production
+ng build --configuration production
+```

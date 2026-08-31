@@ -2,15 +2,6 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout';
 import { authGuard } from './core/guards/auth.guard';
 
-import { DashboardComponent } from './dashboard/dashboard/dashboard';
-import { DashboardHomeComponent } from './dashboard/home/home';
-import { ListProjectsComponent } from './dashboard/list-projects/list-projects';
-import { DashboardCertificatesComponent } from './dashboard/certificates/certificates';
-import { DashboardExperienceComponent } from './dashboard/experience/experience';
-import { SkillsComponent as DashboardSkillsComponent } from './dashboard/skills/skills';
-import { LoginComponent } from './dashboard/login/login';
-import { NotFoundComponent } from './not-found/not-found';
-
 export const routes: Routes = [
   {
     path: '',
@@ -31,27 +22,27 @@ export const routes: Routes = [
   },
   {
     path: 'admin/login',
-    component: LoginComponent
+    loadComponent: () => import('./dashboard/login/login').then(m => m.LoginComponent)
   },
   {
     path: 'admin',
-    component: DashboardComponent,
+    loadComponent: () => import('./dashboard/dashboard/dashboard').then(m => m.DashboardComponent),
     canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: DashboardHomeComponent },
-      { path: 'list-projects', component: ListProjectsComponent },
-      { path: 'certificates', component: DashboardCertificatesComponent },
-      { path: 'experience', component: DashboardExperienceComponent },
-      { path: 'skills', component: DashboardSkillsComponent },
+      { path: 'home', loadComponent: () => import('./dashboard/home/home').then(m => m.DashboardHomeComponent) },
+      { path: 'list-projects', loadComponent: () => import('./dashboard/list-projects/list-projects').then(m => m.ListProjectsComponent) },
+      { path: 'certificates', loadComponent: () => import('./dashboard/certificates/certificates').then(m => m.DashboardCertificatesComponent) },
+      { path: 'experience', loadComponent: () => import('./dashboard/experience/experience').then(m => m.DashboardExperienceComponent) },
+      { path: 'skills', loadComponent: () => import('./dashboard/skills/skills').then(m => m.SkillsComponent) },
       { path: 'messages', loadComponent: () => import('./dashboard/messages/messages').then(m => m.MessagesComponent) },
       { path: 'contact', loadComponent: () => import('./dashboard/contact/contact').then(m => m.DashboardContactComponent) },
       { path: 'testimonials', loadComponent: () => import('./dashboard/testimonials/testimonials').then(m => m.DashboardTestimonialsComponent) },
       { path: 'education', loadComponent: () => import('./dashboard/education/education').then(m => m.DashboardEducationComponent) },
       { path: 'services', loadComponent: () => import('./dashboard/services/services').then(m => m.DashboardServicesComponent) },
       { path: 'activities', loadComponent: () => import('./dashboard/activities/activities').then(m => m.DashboardActivitiesComponent) },
-      { path: '**', component: NotFoundComponent }
+      { path: '**', loadComponent: () => import('./not-found/not-found').then(m => m.NotFoundComponent) }
     ]
   },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', loadComponent: () => import('./not-found/not-found').then(m => m.NotFoundComponent) }
 ];

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, shareReplay } from 'rxjs';
+import { Observable, shareReplay, catchError, throwError } from 'rxjs';
 import { Skill } from '../models/skill.model';
 
 @Injectable({
@@ -15,9 +15,19 @@ export class SkillService {
 
   getSkills(refresh = false): Observable<Skill[]> {
     if (!this.cache$ || refresh) {
-      this.cache$ = this.http.get<Skill[]>(this.apiUrl).pipe(shareReplay(1));
+      this.cache$ = this.http.get<Skill[]>(this.apiUrl).pipe(
+        catchError(err => {
+          this.cache$ = undefined;
+          return throwError(() => err);
+        }),
+        shareReplay({ bufferSize: 1, refCount: false })
+      );
     }
     return this.cache$;
+  }
+
+  clearCache() {
+    this.cache$ = undefined;
   }
 }
 
