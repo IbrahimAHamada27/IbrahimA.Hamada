@@ -188,6 +188,111 @@
   }
 }
 
+/* Engineering QA & Dev Thesis Terminal */
+.hero-terminal {
+  max-width: 820px;
+  margin: 0 auto 32px;
+  text-align: left;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.12), 0 0 24px -6px var(--primary-glow);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(15, 23, 42, 0.08);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.8rem;
+}
+
+body.dark-theme .terminal-header {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #10b981; }
+
+.terminal-title {
+  color: var(--text-color-light);
+  font-weight: 600;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-badge {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.terminal-body {
+  padding: 16px 18px;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .terminal-body {
+    padding: 20px 24px;
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+}
+
+.terminal-line {
+  word-break: break-word;
+}
+
+.cmd-prompt {
+  color: #06b6d4;
+  font-weight: 800;
+  margin-right: 6px;
+}
+
+.cmd-run {
+  color: var(--text-color-dark);
+  font-weight: 600;
+}
+
+.text-qa {
+  color: #10b981;
+}
+
+.text-cyan {
+  color: #06b6d4;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
 /* Skill Highlights Chips */
 .hero-highlights {
   display: flex;
