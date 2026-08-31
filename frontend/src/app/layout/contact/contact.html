@@ -13,12 +13,12 @@
           <p class="info-card-desc">Feel free to connect via email or my professional social profiles.</p>
 
           <div class="info-items-list">
-            <!-- Phone & Call -->
+            <!-- 1. Phone & Call -->
             <div class="contact-item">
-              <div class="item-icon-box green-box" style="background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); color: #22c55e;">
+              <div class="contact-icon-box phone-accent">
                 <i class="fa-solid fa-phone"></i>
               </div>
-              <div>
+              <div class="contact-text-box">
                 <span class="item-label">Phone & Call</span>
                 <a href="tel:+201112540997" class="item-val-link">
                   +20 111 254 0997
@@ -26,25 +26,25 @@
               </div>
             </div>
 
-            <!-- WhatsApp Direct -->
+            <!-- 2. WhatsApp Direct -->
             <div class="contact-item">
-              <div class="item-icon-box whatsapp-box" style="background: rgba(37, 211, 102, 0.15); border: 1px solid rgba(37, 211, 102, 0.3); color: #25d366;">
+              <div class="contact-icon-box whatsapp-accent">
                 <i class="fa-brands fa-whatsapp"></i>
               </div>
-              <div>
+              <div class="contact-text-box">
                 <span class="item-label">WhatsApp Direct</span>
-                <a href="https://wa.me/201112540997" target="_blank" rel="noopener noreferrer" class="item-val-link">
+                <a [href]="siteInfo.whatsappUrl || 'https://wa.me/201112540997'" target="_blank" rel="noopener noreferrer" class="item-val-link">
                   Chat on WhatsApp
                 </a>
               </div>
             </div>
 
-            <!-- Telegram Direct -->
+            <!-- 3. Telegram Direct -->
             <div class="contact-item">
-              <div class="item-icon-box telegram-box" style="background: rgba(0, 136, 204, 0.15); border: 1px solid rgba(0, 136, 204, 0.3); color: #0088cc;">
+              <div class="contact-icon-box telegram-accent">
                 <i class="fa-brands fa-telegram"></i>
               </div>
-              <div>
+              <div class="contact-text-box">
                 <span class="item-label">Telegram Direct</span>
                 <a [href]="siteInfo.telegramUrl || 'https://t.me/+201112540997'" target="_blank" rel="noopener noreferrer" class="item-val-link">
                   Message on Telegram
@@ -52,12 +52,12 @@
               </div>
             </div>
 
-            <!-- Email -->
+            <!-- 4. Email -->
             <div class="contact-item">
-              <div class="item-icon-box blue-box">
+              <div class="contact-icon-box email-accent">
                 <i class="fa-solid fa-envelope"></i>
               </div>
-              <div>
+              <div class="contact-text-box">
                 <span class="item-label">Direct Email</span>
                 <a [href]="'mailto:' + (siteInfo.contactEmail || 'ibrahima.hamada277@gmail.com')" class="item-val-link">
                   {{ siteInfo.contactEmail || 'ibrahima.hamada277@gmail.com' }}
@@ -65,64 +65,68 @@
               </div>
             </div>
 
-            <!-- Location -->
-            <div class="contact-item">
-              <div class="item-icon-box orange-box" style="background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.3); color: #f97316;">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <span class="item-label">Location</span>
-                <span class="item-val-link" style="text-decoration: none;">Cairo, Egypt</span>
-              </div>
-            </div>
-
+            <!-- 5. LinkedIn -->
             @if (siteInfo.linkedinUrl) {
               <div class="contact-item">
-                <div class="item-icon-box purple-box">
+                <div class="contact-icon-box linkedin-accent">
                   <i class="fa-brands fa-linkedin-in"></i>
                 </div>
-                <div>
+                <div class="contact-text-box">
                   <span class="item-label">LinkedIn Profile</span>
                   <a [href]="siteInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Connect on LinkedIn</a>
                 </div>
               </div>
             }
 
+            <!-- 6. GitHub -->
             @if (siteInfo.githubUrl) {
               <div class="contact-item">
-                <div class="item-icon-box dark-box">
+                <div class="contact-icon-box github-accent">
                   <i class="fa-brands fa-github"></i>
                 </div>
-                <div>
+                <div class="contact-text-box">
                   <span class="item-label">GitHub Repositories</span>
                   <a [href]="siteInfo.githubUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Explore Code & QA Projects</a>
                 </div>
               </div>
             }
 
+            <!-- 7. Facebook -->
             @if (siteInfo.facebookUrl) {
               <div class="contact-item">
-                <div class="item-icon-box facebook-box" style="background: rgba(24, 119, 242, 0.15); border: 1px solid rgba(24, 119, 242, 0.3); color: #1877f2;">
+                <div class="contact-icon-box facebook-accent">
                   <i class="fa-brands fa-facebook-f"></i>
                 </div>
-                <div>
+                <div class="contact-text-box">
                   <span class="item-label">Facebook Profile</span>
                   <a [href]="siteInfo.facebookUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Visit Facebook Page</a>
                 </div>
               </div>
             }
 
+            <!-- 8. Instagram -->
             @if (siteInfo.instagramUrl) {
               <div class="contact-item">
-                <div class="item-icon-box instagram-box" style="background: rgba(225, 48, 108, 0.15); border: 1px solid rgba(225, 48, 108, 0.3); color: #e1306c;">
+                <div class="contact-icon-box instagram-accent">
                   <i class="fa-brands fa-instagram"></i>
                 </div>
-                <div>
+                <div class="contact-text-box">
                   <span class="item-label">Instagram Profile</span>
                   <a [href]="siteInfo.instagramUrl" target="_blank" rel="noopener noreferrer" class="item-val-link">Follow on Instagram</a>
                 </div>
               </div>
             }
+
+            <!-- 9. Location -->
+            <div class="contact-item">
+              <div class="contact-icon-box location-accent">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-text-box">
+                <span class="item-label">Location</span>
+                <span class="item-val-link static-val">Cairo, Egypt</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

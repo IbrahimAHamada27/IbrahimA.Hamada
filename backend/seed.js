@@ -300,37 +300,57 @@ async function seedData() {
     ];
     await Project.insertMany(projects);
 
-    // 8. Services
+    // 8. Services (Tailored for QA & Custom Web Solutions)
     const services = [
       {
-        title: "Test Automation & QA Engineering",
-        description: "Designing and engineering robust automated testing frameworks using Selenium WebDriver, Java, and TestNG. Implementing Page Object Model (POM), data-driven testing, cross-browser validation, and automated Allure reporting.",
+        title: "Test Automation & QA Engineering (Selenium & Java)",
+        description: "Designing and architecting robust automated testing suites using Selenium WebDriver, Java, and TestNG. Implementing Page Object Model (POM), data-driven testing, cross-browser execution, and automated Allure reporting.",
         icon: "fa-solid fa-vial-circle-check"
       },
       {
-        title: "RESTful API Testing & Validation",
-        description: "End-to-end API testing using Postman. Validating status codes, JSON payload schemas, authorization flows, response times, and automating regression collections for microservices.",
+        title: "RESTful API Testing & Automated Postman Collections",
+        description: "End-to-end API validation with Postman. Writing automated test scripts, validating JSON payload schemas, asserting status codes and response latency, and setting up regression test collections.",
         icon: "fa-solid fa-network-wired"
       },
       {
-        title: "Manual QA & Quality Assurance",
-        description: "ISTQB-aligned software testing methodologies, test case formulation, boundary value analysis, exploratory testing, defect lifecycle tracking, and comprehensive test documentation.",
+        title: "Manual QA & Software Quality Assurance (ISTQB)",
+        description: "ISTQB-aligned software testing methodologies, comprehensive test plan design, boundary value analysis, exploratory testing, bug lifecycle management, and defect documentation.",
         icon: "fa-solid fa-list-check"
       },
       {
         title: "Full-Stack Web Development (MEAN Stack)",
-        description: "Developing scalable, high-performance web applications using Angular 18 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT authentication and REST APIs.",
+        description: "Building scalable, high-performance web applications using Angular 18 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.",
         icon: "fa-solid fa-layer-group"
       },
       {
-        title: "Healthcare Portals & Business Web Apps",
-        description: "Crafting customized medical clinic platforms, doctor profile systems, appointment booking portals, and commercial client websites with mobile-first responsiveness and SEO optimization.",
+        title: "Restaurant & Cafe Digital Menus (Smart QR)",
+        description: "Interactive digital QR menu systems for restaurants & cafes with dynamic categories, item modifiers, real-time bill calculations, customer reviews, and administrative menu management.",
+        icon: "fa-solid fa-utensils"
+      },
+      {
+        title: "Medical Clinics & Doctor Digital Portals",
+        description: "Custom healthcare platforms featuring patient appointment booking, doctor schedules, medical service catalogs, patient testimonials, and SEO-optimized accessibility.",
         icon: "fa-solid fa-hospital-user"
       },
       {
-        title: "Interactive 3D & WebGL Experiences",
-        description: "Building immersive 3D educational and commercial web applications utilizing Three.js, React Three Fiber, Framer Motion, and WebGL with responsive glassmorphism UI/UX.",
+        title: "E-Commerce Stores & Commercial Platforms",
+        description: "High-conversion online stores with dynamic product catalogs, multi-criteria filtering, shopping carts, checkout workflows, and administrative inventory control.",
+        icon: "fa-solid fa-cart-shopping"
+      },
+      {
+        title: "Interactive 3D Web & WebGL Experiences",
+        description: "Immersive 3D web applications and educational simulations utilizing Three.js, React Three Fiber, Framer Motion, and WebGL with responsive glassmorphism UI/UX.",
         icon: "fa-solid fa-cubes"
+      },
+      {
+        title: "High-Converting Business Landing Pages",
+        description: "Ultra-fast, mobile-first responsive landing pages crafted to maximize conversion rates, featuring modern glassmorphism aesthetics, fluid micro-animations, and lead capture forms.",
+        icon: "fa-solid fa-laptop-code"
+      },
+      {
+        title: "Digital Event & Luxury Wedding Invitation Portals",
+        description: "Tailored interactive digital invitations featuring real-time countdown timers, interactive RSVP management, venue GPS coordinates, and ambient multimedia sound effects.",
+        icon: "fa-solid fa-envelope-open-text"
       }
     ];
     await Service.insertMany(services);

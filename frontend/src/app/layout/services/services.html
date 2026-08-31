@@ -6,8 +6,8 @@
     </div>
 
     <div class="services-grid">
-      @for (item of services; track item._id; let idx = $index) {
-        <div class="service-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
+      @for (item of displayedServices; track item._id; let idx = $index) {
+        <div class="service-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 4) * 80">
           <div class="service-icon-box">
             @if (item.icon && item.icon.startsWith('http')) {
               <img [src]="item.icon" [alt]="item.title" class="service-img" />
@@ -27,5 +27,14 @@
         </div>
       }
     </div>
+
+    @if (services.length > 8) {
+      <div class="show-more-container" data-aos="fade-up">
+        <button class="btn-gradient show-more-btn" (click)="toggleShowMore()">
+          <span>{{ showAllServices ? 'Show Less Services' : 'View More Services (' + (services.length - 8) + '+)' }}</span>
+          <i [class]="showAllServices ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+        </button>
+      </div>
+    }
   </div>
 </section>

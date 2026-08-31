@@ -81,61 +81,151 @@
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
 }
 
 @media (min-width: 640px) {
   .contact-item {
-    gap: 16px;
+    gap: 18px;
+    padding: 10px 12px;
   }
 }
 
-.item-icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+.contact-item:hover {
+  background: var(--badge-bg);
+  transform: translateX(4px);
+}
+
+.contact-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   flex-shrink: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  transition: all 0.25s ease;
 }
 
 @media (min-width: 640px) {
-  .item-icon-box {
+  .contact-icon-box {
     width: 48px;
     height: 48px;
-    border-radius: 12px;
-    font-size: 1.2rem;
+    border-radius: 14px;
+    font-size: 1.25rem;
   }
 }
 
-.blue-box {
-  background: var(--badge-bg);
-  color: var(--primary-color);
+.contact-item:hover .contact-icon-box {
+  transform: scale(1.08);
 }
 
-.purple-box {
-  background: rgba(139, 92, 246, 0.12);
-  color: #8b5cf6;
+/* Harmonious Icon Accents */
+.phone-accent {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+.contact-item:hover .phone-accent {
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
 }
 
-.dark-box {
-  background: rgba(15, 23, 42, 0.12);
+.whatsapp-accent {
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.25);
+}
+.contact-item:hover .whatsapp-accent {
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.35);
+}
+
+.telegram-accent {
+  color: #229ed9;
+  background: rgba(34, 158, 217, 0.1);
+  border-color: rgba(34, 158, 217, 0.25);
+}
+.contact-item:hover .telegram-accent {
+  box-shadow: 0 0 16px rgba(34, 158, 217, 0.35);
+}
+
+.email-accent {
+  color: #818cf8;
+  background: rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.25);
+}
+.contact-item:hover .email-accent {
+  box-shadow: 0 0 16px rgba(129, 140, 248, 0.35);
+}
+
+.linkedin-accent {
+  color: #0a66c2;
+  background: rgba(10, 102, 194, 0.1);
+  border-color: rgba(10, 102, 194, 0.25);
+}
+.contact-item:hover .linkedin-accent {
+  box-shadow: 0 0 16px rgba(10, 102, 194, 0.35);
+}
+
+.github-accent {
   color: var(--text-color-dark);
+  background: rgba(100, 116, 139, 0.1);
+  border-color: rgba(100, 116, 139, 0.25);
+}
+.contact-item:hover .github-accent {
+  box-shadow: 0 0 16px rgba(100, 116, 139, 0.35);
+}
+
+.facebook-accent {
+  color: #1877f2;
+  background: rgba(24, 119, 242, 0.1);
+  border-color: rgba(24, 119, 242, 0.25);
+}
+.contact-item:hover .facebook-accent {
+  box-shadow: 0 0 16px rgba(24, 119, 242, 0.35);
+}
+
+.instagram-accent {
+  color: #e1306c;
+  background: rgba(225, 48, 108, 0.1);
+  border-color: rgba(225, 48, 108, 0.25);
+}
+.contact-item:hover .instagram-accent {
+  box-shadow: 0 0 16px rgba(225, 48, 108, 0.35);
+}
+
+.location-accent {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.25);
+}
+.contact-item:hover .location-accent {
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.35);
+}
+
+.contact-text-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .item-label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--text-color-light);
+  margin-bottom: 2px;
 }
 
 @media (min-width: 640px) {
   .item-label {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 }
 
@@ -145,11 +235,20 @@
   color: var(--primary-color);
   text-decoration: none;
   word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.item-val-link:hover {
+  color: var(--text-color-dark);
+}
+
+.static-val {
+  color: var(--text-color-dark);
 }
 
 @media (min-width: 640px) {
   .item-val-link {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
 }
 

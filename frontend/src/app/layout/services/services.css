@@ -110,3 +110,33 @@
     line-height: 1.7;
   }
 }
+
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+@media (min-width: 768px) {
+  .show-more-container {
+    margin-top: 48px;
+  }
+}
+
+.show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px var(--primary-glow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.show-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--primary-glow);
+}

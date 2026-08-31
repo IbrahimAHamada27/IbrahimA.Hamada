@@ -86,16 +86,16 @@
 .nav-desktop {
   display: none;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   background: var(--glass-bg);
-  padding: 4px 8px;
+  padding: 4px 6px;
   border-radius: 30px;
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .nav-desktop {
     display: flex;
   }
@@ -105,33 +105,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 0 10px;
-  border-radius: 20px;
+  height: 34px;
+  padding: 0 9px;
+  border-radius: 18px;
   color: var(--text-color-light);
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.85rem;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  font-size: 0.82rem;
+  transition: all 0.25s ease;
   white-space: nowrap;
   cursor: pointer;
   border: 1px solid transparent;
 }
 
+@media (min-width: 1200px) {
+  .nav-item {
+    padding: 0 11px;
+    font-size: 0.86rem;
+  }
+}
+
 .nav-icon {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   opacity: 0.85;
-  transition: transform 0.25s ease, color 0.25s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .nav-text {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease;
-  margin-left: 0;
+  margin-left: 6px;
   font-weight: 700;
 }
 
@@ -142,23 +143,20 @@
 }
 
 .nav-item.active {
-  color: var(--primary-color);
-  background: var(--badge-bg);
-  border-color: var(--primary-color);
-  box-shadow: 0 4px 14px var(--primary-glow);
-  padding: 0 14px;
+  color: #ffffff;
+  background: var(--primary-gradient);
+  border-color: transparent;
+  box-shadow: 0 3px 12px var(--primary-glow);
 }
 
 .nav-item.active .nav-icon {
   opacity: 1;
-  transform: scale(1.15);
-  color: var(--primary-color);
+  transform: scale(1.08);
+  color: #ffffff;
 }
 
 .nav-item.active .nav-text {
-  max-width: 120px;
-  opacity: 1;
-  margin-left: 6px;
+  color: #ffffff;
 }
 
 .header-actions {

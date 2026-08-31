@@ -263,17 +263,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   text-decoration: none;
   backdrop-filter: blur(8px);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (min-width: 640px) {
   .social-icon-btn {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     font-size: 1.25rem;
+    border-radius: 14px;
   }
 }
 
@@ -283,10 +284,49 @@
 
 @media (hover: hover) {
   .social-icon-btn:hover {
-    color: var(--primary-color);
-    transform: translateY(-3px);
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 12px var(--primary-glow);
+    transform: translateY(-4px) scale(1.06);
+  }
+
+  .whatsapp-btn:hover {
+    color: #25d366;
+    border-color: rgba(37, 211, 102, 0.4);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  }
+
+  .telegram-btn:hover {
+    color: #229ed9;
+    border-color: rgba(34, 158, 217, 0.4);
+    box-shadow: 0 6px 20px rgba(34, 158, 217, 0.35);
+  }
+
+  .phone-btn:hover {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
+  }
+
+  .linkedin-btn:hover {
+    color: #0a66c2;
+    border-color: rgba(10, 102, 194, 0.4);
+    box-shadow: 0 6px 20px rgba(10, 102, 194, 0.35);
+  }
+
+  .github-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .facebook-btn:hover {
+    color: #1877f2;
+    border-color: rgba(24, 119, 242, 0.4);
+    box-shadow: 0 6px 20px rgba(24, 119, 242, 0.35);
+  }
+
+  .instagram-btn:hover {
+    color: #e1306c;
+    border-color: rgba(225, 48, 108, 0.4);
+    box-shadow: 0 6px 20px rgba(225, 48, 108, 0.35);
   }
 }
 

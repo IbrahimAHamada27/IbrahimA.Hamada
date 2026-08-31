@@ -42,28 +42,75 @@
 
 .footer-social-icons {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .footer-social-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: var(--badge-bg);
-  color: var(--primary-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-color-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-btn:hover {
-  background: var(--primary-gradient);
+  transform: translateY(-3px) scale(1.06);
+}
+
+.whatsapp-footer-btn:hover {
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.4);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+.telegram-footer-btn:hover {
+  color: #229ed9;
+  border-color: rgba(34, 158, 217, 0.4);
+  box-shadow: 0 4px 14px rgba(34, 158, 217, 0.35);
+}
+
+.phone-footer-btn:hover {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+
+.linkedin-footer-btn:hover {
+  color: #0a66c2;
+  border-color: rgba(10, 102, 194, 0.4);
+  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.35);
+}
+
+.github-footer-btn:hover {
   color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 14px var(--primary-glow);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+}
+
+.facebook-footer-btn:hover {
+  color: #1877f2;
+  border-color: rgba(24, 119, 242, 0.4);
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.35);
+}
+
+.instagram-footer-btn:hover {
+  color: #e1306c;
+  border-color: rgba(225, 48, 108, 0.4);
+  box-shadow: 0 4px 14px rgba(225, 48, 108, 0.35);
+}
+
+.email-footer-btn:hover {
+  color: #ea4335;
+  border-color: rgba(234, 67, 53, 0.4);
+  box-shadow: 0 4px 14px rgba(234, 67, 53, 0.35);
 }
 
 .footer-heading {

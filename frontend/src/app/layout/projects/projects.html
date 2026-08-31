@@ -6,7 +6,7 @@
     </div>
 
     <div class="projects-grid">
-      @for (project of projects; track project._id; let idx = $index) {
+      @for (project of displayedProjects; track project._id; let idx = $index) {
         <div class="project-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
           
           @if (project.imageUrl) {
@@ -44,6 +44,15 @@
         </div>
       }
     </div>
+
+    @if (projects.length > 6) {
+      <div class="show-more-container" data-aos="fade-up">
+        <button class="btn-gradient show-more-btn" (click)="toggleShowMore()">
+          <span>{{ showAllProjects ? 'Show Less Projects' : 'View More Projects (' + (projects.length - 6) + '+)' }}</span>
+          <i [class]="showAllProjects ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
+        </button>
+      </div>
+    }
   </div>
 </section>
 

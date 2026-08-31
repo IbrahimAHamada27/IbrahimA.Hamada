@@ -11,37 +11,37 @@
         </p>
 
         <div class="footer-social-icons">
-          <a [href]="siteInfo.whatsappUrl || 'https://wa.me/201112540997'" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="WhatsApp (+20 111 254 0997)">
+          <a [href]="siteInfo.whatsappUrl || 'https://wa.me/201112540997'" target="_blank" rel="noopener noreferrer" class="footer-social-btn whatsapp-footer-btn" title="WhatsApp (+20 111 254 0997)">
             <i class="fa-brands fa-whatsapp"></i>
           </a>
-          <a [href]="siteInfo.telegramUrl || 'https://t.me/+201112540997'" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Telegram">
+          <a [href]="siteInfo.telegramUrl || 'https://t.me/+201112540997'" target="_blank" rel="noopener noreferrer" class="footer-social-btn telegram-footer-btn" title="Telegram">
             <i class="fa-brands fa-telegram"></i>
           </a>
-          <a href="tel:+201112540997" class="footer-social-btn" title="Call +20 111 254 0997">
+          <a href="tel:+201112540997" class="footer-social-btn phone-footer-btn" title="Call +20 111 254 0997">
             <i class="fa-solid fa-phone"></i>
           </a>
           @if (siteInfo.linkedinUrl) {
-            <a [href]="siteInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="LinkedIn">
+            <a [href]="siteInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn linkedin-footer-btn" title="LinkedIn">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
           }
           @if (siteInfo.githubUrl) {
-            <a [href]="siteInfo.githubUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="GitHub">
+            <a [href]="siteInfo.githubUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn github-footer-btn" title="GitHub">
               <i class="fa-brands fa-github"></i>
             </a>
           }
           @if (siteInfo.facebookUrl) {
-            <a [href]="siteInfo.facebookUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Facebook">
+            <a [href]="siteInfo.facebookUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn facebook-footer-btn" title="Facebook">
               <i class="fa-brands fa-facebook-f"></i>
             </a>
           }
           @if (siteInfo.instagramUrl) {
-            <a [href]="siteInfo.instagramUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Instagram">
+            <a [href]="siteInfo.instagramUrl" target="_blank" rel="noopener noreferrer" class="footer-social-btn instagram-footer-btn" title="Instagram">
               <i class="fa-brands fa-instagram"></i>
             </a>
           }
           @if (siteInfo.contactEmail) {
-            <a [href]="'mailto:' + siteInfo.contactEmail" class="footer-social-btn" title="Email">
+            <a [href]="'mailto:' + siteInfo.contactEmail" class="footer-social-btn email-footer-btn" title="Email">
               <i class="fa-solid fa-envelope"></i>
             </a>
           }

@@ -113,8 +113,17 @@ export class ProjectsComponent implements OnInit {
   ];
 
   projects: Project[] = this.defaultProjects;
+  showAllProjects = false;
   selectedItem: DetailItem | null = null;
   isModalOpen = false;
+
+  get displayedProjects(): Project[] {
+    return this.showAllProjects ? this.projects : this.projects.slice(0, 6);
+  }
+
+  toggleShowMore() {
+    this.showAllProjects = !this.showAllProjects;
+  }
 
   constructor(private projectService: ProjectService) {}
 
