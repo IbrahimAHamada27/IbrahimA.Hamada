@@ -85,17 +85,18 @@ My-Protofolio/
 | # | Project Name | Tech Stack | Description | Repository |
 |---|---|---|---|---|
 | **1** | **DEPI E-Commerce QA Automation** | `Java`, `Selenium`, `TestNG`, `POM`, `Allure` | Automated end-to-end testing suite for Noon, DeFacto, and Seoudi with data-driven tests. | [GitHub](https://github.com/IbrahimAHamada27/graduation-project-from-depi) |
-| **2** | **Dar Al-Yusr Clinics** | `TypeScript`, `Angular`, `TailwindCSS`, `REST API` | Full-scale medical clinics platform with doctor schedules, booking, and clinic workflows. | [GitHub](https://github.com/IbrahimAHamada27/Dar-AlYusr-Clinics) |
-| **3** | **Hedera Hashgraph 3D Experience** | `React`, `Three.js`, `R3F`, `Framer Motion` | Interactive 3D educational web app visualizing Hedera consensus and live HBAR simulations. | [GitHub](https://github.com/IbrahimAHamada27/hedera-hashgraph-interactive-session) |
-| **4** | **Dr. Ibrahim Elsharkawy Portal** | `TypeScript`, `Modern Web`, `SEO` | Medical practitioner digital portal for consultation inquiries and clinic service showcases. | [GitHub](https://github.com/IbrahimAHamada27/Dr.Ibrahim_Elsharkawy) |
-| **5** | **Dr. Aml Abd ELsattar Profile** | `TypeScript`, `Modern UI/UX`, `CSS3` | Clinical healthcare platform with interactive service portfolios and booking workflows. | [GitHub](https://github.com/IbrahimAHamada27/-Dr.Aml-Abd-ELsattar-) |
-| **6** | **Vexa SaaS & AI Platform** | `TypeScript`, `Next.js`, `TailwindCSS` | High-performance SaaS application with glassmorphic UI components and AI integrations. | [GitHub](https://github.com/IbrahimAHamada27/vexa) |
-| **7** | **Athr Baqy Platform** | `TypeScript`, `Web`, `Accessibility` | Digital platform for charitable initiatives, live impact metrics, and community engagement. | [GitHub](https://github.com/IbrahimAHamada27/-AthrBaqy) |
-| **8** | **El-Koptan Mobile Store** | `TypeScript`, `E-Commerce UI`, `REST API` | Smartphone & accessories e-commerce storefront with filtering and cart management. | [GitHub](https://github.com/IbrahimAHamada27/ElKoptanMobileStore) |
-| **9** | **The Face Coffee QR System** | `Python`, `FastAPI / Flask`, `QR System` | Commercial digital cafe ordering system and interactive digital QR menu. | [GitHub](https://github.com/IbrahimAHamada27/thefacecoffee) |
-| **10**| **Full-Stack E-Commerce & QA** | `TypeScript`, `Node.js`, `Express`, `Postman` | Multi-vendor shopping platform with comprehensive manual & automated test coverage. | [GitHub](https://github.com/IbrahimAHamada27/E-commerce) |
-| **11**| **Double Shot Cafe Experience** | `HTML5`, `CSS3`, `JavaScript` | Commercial cafe showcase featuring responsive visual menus and signature drink cards. | [GitHub](https://github.com/IbrahimAHamada27/double.shot) |
-| **12**| **Luxury Wedding RSVP Suite** | `HTML5`, `CSS3 Keyframes`, `Audio API` | Interactive luxury RSVP invitation with real-time countdowns and multimedia audio. | [GitHub](https://github.com/IbrahimAHamada27/Mostafa_And_Yasmine_Wedding_Invitation) |
+| **2** | **Dr. Moaz Samir Dental Clinic Platform** | `Angular 21`, `TypeScript`, `Signals`, `PWA` | Production front-end medical platform for Al Hayat Dental Clinic with branch guides and booking. | [Live Demo](https://www.drmoazsamir.com/) |
+| **3** | **Dar Al-Yusr Clinics** | `TypeScript`, `Angular`, `TailwindCSS`, `REST API` | Full-scale medical clinics platform with doctor schedules, booking, and clinic workflows. | [GitHub](https://github.com/IbrahimAHamada27/Dar-AlYusr-Clinics) |
+| **4** | **Hedera Hashgraph 3D Experience** | `React`, `Three.js`, `R3F`, `Framer Motion` | Interactive 3D educational web app visualizing Hedera consensus and live HBAR simulations. | [Live Demo](https://ibrahimahamada27.github.io/hedera-hashgraph-interactive-session/) |
+| **5** | **Dr. Ibrahim Elsharkawy Portal** | `TypeScript`, `Modern Web`, `SEO` | Medical practitioner digital portal for consultation inquiries and clinic service showcases. | [GitHub](https://github.com/IbrahimAHamada27/Dr.Ibrahim_Elsharkawy) |
+| **6** | **Dr. Aml Abd ELsattar Profile** | `TypeScript`, `Modern UI/UX`, `CSS3` | Clinical healthcare platform with interactive service portfolios and booking workflows. | [GitHub](https://github.com/IbrahimAHamada27/-Dr.Aml-Abd-ELsattar-) |
+| **7** | **Vexa SaaS & AI Platform** | `TypeScript`, `Next.js`, `TailwindCSS` | High-performance SaaS application with glassmorphic UI components and AI integrations. | [GitHub](https://github.com/IbrahimAHamada27/vexa) |
+| **8** | **Athr Baqy Platform** | `TypeScript`, `Web`, `Accessibility` | Digital platform for charitable initiatives, live impact metrics, and community engagement. | [GitHub](https://github.com/IbrahimAHamada27/-AthrBaqy) |
+| **9** | **El-Koptan Mobile Store** | `TypeScript`, `E-Commerce UI`, `REST API` | Smartphone & accessories e-commerce storefront with filtering and cart management. | [GitHub](https://github.com/IbrahimAHamada27/ElKoptanMobileStore) |
+| **10**| **The Face Coffee QR System** | `Python`, `FastAPI / Flask`, `QR System` | Commercial digital cafe ordering system and interactive digital QR menu. | [GitHub](https://github.com/IbrahimAHamada27/thefacecoffee) |
+| **11**| **Full-Stack E-Commerce & QA** | `TypeScript`, `Node.js`, `Express`, `Postman` | Multi-vendor shopping platform with comprehensive manual & automated test coverage. | [GitHub](https://github.com/IbrahimAHamada27/E-commerce) |
+| **12**| **Double Shot Cafe Experience** | `HTML5`, `CSS3`, `JavaScript` | Commercial cafe showcase featuring responsive visual menus and signature drink cards. | [GitHub](https://github.com/IbrahimAHamada27/double.shot) |
+| **13**| **Luxury Wedding RSVP Suite** | `HTML5`, `CSS3 Keyframes`, `Audio API` | Interactive luxury RSVP invitation with real-time countdowns and multimedia audio. | [GitHub](https://github.com/IbrahimAHamada27/Mostafa_And_Yasmine_Wedding_Invitation) |
 
 ---
 

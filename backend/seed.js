@@ -228,6 +228,13 @@ async function seedData() {
         imageUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&auto=format&fit=crop&q=60"
       },
       {
+        title: "Dr. Moaz Samir Dental Clinic Platform",
+        description: "Production front-end dental clinic web platform engineered with Angular 21 and reactive Signals. Features digital dentistry showcases, multi-branch location guidance (Borg El Arab), appointment booking integrations, PWA offline support, and advanced medical Schema.org SEO.",
+        link: "https://www.drmoazsamir.com/",
+        technologies: ["Angular 21", "TypeScript", "Front-End Architecture", "PWA", "SEO & Schema.org", "Responsive UI"],
+        imageUrl: "https://www.drmoazsamir.com/assets/images/logo/logo-square.jpg"
+      },
+      {
         title: "Dar Al-Yusr Clinics & Medical Management Portal",
         description: "Full-scale medical clinics platform featuring patient appointment booking, doctor schedules, department navigation, and high-performance clinic administrative workflows.",
         link: "https://github.com/IbrahimAHamada27/Dar-AlYusr-Clinics",
