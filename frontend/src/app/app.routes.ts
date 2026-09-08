@@ -7,17 +7,18 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), pathMatch: 'full' },
-      { path: 'home', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'about', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'education', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'skills', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'experience', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'services', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'projects', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'certificates', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'activities', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) },
-      { path: 'contact', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent) }
+      { path: '', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), pathMatch: 'full', title: 'Eng. Ibrahim Ahmed Hamada | Software Engineer & QA Portfolio' },
+      { path: 'home', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Home | Eng. Ibrahim Ahmed Hamada Portfolio' },
+      { path: 'about', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'About Me | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'education', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Education & Academic Tracks | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'skills', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Technical Skills & Stack | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'experience', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Professional Experience | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'services', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Engineering & QA Services | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'projects', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Featured Projects & QA Work | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'certificates', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Verified Credentials & Certificates | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'activities', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Community & Events Activities | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'contact', loadComponent: () => import('./layout/main/main').then(m => m.MainComponent), title: 'Contact | Eng. Ibrahim Ahmed Hamada' },
+      { path: 'privacy-policy', loadComponent: () => import('./layout/privacy/privacy').then(m => m.PrivacyComponent), title: 'Privacy Policy | سياسة الخصوصية - Eng. Ibrahim Ahmed Hamada' }
     ]
   },
   {

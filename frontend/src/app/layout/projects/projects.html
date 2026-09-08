@@ -11,14 +11,14 @@
           
           @if (project.imageUrl) {
             <div class="project-banner-outer">
-              <img [src]="project.imageUrl | imgUrl" [alt]="project.title" class="project-outer-img" loading="lazy" decoding="async" />
+              <img [src]="project.imageUrl | imgUrl" [alt]="project.title + ' - Eng. Ibrahim Ahmed Hamada Project'" class="project-outer-img" loading="lazy" decoding="async" />
             </div>
           }
 
           <div class="project-card-body">
             <div class="project-header">
               <h3 class="project-title">{{ project.title }}</h3>
-              <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="project-external-link" title="Open Project">
+              <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="project-external-link" title="Open Project" [attr.aria-label]="'Open live demo for ' + project.title">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
@@ -56,4 +56,6 @@
   </div>
 </section>
 
-<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+@defer (when isModalOpen) {
+  <app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+}

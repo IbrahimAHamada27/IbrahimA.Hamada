@@ -93,9 +93,9 @@
 .status-pulse {
   width: 8px;
   height: 8px;
-  background-color: #10b981;
+  background-color: var(--qa-accent, #16A34A);
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
+  box-shadow: 0 0 8px var(--qa-accent, #16A34A);
   animation: pulseGlow 2s infinite;
 }
 
@@ -107,9 +107,9 @@
 }
 
 @keyframes pulseGlow {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 var(--qa-glow, rgba(22, 163, 74, 0.7)); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
 }
 
 .status-text {

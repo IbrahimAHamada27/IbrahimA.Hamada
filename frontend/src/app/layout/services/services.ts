@@ -13,62 +13,62 @@ export class ServicesComponent implements OnInit {
   readonly defaultServices: Service[] = [
     {
       _id: 'srv-1',
-      title: 'Test Automation & QA Engineering (Selenium & Java)',
-      description: 'Designing and architecting robust automated testing suites using Selenium WebDriver, Java, and TestNG. Implementing Page Object Model (POM), data-driven testing, cross-browser execution, and automated Allure reporting.',
+      title: 'فحص واختبار البرمجيات (تيستر & QA Automation)',
+      description: 'تصميم وتنفيذ أتمتة اختبارات الويب باستخدام Selenium WebDriver و Java و TestNG بمفهوم Page Object Model (POM)، الفحص عبر مختلف المتصفحات، وتوليد تقارير Allure تفاعلية.',
       icon: 'fa-solid fa-vial-circle-check'
     },
     {
       _id: 'srv-2',
-      title: 'RESTful API Testing & Automated Postman Collections',
-      description: 'End-to-end API validation with Postman. Writing automated test scripts, validating JSON payload schemas, asserting status codes and response latency, and setting up regression test collections.',
+      title: 'فحص واختبار واجهات الـ APIs (Postman)',
+      description: 'اختبار تكاملي شامل للـ RESTful APIs باستخدام Postman، التحقق من مخططات JSON schemas، وفحص الأداء والاستجابة، وبناء مجموعات اختبار انحداري مؤتمتة.',
       icon: 'fa-solid fa-network-wired'
     },
     {
       _id: 'srv-3',
-      title: 'Manual QA & Software Quality Assurance (ISTQB)',
-      description: 'ISTQB-aligned software testing methodologies, comprehensive test plan design, boundary value analysis, exploratory testing, bug lifecycle management, and defect documentation.',
+      title: 'فحص برمجيات يدوي (Manual QA Tester - ISTQB)',
+      description: 'تطبيق منهجيات ISTQB في اختبار البرمجيات، تصميم خطط الاختبار الشاملة، كتابة وتوثيق حالات الاختبار والـ Bug Reports لضمان أعلى جودة للمنتج.',
       icon: 'fa-solid fa-list-check'
     },
     {
       _id: 'srv-4',
-      title: 'Full-Stack Web Development (MEAN Stack)',
-      description: 'Building scalable, high-performance web applications using Angular 21 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.',
+      title: 'تصميم سايت وتطوير فرونت اند وباك اند (Full-Stack)',
+      description: 'تصميم سايت احترافي وتطوير تطبيقات ويب متكاملة باستخدام Angular للفرونت اند و Node.js/Express للباك اند مع قواعد بيانات MongoDB وحماية JWT.',
       icon: 'fa-solid fa-layer-group'
     },
     {
       _id: 'srv-5',
-      title: 'Restaurant & Cafe Digital Menus (Smart QR)',
-      description: 'Interactive digital QR menu systems for restaurants & cafes with dynamic categories, item modifiers, real-time bill calculations, customer reviews, and administrative menu management.',
+      title: 'تصميم وتطوير المنيو الذكي (Smart QR Menu)',
+      description: 'نظام منيو رقمي ذكي عبر QR Code للمطاعم والكافيهات، يدعم التصنيفات الديناميكية وحساب الفاتورة المباشر وتحديثات لوحة التحكم.',
       icon: 'fa-solid fa-utensils'
     },
     {
       _id: 'srv-6',
-      title: 'Medical Clinics & Doctor Digital Portals',
-      description: 'Custom healthcare platforms featuring patient appointment booking, doctor schedules, medical service catalogs, patient testimonials, and SEO-optimized accessibility.',
+      title: 'بوابات العيادات الطبية وحجز المواعيد',
+      description: 'منصات طبية مخصصة للعيادات والأطباء تتيح حجز المواعيد، عرض التخصصات، واستعراض آراء المرضى بتصميم متوافق مع كافة الأجهزة.',
       icon: 'fa-solid fa-hospital-user'
     },
     {
       _id: 'srv-7',
-      title: 'E-Commerce Stores & Commercial Platforms',
-      description: 'High-conversion online stores with dynamic product catalogs, multi-criteria filtering, shopping carts, checkout workflows, and administrative inventory control.',
+      title: 'تصميم المتاجر الإلكترونية والمنصات التجارية',
+      description: 'متاجر إلكترونية عالية التحويل مع كتالوج منتجات ديناميكي، فلاتر بحث متعددة، سلة مشتريات، ولوحة إدارة للمخزون والطلبات.',
       icon: 'fa-solid fa-cart-shopping'
     },
     {
       _id: 'srv-8',
-      title: 'Interactive 3D Web & WebGL Experiences',
-      description: 'Immersive 3D web applications and educational simulations utilizing Three.js, React Three Fiber, Framer Motion, and WebGL with responsive glassmorphism UI/UX.',
-      icon: 'fa-solid fa-cubes'
+      title: 'حلول الويب الذكية والذكاء الاصطناعي (AI Solutions & 3D)',
+      description: 'تكامل حلول الذكاء الاصطناعي (AI) وتجارب الويب التفاعلية ثلاثية الأبعاد Three.js لتحقيق أقصى درجات التفاعل وتطوير مشاريع هندسية ذكية.',
+      icon: 'fa-solid fa-brain'
     },
     {
       _id: 'srv-9',
-      title: 'High-Converting Business Landing Pages',
-      description: 'Ultra-fast, mobile-first responsive landing pages crafted to maximize conversion rates, featuring modern glassmorphism aesthetics, fluid micro-animations, and lead capture forms.',
+      title: 'تصميم سايت هبوط عالي التحويل (Landing Pages)',
+      description: 'صفحات هبوط فائقة السرعة ومتوافقة مع الجوال، مبنية بأحدث تقنيات الفرونت اند لزيادة معدل التحويل واكتساب العملاء.',
       icon: 'fa-solid fa-laptop-code'
     },
     {
       _id: 'srv-10',
-      title: 'Digital Event & Luxury Wedding Invitation Portals',
-      description: 'Tailored interactive digital invitations featuring real-time countdown timers, interactive RSVP management, venue GPS coordinates, and ambient multimedia sound effects.',
+      title: 'دعوات إلكترونية تفاعلية للمناسبات والفعاليات',
+      description: 'بطاقات ودعوات رقمية ذكية مع عد تنازلي مباشر، تأكيد حضور تفاعلي (RSVP)، وخريطة موقع جغرافية وتأثيرات بصرية مميزة.',
       icon: 'fa-solid fa-envelope-open-text'
     }
   ];

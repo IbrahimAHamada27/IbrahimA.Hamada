@@ -12,7 +12,7 @@
           <!-- Outer Card Image / Logo Banner -->
           @if (exp.imageUrl) {
             <div class="exp-banner-outer">
-              <img [src]="exp.imageUrl | imgUrl" [alt]="exp.role" class="exp-outer-img" loading="lazy" decoding="async" />
+              <img [src]="exp.imageUrl | imgUrl" [alt]="exp.role + ' - ' + exp.company" class="exp-outer-img" loading="lazy" decoding="async" />
             </div>
           }
 
@@ -46,4 +46,6 @@
   </div>
 </section>
 
-<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+@defer (when isModalOpen) {
+  <app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+}

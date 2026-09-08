@@ -18,7 +18,7 @@
 
 .testimonial-content p {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-color-light);
   line-height: 1.6;
   font-style: italic;
   position: relative;
@@ -26,8 +26,8 @@
 }
 
 .quote-icon {
-  color: var(--primary-color, #f59e0b);
-  opacity: 0.3;
+  color: var(--primary-color);
+  opacity: 0.4;
   font-size: 1.2rem;
   margin: 0 5px;
 }
@@ -48,10 +48,10 @@
 .author-info h4 {
   margin: 0 0 5px 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color-dark);
 }
 
 .author-info span {
   font-size: 0.9rem;
-  color: #888;
+  color: var(--text-color-light);
 }

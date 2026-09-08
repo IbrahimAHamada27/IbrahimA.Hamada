@@ -20,7 +20,7 @@
             <div class="timeline-card glass-card">
               @if (item.imageUrl) {
                 <div class="edu-banner-outer">
-                  <img [src]="item.imageUrl | imgUrl" [alt]="item.title" class="edu-outer-img" loading="lazy" decoding="async" />
+                  <img [src]="item.imageUrl | imgUrl" [alt]="item.title + ' - ' + (item.institution || 'University')" class="edu-outer-img" loading="lazy" decoding="async" />
                 </div>
               }
               <div class="timeline-node"></div>
@@ -63,14 +63,14 @@
             <div class="timeline-card glass-card">
               @if (item.imageUrl) {
                 <div class="edu-banner-outer">
-                  <img [src]="item.imageUrl | imgUrl" [alt]="item.title" class="edu-outer-img" loading="lazy" decoding="async" />
+                  <img [src]="item.imageUrl | imgUrl" [alt]="item.title + ' - ' + (item.institution || 'Program')" class="edu-outer-img" loading="lazy" decoding="async" />
                 </div>
               }
               <div class="timeline-node"></div>
               <div class="card-header-row">
                 <span class="date-pill"><i class="fa-regular fa-calendar-days"></i> {{ item.date }}</span>
                 @if (item.link) {
-                  <a [href]="item.link" target="_blank" rel="noopener noreferrer" class="type-badge course-badge link-badge">
+                  <a [href]="item.link" target="_blank" rel="noopener noreferrer" class="type-badge course-badge link-badge" [attr.aria-label]="'Learn more about ' + item.title">
                     <span>Program Info</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
                 } @else {
@@ -101,4 +101,6 @@
   </div>
 </section>
 
-<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+@defer (when isModalOpen) {
+  <app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+}

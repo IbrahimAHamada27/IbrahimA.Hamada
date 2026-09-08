@@ -11,7 +11,7 @@
           
           @if (item.imageUrl) {
             <div class="activity-banner-outer">
-              <img [src]="item.imageUrl | imgUrl" [alt]="item.title" class="activity-outer-img" loading="lazy" decoding="async" />
+              <img [src]="item.imageUrl | imgUrl" [alt]="item.title + ' - ' + item.organization" class="activity-outer-img" loading="lazy" decoding="async" />
             </div>
           }
 
@@ -49,4 +49,6 @@
   </div>
 </section>
 
-<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+@defer (when isModalOpen) {
+  <app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+}

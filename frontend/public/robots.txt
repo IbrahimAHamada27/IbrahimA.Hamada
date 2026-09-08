@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /api/
 
-Sitemap: https://ibrahimahamada.vercel.app/sitemap.xml
+Sitemap: https://www.eng-ibrahim-a-hamada.website/sitemap.xml

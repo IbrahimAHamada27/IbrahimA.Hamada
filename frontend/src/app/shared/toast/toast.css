@@ -45,7 +45,7 @@
 }
 
 .toast-success .toast-icon {
-  color: #10b981;
+  color: var(--success-color, #16A34A);
 }
 
 .toast-danger .toast-icon {

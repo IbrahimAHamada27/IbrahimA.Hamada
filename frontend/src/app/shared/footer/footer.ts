@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 import { SiteInfo } from '../../core/models/site-info.model';
-import { lastValueFrom } from 'rxjs';
+import { SiteInfoService } from '../../core/services/site-info.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })
 export class FooterComponent implements OnInit {
   siteInfo: SiteInfo = {
-    brandName: 'Ibrahim A. Hamada',
+    brandName: 'Eng. Ibrahim Ahmed Hamada',
     contactEmail: 'ibrahima.hamada277@gmail.com',
     phone: '+20 111 254 0997',
     linkedinUrl: 'https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/',
@@ -24,21 +23,23 @@ export class FooterComponent implements OnInit {
     whatsappUrl: 'https://wa.me/201112540997'
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private siteInfoService: SiteInfoService) {}
 
   ngOnInit() {
     this.fetchSiteInfo();
   }
 
-  async fetchSiteInfo() {
-    try {
-      const response = await lastValueFrom(this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`));
-      if (response && response.brandName) {
-        this.siteInfo = { ...this.siteInfo, ...response };
+  fetchSiteInfo() {
+    this.siteInfoService.getSiteInfo().subscribe({
+      next: (response) => {
+        if (response && response.brandName) {
+          this.siteInfo = { ...this.siteInfo, ...response };
+        }
+      },
+      error: (error) => {
+        console.warn('Using default footer info', error);
       }
-    } catch (error) {
-      console.warn('Using default footer info', error);
-    }
+    });
   }
 
   scrollToSection(sectionId: string, event?: Event) {

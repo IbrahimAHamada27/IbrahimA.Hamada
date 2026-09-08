@@ -12,7 +12,7 @@
           <!-- Outer Card Image / Badge Banner -->
           <div class="cert-banner-outer">
             @if (cert.imageUrl) {
-              <img [src]="cert.imageUrl | imgUrl" [alt]="cert.title" class="cert-outer-img" loading="lazy" decoding="async" />
+              <img [src]="cert.imageUrl | imgUrl" [alt]="cert.title + ' - Certified by ' + cert.issuer" class="cert-outer-img" loading="lazy" decoding="async" />
             } @else {
               <div class="cert-fallback-icon">
                 <i class="fa-solid fa-award"></i>
@@ -24,7 +24,7 @@
             <div class="cert-meta-row">
               <span class="cert-date-tag"><i class="fa-regular fa-calendar"></i> {{ cert.date }}</span>
               @if (cert.link) {
-                <a [href]="cert.link" target="_blank" rel="noopener noreferrer" class="cert-link-badge" title="Verify Certificate">
+                <a [href]="cert.link" target="_blank" rel="noopener noreferrer" class="cert-link-badge" title="Verify Certificate" [attr.aria-label]="'Verify certificate: ' + cert.title">
                   <span>Verify</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
               }
@@ -48,4 +48,6 @@
   </div>
 </section>
 
-<app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+@defer (when isModalOpen) {
+  <app-details-modal [item]="selectedItem" [isOpen]="isModalOpen" (close)="isModalOpen = false"></app-details-modal>
+}

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../environments/environment';
 import { RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
-import { SiteInfo } from './core/models/site-info.model';
+import { SiteInfoService } from './core/services/site-info.service';
+import { SeoService } from './core/services/seo.service';
 import { ToastComponent } from './shared/toast/toast';
 
 @Component({
@@ -14,14 +13,19 @@ import { ToastComponent } from './shared/toast/toast';
   styleUrl: './app.css'
 })
 export class AppComponent implements OnInit {
-  constructor(private titleService: Title, private http: HttpClient) {}
+  constructor(
+    private titleService: Title,
+    private siteInfoService: SiteInfoService,
+    private seoService: SeoService
+  ) {}
 
   ngOnInit() {
+    this.seoService.initRouteListener();
     this.fetchSiteInfo();
   }
 
   fetchSiteInfo() {
-    this.http.get<SiteInfo>(`${environment.apiUrl}/api/siteinfo`).subscribe({
+    this.siteInfoService.getSiteInfo().subscribe({
       next: (siteInfo) => {
         if (siteInfo.brandName) {
           this.titleService.setTitle(siteInfo.brandName);

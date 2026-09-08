@@ -17,7 +17,7 @@
           </div>
           <div class="testimonial-author">
             @if (item.image) {
-              <img [src]="item.image" alt="Author" class="author-img">
+              <img [src]="item.image" [alt]="item.name ? item.name + ' - Client Testimonial' : 'Client Testimonial'" width="60" height="60" loading="lazy" decoding="async" class="author-img">
             }
             <div class="author-info">
               <h4>{{ item.name }}</h4>

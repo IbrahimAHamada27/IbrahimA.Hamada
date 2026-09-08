@@ -10,7 +10,6 @@ import { TestimonialsComponent } from '../testimonials/testimonials';
 import { EducationComponent } from '../education/education';
 import { ServicesComponent } from '../services/services';
 import { ActivitiesComponent } from '../activities/activities';
-import * as AOS from 'aos';
 
 @Component({
   selector: 'app-main',
@@ -32,18 +31,26 @@ import * as AOS from 'aos';
   styleUrl: './main.css'
 })
 export class MainComponent implements OnInit, AfterViewInit {
+  private aosInstance: any = null;
+
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    AOS.init({
-      duration: 500,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+    // Dynamic import AOS to ensure main bundle is not blocked
   }
 
   ngAfterViewInit() {
+    import('aos').then((aosModule) => {
+      const AOS = (aosModule as any).default || aosModule;
+      this.aosInstance = AOS;
+      AOS.init({
+        duration: 500,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+    });
+
     // Scroll to target section if path matches section id
     const handleInitialScroll = () => {
       const path = window.location.pathname.replace(/^\//, '');
@@ -53,7 +60,9 @@ export class MainComponent implements OnInit, AfterViewInit {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
-      AOS.refresh();
+      if (this.aosInstance) {
+        this.aosInstance.refresh();
+      }
     };
 
     setTimeout(handleInitialScroll, 100);
@@ -78,6 +87,8 @@ export class MainComponent implements OnInit, AfterViewInit {
         window.history.replaceState(null, '', targetPath);
       }
     }
-    AOS.refresh();
+    if (this.aosInstance) {
+      this.aosInstance.refresh();
+    }
   }
 }
