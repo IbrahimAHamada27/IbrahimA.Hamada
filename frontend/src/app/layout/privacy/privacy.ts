@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
+import { LanguageService } from '../../core/services/language.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-privacy',
@@ -11,14 +13,11 @@ import { SeoService } from '../../core/services/seo.service';
   styleUrl: './privacy.css'
 })
 export class PrivacyComponent implements OnInit {
-  constructor(private seoService: SeoService) {}
+  private languageService = inject(LanguageService);
+  private seoService = inject(SeoService);
+  readonly t = this.languageService.t;
 
   ngOnInit(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.seoService.updateSeoData({
-      title: 'Privacy Policy | سياسة الخصوصية - Eng. Ibrahim Ahmed Hamada',
-      description: 'Privacy Policy and Data Protection guidelines for Eng. Ibrahim Ahmed Hamada Portfolio website.',
-      path: '/privacy-policy'
-    });
   }
 }

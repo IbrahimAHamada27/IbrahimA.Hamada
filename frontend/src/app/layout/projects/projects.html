@@ -1,8 +1,8 @@
 <section id="projects" class="projects-section">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
-      <h2 class="section-title">Featured <span class="gradient-text">Projects & QA Work</span></h2>
-      <p class="section-subtitle">Real-world web applications, automated testing frameworks, and API suites.</p>
+      <h2 class="section-title"><span class="gradient-text">{{ t().projects.title }}</span></h2>
+      <p class="section-subtitle">{{ t().projects.subtitle }}</p>
     </div>
 
     <div class="projects-grid">
@@ -33,7 +33,7 @@
 
             <button class="btn-show-more" (click)="openDetails(project)">
               <i class="fa-solid fa-circle-info"></i>
-              <span>Show Details</span>
+              <span>{{ t().projects.showDetails }}</span>
             </button>
           </div>
         </div>
@@ -48,7 +48,7 @@
     @if (projects.length > 6) {
       <div class="show-more-container" data-aos="fade-up">
         <button class="btn-gradient show-more-btn" (click)="toggleShowMore()">
-          <span>{{ showAllProjects ? 'Show Less Projects' : 'View More Projects (' + (projects.length - 6) + '+)' }}</span>
+          <span>{{ showAllProjects ? t().projects.showLess : t().projects.showMore + ' (' + (projects.length - 6) + '+)' }}</span>
           <i [class]="showAllProjects ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
         </button>
       </div>

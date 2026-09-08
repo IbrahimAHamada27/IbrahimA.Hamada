@@ -1,12 +1,12 @@
 <section id="services" class="services-section">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
-      <h2 class="section-title">Professional <span class="gradient-text">Services</span></h2>
-      <p class="section-subtitle">Comprehensive QA testing, automation engineering, and custom web application development.</p>
+      <h2 class="section-title">{{ t().services.title }}</h2>
+      <p class="section-subtitle">{{ t().services.subtitle }}</p>
     </div>
 
     <div class="services-grid">
-      @for (item of displayedServices; track item._id; let idx = $index) {
+      @for (item of displayedServices; track item.title; let idx = $index) {
         <div class="service-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 4) * 80">
           <div class="service-icon-box">
             @if (item.icon && item.icon.startsWith('http')) {
@@ -20,18 +20,13 @@
           <h3 class="service-title">{{ item.title }}</h3>
           <p class="service-desc">{{ item.description }}</p>
         </div>
-      } @empty {
-        <div class="empty-state glass-card" data-aos="fade-up">
-          <i class="fa-solid fa-screwdriver-wrench empty-icon"></i>
-          <p>No services listed currently.</p>
-        </div>
       }
     </div>
 
-    @if (services.length > 8) {
+    @if (t().services.items.length > 8) {
       <div class="show-more-container" data-aos="fade-up">
         <button class="btn-gradient show-more-btn" (click)="toggleShowMore()">
-          <span>{{ showAllServices ? 'Show Less Services' : 'View More Services (' + (services.length - 8) + '+)' }}</span>
+          <span>{{ showAllServices ? t().services.showLess : t().services.showMore + ' (' + (t().services.items.length - 8) + '+)' }}</span>
           <i [class]="showAllServices ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
         </button>
       </div>

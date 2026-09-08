@@ -7,7 +7,7 @@
           <span class="brand-text">Eng. Ibrahim A. <span class="gradient-text">Hamada</span></span>
         </a>
         <p class="footer-brand-desc">
-          Portfolio المهندس إبراهيم أحمد حمادة — مهندس برمجيات واختبار جودة البرمجيات (تيستر QA Automation)، تصميم سايت وتطوير فرونت اند Frontend وباك اند Backend بأنظمة MEAN Stack وحلول الذكاء الاصطناعي AI.
+          {{ t().footer.brandTagline }}
         </p>
 
         <div class="footer-social-icons">
@@ -50,31 +50,31 @@
 
       <!-- Quick Nav Links -->
       <div class="footer-links-col">
-        <h4 class="footer-heading">Quick Links</h4>
+        <h4 class="footer-heading">{{ t().footer.quickLinks }}</h4>
         <ul class="footer-links-list">
-          <li><a href="javascript:void(0)" (click)="scrollToSection('home', $event)"><i class="fa-solid fa-chevron-right"></i> About Me</a></li>
-          <li><a href="javascript:void(0)" (click)="scrollToSection('education', $event)"><i class="fa-solid fa-chevron-right"></i> Education & Tracks</a></li>
-          <li><a href="javascript:void(0)" (click)="scrollToSection('skills', $event)"><i class="fa-solid fa-chevron-right"></i> Technical Skills</a></li>
-          <li><a href="javascript:void(0)" (click)="scrollToSection('experience', $event)"><i class="fa-solid fa-chevron-right"></i> Experience</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('home', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.about }}</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('education', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.education }}</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('skills', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.skills }}</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('experience', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.experience }}</a></li>
         </ul>
       </div>
 
       <div class="footer-links-col">
-        <h4 class="footer-heading">Portfolio & Services</h4>
+        <h4 class="footer-heading">{{ t().nav.services }} & {{ t().nav.projects }}</h4>
         <ul class="footer-links-list">
-          <li><a href="javascript:void(0)" (click)="scrollToSection('services', $event)"><i class="fa-solid fa-chevron-right"></i> Engineering Services</a></li>
-          <li><a href="javascript:void(0)" (click)="scrollToSection('projects', $event)"><i class="fa-solid fa-chevron-right"></i> Featured Projects</a></li>
-          <li><a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)"><i class="fa-solid fa-chevron-right"></i> Credentials</a></li>
-          <li><a href="javascript:void(0)" (click)="scrollToSection('contact', $event)"><i class="fa-solid fa-chevron-right"></i> Contact Form</a></li>
-          <li><a routerLink="/privacy-policy"><i class="fa-solid fa-shield-halved"></i> Privacy Policy (الخصوصية)</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('services', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.services }}</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('projects', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.projects }}</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.certificates }}</a></li>
+          <li><a href="javascript:void(0)" (click)="scrollToSection('contact', $event)"><i class="fa-solid fa-chevron-right"></i> {{ t().nav.contact }}</a></li>
+          <li><a routerLink="/privacy-policy"><i class="fa-solid fa-shield-halved"></i> {{ t().footer.privacyLink }}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom-bar">
-      <p class="copyright-text">&copy; 2026 Eng. Ibrahim Ahmed Hamada. All rights reserved.</p>
+      <p class="copyright-text">&copy; 2026 Eng. Ibrahim Ahmed Hamada. {{ t().footer.rightsReserved }}</p>
       <div class="footer-legal">
-        <a routerLink="/privacy-policy" class="footer-privacy-link">Privacy Policy | سياسة الخصوصية</a>
+        <a routerLink="/privacy-policy" class="footer-privacy-link">{{ t().footer.privacyLink }}</a>
       </div>
       <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="scroll-top-btn" title="Back to Top" aria-label="Back to Top of Page">
         <i class="fa-solid fa-arrow-up"></i>

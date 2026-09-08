@@ -5,6 +5,9 @@ import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
 import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
+import { LanguageService } from '../../core/services/language.service';
+import { inject } from '@angular/core';
+
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -13,6 +16,8 @@ import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
   styleUrl: './projects.css'
 })
 export class ProjectsComponent implements OnInit {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
   readonly defaultProjects: Project[] = [
     {
       _id: 'proj-1',

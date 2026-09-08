@@ -6,6 +6,8 @@ import { SiteInfoService } from '../../core/services/site-info.service';
 import { MessageService } from '../../core/services/message.service';
 import { FormsModule } from '@angular/forms';
 import { ToastService } from '../../core/services/toast.service';
+import { LanguageService } from '../../core/services/language.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -15,6 +17,8 @@ import { ToastService } from '../../core/services/toast.service';
   styleUrl: './contact.css'
 })
 export class ContactComponent implements OnInit {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
   siteInfo: SiteInfo = {
     contactTitle: 'Get in Touch',
     contactSubtitle: 'Have a QA inquiry, testing framework consultation, or web development opportunity? Reach out directly!',

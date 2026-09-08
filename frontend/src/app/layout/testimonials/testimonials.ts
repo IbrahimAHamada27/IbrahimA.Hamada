@@ -3,6 +3,9 @@ import { TestimonialService } from '../../core/services/testimonial.service';
 import { Testimonial } from '../../core/models/testimonial.model';
 import { lastValueFrom } from 'rxjs';
 
+import { LanguageService } from '../../core/services/language.service';
+import { inject } from '@angular/core';
+
 @Component({
   selector: 'app-testimonials',
   standalone: true,
@@ -10,6 +13,8 @@ import { lastValueFrom } from 'rxjs';
   styleUrl: './testimonials.css'
 })
 export class TestimonialsComponent implements OnInit {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
   testimonials: Testimonial[] = [];
 
   constructor(private testimonialService: TestimonialService) {}

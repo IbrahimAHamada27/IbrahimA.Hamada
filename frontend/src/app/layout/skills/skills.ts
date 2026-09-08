@@ -1,31 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Skill } from '../../core/models/skill.model';
-import { lastValueFrom } from 'rxjs';
-import { SkillService } from '../../core/services/skill.service';
-import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [ImgUrlPipe],
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })
-export class SkillsComponent implements OnInit {
-  constructor(private skillService: SkillService) {}
+export class SkillsComponent {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
 
-  skills: Skill[] = [];
-
-  ngOnInit() {
-    this.fetchSkills();
-  }
-
-  async fetchSkills() {
-    try {
-      const response = await lastValueFrom(this.skillService.getSkills());
-      this.skills = response;
-    } catch (error) {
-      console.error('Failed to fetch skills', error);
-    }
-  }
+  constructor() {}
 }

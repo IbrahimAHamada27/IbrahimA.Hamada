@@ -3,6 +3,9 @@ import { RouterLink } from '@angular/router';
 import { SiteInfo } from '../../core/models/site-info.model';
 import { SiteInfoService } from '../../core/services/site-info.service';
 
+import { LanguageService } from '../../core/services/language.service';
+import { inject } from '@angular/core';
+
 @Component({
   selector: 'app-footer',
   standalone: true,
@@ -11,6 +14,9 @@ import { SiteInfoService } from '../../core/services/site-info.service';
   styleUrl: './footer.css'
 })
 export class FooterComponent implements OnInit {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
+
   siteInfo: SiteInfo = {
     brandName: 'Eng. Ibrahim Ahmed Hamada',
     contactEmail: 'ibrahima.hamada277@gmail.com',

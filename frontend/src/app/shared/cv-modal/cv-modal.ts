@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-cv-modal',
@@ -9,6 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cv-modal.css'
 })
 export class CvModalComponent {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
+  readonly isArabic = computed(() => this.languageService.currentLang() === 'ar');
+
   @Input() isOpen = false;
   @Output() close = new EventEmitter<void>();
 

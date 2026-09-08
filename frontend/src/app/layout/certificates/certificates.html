@@ -1,8 +1,8 @@
 <section id="certificates" class="certificates-section">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
-      <h2 class="section-title">Verified <span class="gradient-text">Certificates & Credentials</span></h2>
-      <p class="section-subtitle">Professional certifications and accredited course completions.</p>
+      <h2 class="section-title"><span class="gradient-text">{{ t().certificates.title }}</span></h2>
+      <p class="section-subtitle">{{ t().certificates.subtitle }}</p>
     </div>
 
     <div class="cert-grid">
@@ -25,7 +25,7 @@
               <span class="cert-date-tag"><i class="fa-regular fa-calendar"></i> {{ cert.date }}</span>
               @if (cert.link) {
                 <a [href]="cert.link" target="_blank" rel="noopener noreferrer" class="cert-link-badge" title="Verify Certificate" [attr.aria-label]="'Verify certificate: ' + cert.title">
-                  <span>Verify</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span>{{ t().certificates.verify }}</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
               }
             </div>
@@ -34,7 +34,7 @@
             
             <button class="btn-show-more" (click)="openDetails(cert)">
               <i class="fa-solid fa-circle-info"></i>
-              <span>Show Details</span>
+              <span>{{ t().certificates.showDetails }}</span>
             </button>
           </div>
         </div>

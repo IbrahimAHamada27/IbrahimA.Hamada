@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Experience } from '../../core/models/experience.model';
-import { ExperienceService } from '../../core/services/experience.service';
-import { lastValueFrom } from 'rxjs';
+import { Component, inject } from '@angular/core';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
 import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-experience',
@@ -12,32 +10,20 @@ import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
   templateUrl: './experience.html',
   styleUrl: './experience.css'
 })
-export class ExperienceComponent implements OnInit {
-  experiences: Experience[] = [];
+export class ExperienceComponent {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
   selectedItem: DetailItem | null = null;
   isModalOpen = false;
 
-  constructor(private expService: ExperienceService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.fetchExperiences();
-  }
-
-  async fetchExperiences() {
-    try {
-      const response = await lastValueFrom(this.expService.getExperiences());
-      this.experiences = response;
-    } catch (error) {
-      console.error('Failed to fetch experiences', error);
-    }
-  }
-
-  openDetails(exp: Experience) {
+  openDetails(exp: any) {
     this.selectedItem = {
       title: exp.role,
       subtitle: exp.company,
       date: exp.years,
-      category: 'Professional Role',
+      category: this.t().experience.title,
       description: exp.desc,
       imageUrl: exp.imageUrl,
       link: exp.link

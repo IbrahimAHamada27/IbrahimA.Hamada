@@ -5,6 +5,9 @@ import { lastValueFrom } from 'rxjs';
 import { DetailsModalComponent, DetailItem } from '../../shared/details-modal/details-modal';
 import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
 
+import { LanguageService } from '../../core/services/language.service';
+import { inject } from '@angular/core';
+
 @Component({
   selector: 'app-certificates',
   standalone: true,
@@ -13,6 +16,9 @@ import { ImgUrlPipe } from '../../shared/pipes/img-url.pipe';
   styleUrl: './certificates.css'
 })
 export class CertificatesComponent implements OnInit {
+  private languageService = inject(LanguageService);
+  readonly t = this.languageService.t;
+
   certificates: Certificate[] = [];
   selectedItem: DetailItem | null = null;
   isModalOpen = false;

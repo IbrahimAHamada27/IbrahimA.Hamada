@@ -1,21 +1,13 @@
 <section id="experience" class="experience-section">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
-      <h2 class="section-title">Professional <span class="gradient-text">Experience</span></h2>
-      <p class="section-subtitle">Hands-on testing automation, QA engineering, and full-stack project executions.</p>
+      <h2 class="section-title">{{ t().experience.title }}</h2>
+      <p class="section-subtitle">{{ t().experience.subtitle }}</p>
     </div>
 
     <div class="experience-grid">
-      @for (exp of experiences; track exp._id; let idx = $index) {
+      @for (exp of t().experience.items; track exp.role; let idx = $index) {
         <div class="exp-card glass-card" [attr.data-aos]="idx % 2 === 0 ? 'fade-right' : 'fade-left'">
-          
-          <!-- Outer Card Image / Logo Banner -->
-          @if (exp.imageUrl) {
-            <div class="exp-banner-outer">
-              <img [src]="exp.imageUrl | imgUrl" [alt]="exp.role + ' - ' + exp.company" class="exp-outer-img" loading="lazy" decoding="async" />
-            </div>
-          }
-
           <div class="exp-card-body">
             <div class="exp-header">
               <div class="exp-role-box">
@@ -32,14 +24,9 @@
 
             <button class="btn-show-more" (click)="openDetails(exp)">
               <i class="fa-solid fa-circle-info"></i>
-              <span>Show Details</span>
+              <span>{{ t().experience.showDetails }}</span>
             </button>
           </div>
-        </div>
-      } @empty {
-        <div class="empty-state glass-card" data-aos="fade-up">
-          <i class="fa-solid fa-folder-open empty-icon"></i>
-          <p>No experience records available yet.</p>
         </div>
       }
     </div>

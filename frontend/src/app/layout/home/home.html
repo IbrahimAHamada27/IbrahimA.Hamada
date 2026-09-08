@@ -5,17 +5,17 @@
   <div class="hero-container">
     <div class="hero-status-badge" data-aos="fade-down">
       <span class="status-pulse"></span>
-      <span class="status-text">Available for Full-Time & Project Opportunities</span>
+      <span class="status-text">{{ t().hero.statusBadge }}</span>
     </div>
 
     <h1 class="hero-main-title" data-aos="fade-up" data-aos-delay="100">
-      Hi, I'm <span class="gradient-text">Eng. Ibrahim Ahmed Hamada</span>
+      {{ t().hero.greeting }} <span class="gradient-text">{{ t().hero.name }}</span>
       <br />
-      <span class="title-sub">{{ siteInfo.heroTitle || 'Software Engineer | QA Tester & Full-Stack Developer' }}</span>
+      <span class="title-sub">{{ t().hero.title }}</span>
     </h1>
 
     <p class="hero-lead-desc" data-aos="fade-up" data-aos-delay="200">
-      {{ siteInfo.heroDesc }}
+      {{ t().hero.description }}
     </p>
 
     <!-- Engineering QA & Dev Thesis Terminal Card -->
@@ -26,14 +26,14 @@
           <span class="dot yellow"></span>
           <span class="dot green"></span>
         </div>
-        <span class="terminal-title font-mono"><i class="fa-solid fa-terminal"></i> ibrahim-qa-engine --env=production</span>
-        <span class="terminal-badge font-mono"><i class="fa-solid fa-circle-check"></i> ALL TESTS PASSING</span>
+        <span class="terminal-title font-mono"><i class="fa-solid fa-terminal"></i> {{ t().hero.terminalTitle }}</span>
+        <span class="terminal-badge font-mono"><i class="fa-solid fa-circle-check"></i> {{ t().hero.terminalBadge }}</span>
       </div>
       <div class="terminal-body font-mono">
         <div class="terminal-line"><span class="cmd-prompt">➜</span> <span class="cmd-run">run-qa-suite --framework=selenium-java --api=postman</span></div>
-        <div class="terminal-line text-qa"><i class="fa-solid fa-check-double"></i> <b>Selenium E2E Tests:</b> Cross-browser POM suites validated across Chrome, Firefox & Edge</div>
-        <div class="terminal-line text-cyan"><i class="fa-solid fa-bolt"></i> <b>RESTful API Asserter:</b> 28+ Postman collections passing with strict JSON schema compliance</div>
-        <div class="terminal-line text-primary"><i class="fa-solid fa-layer-group"></i> <b>MEAN Stack Architecture:</b> Angular 21 Signals + Express Node.js Engine operational</div>
+        <div class="terminal-line text-qa"><i class="fa-solid fa-check-double"></i> {{ t().hero.terminalSelenium }}</div>
+        <div class="terminal-line text-cyan"><i class="fa-solid fa-bolt"></i> {{ t().hero.terminalApi }}</div>
+        <div class="terminal-line text-primary"><i class="fa-solid fa-layer-group"></i> {{ t().hero.terminalMean }}</div>
       </div>
     </div>
 
@@ -41,61 +41,61 @@
     <div class="hero-highlights" data-aos="fade-up" data-aos-delay="350">
       <div class="highlight-chip">
         <i class="fa-solid fa-vial-circle-check"></i>
-        <span>تيستر & QA Automation</span>
+        <span>{{ t().hero.chip1 }}</span>
       </div>
       <div class="highlight-chip">
         <i class="fa-solid fa-code"></i>
-        <span>تصميم سايت & Front-End</span>
+        <span>{{ t().hero.chip2 }}</span>
       </div>
       <div class="highlight-chip">
         <i class="fa-solid fa-server"></i>
-        <span>باك اند & APIs (Node.js)</span>
+        <span>{{ t().hero.chip3 }}</span>
       </div>
       <div class="highlight-chip">
         <i class="fa-solid fa-brain"></i>
-        <span>مشاريع هندسية & AI</span>
+        <span>{{ t().hero.chip4 }}</span>
       </div>
     </div>
 
     <div class="hero-action-group" data-aos="fade-up" data-aos-delay="400">
       <button (click)="openCvModal()" class="btn-gradient hero-btn cv-action-btn">
         <i class="fa-solid fa-file-pdf"></i>
-        <span>View CV / Resume</span>
+        <span>{{ t().hero.viewCv }}</span>
       </button>
       <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-glass hero-btn">
         <i class="fa-solid fa-paper-plane"></i>
-        <span>Contact Me</span>
+        <span>{{ t().hero.contactMe }}</span>
       </a>
       <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="btn-glass hero-btn">
         <i class="fa-solid fa-layer-group"></i>
-        <span>View My Projects</span>
+        <span>{{ t().hero.viewProjects }}</span>
       </a>
-      <a [href]="siteInfo.whatsappUrl || 'https://wa.me/201112540997'" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp-btn" title="Chat on WhatsApp (+20 111 254 0997)" aria-label="Chat on WhatsApp with Eng. Ibrahim">
+      <a [href]="siteInfo.whatsappUrl || 'https://wa.me/201112540997'" target="_blank" rel="noopener noreferrer" class="social-icon-btn whatsapp-btn" [title]="t().contact.whatsappAction" [attr.aria-label]="t().contact.whatsappAction">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
-      <a [href]="siteInfo.telegramUrl || 'https://t.me/+201112540997'" target="_blank" rel="noopener noreferrer" class="social-icon-btn telegram-btn" title="Chat on Telegram (+20 111 254 0997)" aria-label="Message on Telegram to Eng. Ibrahim">
+      <a [href]="siteInfo.telegramUrl || 'https://t.me/+201112540997'" target="_blank" rel="noopener noreferrer" class="social-icon-btn telegram-btn" [title]="t().contact.telegramAction" [attr.aria-label]="t().contact.telegramAction">
         <i class="fa-brands fa-telegram"></i>
       </a>
-      <a href="tel:+201112540997" class="social-icon-btn phone-btn" title="Call +20 111 254 0997" aria-label="Call Eng. Ibrahim">
+      <a href="tel:+201112540997" class="social-icon-btn phone-btn" [title]="t().contact.phoneLabel" [attr.aria-label]="t().contact.phoneLabel">
         <i class="fa-solid fa-phone"></i>
       </a>
       @if (siteInfo.linkedinUrl) {
-        <a [href]="siteInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn linkedin-btn" title="LinkedIn Profile" aria-label="Eng. Ibrahim LinkedIn Profile">
+        <a [href]="siteInfo.linkedinUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn linkedin-btn" [title]="t().contact.linkedinAction" [attr.aria-label]="t().contact.linkedinAction">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
       }
       @if (siteInfo.githubUrl) {
-        <a [href]="siteInfo.githubUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn github-btn" title="GitHub Profile" aria-label="Eng. Ibrahim GitHub Profile">
+        <a [href]="siteInfo.githubUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn github-btn" [title]="t().contact.githubAction" [attr.aria-label]="t().contact.githubAction">
           <i class="fa-brands fa-github"></i>
         </a>
       }
       @if (siteInfo.facebookUrl) {
-        <a [href]="siteInfo.facebookUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook-btn" title="Facebook Profile" aria-label="Eng. Ibrahim Facebook Profile">
+        <a [href]="siteInfo.facebookUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn facebook-btn" [title]="t().contact.facebookAction" [attr.aria-label]="t().contact.facebookAction">
           <i class="fa-brands fa-facebook-f"></i>
         </a>
       }
       @if (siteInfo.instagramUrl) {
-        <a [href]="siteInfo.instagramUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram-btn" title="Instagram Profile" aria-label="Eng. Ibrahim Instagram Profile">
+        <a [href]="siteInfo.instagramUrl" target="_blank" rel="noopener noreferrer" class="social-icon-btn instagram-btn" [title]="t().contact.instagramAction" [attr.aria-label]="t().contact.instagramAction">
           <i class="fa-brands fa-instagram"></i>
         </a>
       }
@@ -107,33 +107,33 @@
 <section id="about" class="about-section">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
-      <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-      <p class="section-subtitle">Discover my engineering background, technical expertise, and career philosophy.</p>
+      <h2 class="section-title">{{ t().about.title }}</h2>
+      <p class="section-subtitle">{{ t().about.subtitle }}</p>
     </div>
 
     <div class="about-grid">
       <div class="about-avatar-card glass-card" data-aos="fade-right">
         <div class="avatar-glow-ring">
-          <img [src]="(siteInfo.profileImage || 'https://github.com/ibrahimahamada27.png') | imgUrl" alt="Eng. Ibrahim Ahmed Hamada - Software Engineer, QA Tester & Web Developer" class="avatar-img" width="300" height="300" loading="eager" fetchpriority="high" />
+          <img [src]="(siteInfo.profileImage || 'https://github.com/ibrahimahamada27.png') | imgUrl" [alt]="t().hero.name" class="avatar-img" width="300" height="300" loading="eager" fetchpriority="high" />
         </div>
         <div class="avatar-card-info">
-          <h3 class="avatar-name">Eng. Ibrahim Ahmed Hamada</h3>
-          <span class="avatar-role">Software Engineer & QA Tester</span>
+          <h3 class="avatar-name">{{ t().hero.name }}</h3>
+          <span class="avatar-role">{{ t().about.role }}</span>
           <div class="avatar-tags">
-            <span class="tag"><i class="fa-solid fa-location-dot"></i> Egypt</span>
-            <span class="tag"><i class="fa-solid fa-user-graduate"></i> AOU Computer Science</span>
+            <span class="tag"><i class="fa-solid fa-location-dot"></i> {{ t().about.location }}</span>
+            <span class="tag"><i class="fa-solid fa-user-graduate"></i> {{ t().about.study }}</span>
           </div>
           <button (click)="openCvModal()" class="btn-gradient about-cv-btn">
             <i class="fa-solid fa-file-lines"></i>
-            <span>Preview Official CV</span>
+            <span>{{ t().about.previewCv }}</span>
           </button>
         </div>
       </div>
 
       <div class="about-details-content" data-aos="fade-left">
-        <h3 class="about-heading">{{ siteInfo.aboutTitle || 'Background & Expertise' }}</h3>
-        <p class="about-body-text">{{ siteInfo.aboutDesc1 }}</p>
-        <p class="about-body-text">{{ siteInfo.aboutDesc2 }}</p>
+        <h3 class="about-heading">{{ t().about.heading }}</h3>
+        <p class="about-body-text">{{ t().about.desc1 }}</p>
+        <p class="about-body-text">{{ t().about.desc2 }}</p>
 
         <div class="about-cards-grid">
           <div class="feature-info-card glass-card">
@@ -141,8 +141,8 @@
               <i class="fa-solid fa-graduation-cap"></i>
             </div>
             <div>
-              <h4 class="card-info-title">{{ siteInfo.academicTitle || 'Academic Journey' }}</h4>
-              <p class="card-info-desc">{{ siteInfo.academicDesc }}</p>
+              <h4 class="card-info-title">{{ t().about.academicCardTitle }}</h4>
+              <p class="card-info-desc">{{ t().about.academicCardDesc }}</p>
             </div>
           </div>
 
@@ -151,8 +151,8 @@
               <i class="fa-solid fa-lightbulb"></i>
             </div>
             <div>
-              <h4 class="card-info-title">{{ siteInfo.philosophyTitle || 'Quality Philosophy' }}</h4>
-              <p class="card-info-desc">{{ siteInfo.philosophyDesc }}</p>
+              <h4 class="card-info-title">{{ t().about.philosophyCardTitle }}</h4>
+              <p class="card-info-desc">{{ t().about.philosophyCardDesc }}</p>
             </div>
           </div>
         </div>

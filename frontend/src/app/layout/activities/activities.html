@@ -1,24 +1,17 @@
 <section id="activities" class="activities-section">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
-      <h2 class="section-title">Volunteering & <span class="gradient-text">Events & Activities</span></h2>
-      <p class="section-subtitle">Community leadership, technical events, workshops, and extracurricular contributions.</p>
+      <h2 class="section-title">{{ t().activities.title }}</h2>
+      <p class="section-subtitle">{{ t().activities.subtitle }}</p>
     </div>
 
     <div class="activities-grid">
-      @for (item of activities; track item._id; let idx = $index) {
+      @for (item of t().activities.items; track item.title; let idx = $index) {
         <div class="activity-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
-          
-          @if (item.imageUrl) {
-            <div class="activity-banner-outer">
-              <img [src]="item.imageUrl | imgUrl" [alt]="item.title + ' - ' + item.organization" class="activity-outer-img" loading="lazy" decoding="async" />
-            </div>
-          }
-
           <div class="activity-card-body">
             <div class="activity-header">
-              <span class="category-badge" [ngClass]="getCategoryBadgeClass(item.category)">
-                <i class="fa-solid" [ngClass]="getCategoryIcon(item.category)"></i> {{ item.category | titlecase }}
+              <span class="category-badge badge-activity">
+                <i class="fa-solid fa-star"></i> {{ item.category }}
               </span>
               <span class="activity-date"><i class="fa-regular fa-calendar"></i> {{ item.date }}</span>
             </div>
@@ -35,14 +28,9 @@
 
             <button class="btn-show-more" (click)="openDetails(item)">
               <i class="fa-solid fa-circle-info"></i>
-              <span>Show Details</span>
+              <span>{{ t().activities.showDetails }}</span>
             </button>
           </div>
-        </div>
-      } @empty {
-        <div class="empty-state glass-card" data-aos="fade-up">
-          <i class="fa-solid fa-people-group empty-icon"></i>
-          <p>No activities or events added yet.</p>
         </div>
       }
     </div>

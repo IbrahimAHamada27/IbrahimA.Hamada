@@ -6,51 +6,57 @@
     </a>
 
     <nav class="nav-desktop">
-      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="nav-item" [class.active]="activeSection === 'about' || activeSection === 'home'" title="About">
+      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="nav-item" [class.active]="activeSection === 'about' || activeSection === 'home'" [title]="t().nav.about">
         <i class="fa-solid fa-user nav-icon"></i>
-        <span class="nav-text">About</span>
+        <span class="nav-text">{{ t().nav.about }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="nav-item" [class.active]="activeSection === 'education'" title="Education">
+      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="nav-item" [class.active]="activeSection === 'education'" [title]="t().nav.education">
         <i class="fa-solid fa-graduation-cap nav-icon"></i>
-        <span class="nav-text">Education</span>
+        <span class="nav-text">{{ t().nav.education }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="nav-item" [class.active]="activeSection === 'skills'" title="Skills">
+      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="nav-item" [class.active]="activeSection === 'skills'" [title]="t().nav.skills">
         <i class="fa-solid fa-code nav-icon"></i>
-        <span class="nav-text">Skills</span>
+        <span class="nav-text">{{ t().nav.skills }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="nav-item" [class.active]="activeSection === 'experience'" title="Experience">
+      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="nav-item" [class.active]="activeSection === 'experience'" [title]="t().nav.experience">
         <i class="fa-solid fa-briefcase nav-icon"></i>
-        <span class="nav-text">Experience</span>
+        <span class="nav-text">{{ t().nav.experience }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="nav-item" [class.active]="activeSection === 'services'" title="Services">
+      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="nav-item" [class.active]="activeSection === 'services'" [title]="t().nav.services">
         <i class="fa-solid fa-gears nav-icon"></i>
-        <span class="nav-text">Services</span>
+        <span class="nav-text">{{ t().nav.services }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="nav-item" [class.active]="activeSection === 'projects'" title="Projects">
+      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="nav-item" [class.active]="activeSection === 'projects'" [title]="t().nav.projects">
         <i class="fa-solid fa-laptop-code nav-icon"></i>
-        <span class="nav-text">Projects</span>
+        <span class="nav-text">{{ t().nav.projects }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="nav-item" [class.active]="activeSection === 'certificates'" title="Certificates">
+      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="nav-item" [class.active]="activeSection === 'certificates'" [title]="t().nav.certificates">
         <i class="fa-solid fa-certificate nav-icon"></i>
-        <span class="nav-text">Certificates</span>
+        <span class="nav-text">{{ t().nav.certificates }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="nav-item" [class.active]="activeSection === 'activities'" title="Activities">
+      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="nav-item" [class.active]="activeSection === 'activities'" [title]="t().nav.activities">
         <i class="fa-solid fa-users-gear nav-icon"></i>
-        <span class="nav-text">Activities</span>
+        <span class="nav-text">{{ t().nav.activities }}</span>
       </a>
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="nav-item" [class.active]="activeSection === 'contact'" title="Contact">
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="nav-item" [class.active]="activeSection === 'contact'" [title]="t().nav.contact">
         <i class="fa-solid fa-paper-plane nav-icon"></i>
-        <span class="nav-text">Contact</span>
+        <span class="nav-text">{{ t().nav.contact }}</span>
       </a>
     </nav>
 
     <div class="header-actions">
+      <!-- Language Switcher Button -->
+      <button class="lang-toggle-btn" (click)="toggleLanguage()" [attr.aria-label]="'Switch language to ' + t().nav.switchLangLabel">
+        <i class="fa-solid fa-globe"></i>
+        <span class="lang-code">{{ t().nav.switchLangLabel }}</span>
+      </button>
+
       <button class="theme-toggle-btn" (click)="toggleTheme()" aria-label="Toggle Theme">
         <i [class]="isDarkMode ? 'fa-solid fa-sun icon-sun' : 'fa-solid fa-moon icon-moon'"></i>
       </button>
 
       <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient header-cta">
-        <span>Get in Touch</span>
+        <span>{{ t().nav.getInTouch }}</span>
         <i class="fa-solid fa-arrow-right"></i>
       </a>
 
@@ -62,16 +68,19 @@
 
   @if (isMobileMenuOpen) {
     <div class="mobile-dropdown glass-card">
-      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="mobile-nav-link"><i class="fa-solid fa-user"></i> About</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="mobile-nav-link"><i class="fa-solid fa-code"></i> Skills</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="mobile-nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="mobile-nav-link"><i class="fa-solid fa-gears"></i> Services</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="mobile-nav-link"><i class="fa-solid fa-certificate"></i> Certificates</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="mobile-nav-link"><i class="fa-solid fa-users-gear"></i> Activities</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient mobile-cta">Get in Touch</a>
+      <button class="mobile-lang-btn" (click)="toggleLanguage(); toggleMobileMenu()">
+        <i class="fa-solid fa-globe"></i> {{ t().nav.switchLangLabel }}
+      </button>
+      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="mobile-nav-link"><i class="fa-solid fa-user"></i> {{ t().nav.about }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> {{ t().nav.education }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="mobile-nav-link"><i class="fa-solid fa-code"></i> {{ t().nav.skills }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="mobile-nav-link"><i class="fa-solid fa-briefcase"></i> {{ t().nav.experience }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="mobile-nav-link"><i class="fa-solid fa-gears"></i> {{ t().nav.services }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> {{ t().nav.projects }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="mobile-nav-link"><i class="fa-solid fa-certificate"></i> {{ t().nav.certificates }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="mobile-nav-link"><i class="fa-solid fa-users-gear"></i> {{ t().nav.activities }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> {{ t().nav.contact }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient mobile-cta">{{ t().nav.getInTouch }}</a>
     </div>
   }
 </header>

@@ -1,9 +1,11 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
 import { SiteInfo } from '../../core/models/site-info.model';
 import { SiteInfoService } from '../../core/services/site-info.service';
 import { ImgUrlPipe } from '../pipes/img-url.pipe';
+
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -13,12 +15,22 @@ import { ImgUrlPipe } from '../pipes/img-url.pipe';
   styleUrl: './header.css'
 })
 export class HeaderComponent implements OnInit {
+  private languageService = inject(LanguageService);
   isMobileMenuOpen = false;
   isDarkMode = false;
   siteInfo: SiteInfo = {};
   activeSection = 'home';
 
-  constructor(private siteInfoService: SiteInfoService) {}
+  readonly t = this.languageService.t;
+  readonly isRtl = this.languageService.isRtl;
+
+  constructor(
+    private siteInfoService: SiteInfoService
+  ) {}
+
+  toggleLanguage() {
+    this.languageService.toggleLanguage();
+  }
 
   ngOnInit() {
     this.fetchSiteInfo();
