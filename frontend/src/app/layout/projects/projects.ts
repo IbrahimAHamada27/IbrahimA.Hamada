@@ -19,6 +19,10 @@ export class ProjectsComponent implements OnInit {
   private languageService = inject(LanguageService);
   readonly t = this.languageService.t;
 
+  isArabic(): boolean {
+    return this.languageService.currentLang() === 'ar';
+  }
+
   readonly defaultProjectsEn: Project[] = [
     {
       _id: 'proj-1',
@@ -235,6 +239,7 @@ export class ProjectsComponent implements OnInit {
 
   backendProjects: Project[] = [];
   showAllProjects = false;
+  selectedCategory: string = 'all';
   selectedItem: DetailItem | null = null;
   isModalOpen = false;
 
@@ -245,12 +250,45 @@ export class ProjectsComponent implements OnInit {
     return this.languageService.currentLang() === 'ar' ? this.defaultProjectsAr : this.defaultProjectsEn;
   }
 
-  get projects(): Project[] {
-    return this.currentProjects;
+  getCategoryForProject(p: Project): string {
+    const text = `${p.title} ${p.description} ${(p.technologies || []).join(' ')}`.toLowerCase();
+    if (text.includes('selenium') || text.includes('qa') || text.includes('testng') || text.includes('automation') || text.includes('فحص') || text.includes('أتمتة')) {
+      return 'qa';
+    }
+    if (text.includes('clinic') || text.includes('dental') || text.includes('medical') || text.includes('عياد') || text.includes('طب')) {
+      return 'medical';
+    }
+    if (text.includes('cafe') || text.includes('coffee') || text.includes('qr') || text.includes('wedding') || text.includes('كافيه') || text.includes('زفاف')) {
+      return 'commercial';
+    }
+    return 'web';
+  }
+
+  get filteredProjects(): Project[] {
+    if (this.selectedCategory === 'all') {
+      return this.currentProjects;
+    }
+    return this.currentProjects.filter(p => this.getCategoryForProject(p) === this.selectedCategory);
   }
 
   get displayedProjects(): Project[] {
-    return this.showAllProjects ? this.currentProjects : this.currentProjects.slice(0, 6);
+    return this.showAllProjects ? this.filteredProjects : this.filteredProjects.slice(0, 6);
+  }
+
+  get categories(): { id: string; labelEn: string; labelAr: string; icon: string; count: number }[] {
+    const all = this.currentProjects;
+    return [
+      { id: 'all', labelEn: 'All Projects', labelAr: 'جميع المشاريع', icon: 'fa-solid fa-layer-group', count: all.length },
+      { id: 'qa', labelEn: 'QA & Automation', labelAr: 'أتمتة وفحص الجودة', icon: 'fa-solid fa-vial-circle-check', count: all.filter(p => this.getCategoryForProject(p) === 'qa').length },
+      { id: 'medical', labelEn: 'Medical Platforms', labelAr: 'المنصات الطبية', icon: 'fa-solid fa-hospital-user', count: all.filter(p => this.getCategoryForProject(p) === 'medical').length },
+      { id: 'web', labelEn: 'Full-Stack & AI', labelAr: 'تطبيقات الويب و AI', icon: 'fa-solid fa-code', count: all.filter(p => this.getCategoryForProject(p) === 'web').length },
+      { id: 'commercial', labelEn: 'Commercial & QR', labelAr: 'الأنظمة التجارية و QR', icon: 'fa-solid fa-store', count: all.filter(p => this.getCategoryForProject(p) === 'commercial').length }
+    ];
+  }
+
+  setCategory(catId: string) {
+    this.selectedCategory = catId;
+    this.showAllProjects = false;
   }
 
   toggleShowMore() {
@@ -276,9 +314,15 @@ export class ProjectsComponent implements OnInit {
 
   openDetails(project: Project) {
     const isAr = this.languageService.currentLang() === 'ar';
+    const cat = this.getCategoryForProject(project);
+    let categoryLabel = isAr ? 'مشروع فرونت اند وتطوير برمجيات' : 'Software & Web Development';
+    if (cat === 'qa') categoryLabel = isAr ? 'أتمتة وفحص جودة البرمجيات (QA)' : 'QA Automation & Testing Framework';
+    if (cat === 'medical') categoryLabel = isAr ? 'منصة طبية ورعاية صحية' : 'Healthcare & Clinic Platform';
+    if (cat === 'commercial') categoryLabel = isAr ? 'نظام تجاري وقائمة ذكية' : 'Commercial System & Smart QR';
+
     this.selectedItem = {
       title: project.title,
-      category: isAr ? 'مشروع فرونت اند وتطوير برمجيات' : 'Software & Front-End Project',
+      category: categoryLabel,
       description: project.description,
       imageUrl: project.imageUrl,
       link: project.link,

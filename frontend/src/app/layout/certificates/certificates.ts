@@ -19,6 +19,49 @@ export class CertificatesComponent implements OnInit {
   private languageService = inject(LanguageService);
   readonly t = this.languageService.t;
 
+  readonly defaultCertificates: Certificate[] = [
+    {
+      _id: 'cert-1',
+      title: 'Software Testing Track Certificate',
+      issuer: 'Digital Egypt Pioneers Initiative (DEPI) / MCIT',
+      date: 'Dec 2025',
+      link: 'https://depi.gov.eg/',
+      imageUrl: ''
+    },
+    {
+      _id: 'cert-2',
+      title: 'Automation Testing Training Certificate',
+      issuer: 'Orange Digital Center Egypt & Instant Software Solutions',
+      date: 'Feb 2026',
+      link: 'https://www.orangedigitalcenters.com/',
+      imageUrl: ''
+    },
+    {
+      _id: 'cert-3',
+      title: 'NTI MEAN Stack Web Developer Certificate',
+      issuer: 'National Telecommunication Institute (NTI)',
+      date: 'Aug 2026',
+      link: 'https://nti.sci.eg/',
+      imageUrl: ''
+    },
+    {
+      _id: 'cert-4',
+      title: 'Medical Analysis Principles Certification',
+      issuer: 'Syndicate of Scientific Professions',
+      date: 'Recent',
+      link: '',
+      imageUrl: ''
+    },
+    {
+      _id: 'cert-5',
+      title: 'Bloodborne Pathogens Certification',
+      issuer: 'NHCPS',
+      date: 'Recent',
+      link: '',
+      imageUrl: ''
+    }
+  ];
+
   certificates: Certificate[] = [];
   selectedItem: DetailItem | null = null;
   isModalOpen = false;
@@ -26,15 +69,19 @@ export class CertificatesComponent implements OnInit {
   constructor(private certService: CertificateService) {}
 
   ngOnInit() {
+    this.certificates = this.defaultCertificates;
     this.fetchCertificates();
   }
 
   async fetchCertificates() {
     try {
       const response = await lastValueFrom(this.certService.getCertificates());
-      this.certificates = response;
+      if (response && response.length > 0) {
+        this.certificates = response;
+      }
     } catch (error) {
-      console.error('Failed to fetch certificates', error);
+      console.warn('Failed to fetch certificates from API, using default accredited credentials', error);
+      this.certificates = this.defaultCertificates;
     }
   }
 

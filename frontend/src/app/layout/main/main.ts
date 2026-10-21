@@ -6,7 +6,6 @@ import { ProjectsComponent } from '../projects/projects';
 import { ContactComponent } from '../contact/contact';
 import { CertificatesComponent } from '../certificates/certificates';
 import { ExperienceComponent } from '../experience/experience';
-import { TestimonialsComponent } from '../testimonials/testimonials';
 import { EducationComponent } from '../education/education';
 import { ServicesComponent } from '../services/services';
 import { ActivitiesComponent } from '../activities/activities';
@@ -22,7 +21,6 @@ import { ActivitiesComponent } from '../activities/activities';
     ContactComponent,
     CertificatesComponent,
     ExperienceComponent,
-    TestimonialsComponent,
     EducationComponent,
     ServicesComponent,
     ActivitiesComponent

@@ -6,6 +6,7 @@ import { SiteInfoService } from '../../core/services/site-info.service';
 import { ImgUrlPipe } from '../pipes/img-url.pipe';
 
 import { LanguageService } from '../../core/services/language.service';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -16,13 +17,17 @@ import { LanguageService } from '../../core/services/language.service';
 })
 export class HeaderComponent implements OnInit {
   private languageService = inject(LanguageService);
+  private themeService = inject(ThemeService);
   isMobileMenuOpen = false;
-  isDarkMode = false;
   siteInfo: SiteInfo = {};
   activeSection = 'home';
 
   readonly t = this.languageService.t;
   readonly isRtl = this.languageService.isRtl;
+
+  get isDarkMode(): boolean {
+    return this.themeService.isDark();
+  }
 
   constructor(
     private siteInfoService: SiteInfoService
@@ -32,9 +37,12 @@ export class HeaderComponent implements OnInit {
     this.languageService.toggleLanguage();
   }
 
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
   ngOnInit() {
     this.fetchSiteInfo();
-    this.checkTheme();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -48,25 +56,6 @@ export class HeaderComponent implements OnInit {
       }
     });
     this.activeSection = current;
-  }
-
-  checkTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      this.isDarkMode = true;
-      document.body.classList.add('dark-theme');
-    }
-  }
-
-  toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.body.classList.add('dark-theme');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-theme');
-      localStorage.setItem('theme', 'light');
-    }
   }
 
   fetchSiteInfo() {

@@ -5,20 +5,22 @@ import { SiteInfoService } from '../../core/services/site-info.service';
 
 import { LanguageService } from '../../core/services/language.service';
 import { inject } from '@angular/core';
+import { ImgUrlPipe } from '../pipes/img-url.pipe';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ImgUrlPipe],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })
 export class FooterComponent implements OnInit {
   private languageService = inject(LanguageService);
   readonly t = this.languageService.t;
+  readonly isRtl = this.languageService.isRtl;
 
   siteInfo: SiteInfo = {
-    brandName: 'Eng. Ibrahim Ahmed Hamada',
+    brandName: 'Ibrahim A. Hamada',
     contactEmail: 'ibrahima.hamada277@gmail.com',
     phone: '+20 111 254 0997',
     linkedinUrl: 'https://www.linkedin.com/in/ibrahim-a-hamada-0ba411287/',

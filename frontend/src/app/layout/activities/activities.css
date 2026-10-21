@@ -30,15 +30,32 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-radius: 18px;
+  border-radius: 20px;
+  position: relative;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: 2;
 }
 
 @media (hover: hover) {
   .activity-card:hover {
     transform: translateY(-6px);
     border-color: var(--primary-color);
-    box-shadow: 0 10px 24px var(--primary-glow);
+    box-shadow: 0 14px 30px var(--primary-glow);
+  }
+  .activity-card:hover::before {
+    opacity: 1;
   }
 }
 
@@ -95,16 +112,31 @@
 .badge-volunteering {
   background: rgba(16, 185, 129, 0.12);
   color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 .badge-event {
   background: rgba(139, 92, 246, 0.12);
   color: #8b5cf6;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+}
+
+.badge-hackathon {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-club {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.25);
 }
 
 .badge-activity {
   background: var(--badge-bg);
   color: var(--primary-color);
+  border: 1px solid var(--badge-border);
 }
 
 .activity-date {

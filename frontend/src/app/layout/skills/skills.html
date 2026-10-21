@@ -19,11 +19,11 @@
             @for (skill of cat.skills; track skill.name; let sIdx = $index) {
               <div class="skill-card glass-card">
                 <div class="skill-icon-box">
-                  <i class="fa-solid fa-check-circle text-primary"></i>
+                  <i [class]="getSkillIcon(skill.name)"></i>
                 </div>
                 <div class="skill-info">
                   <h4 class="skill-name">{{ skill.name }}</h4>
-                  <span class="skill-level">{{ skill.level }}</span>
+                  <span class="skill-level-badge">{{ skill.level }}</span>
                 </div>
               </div>
             }

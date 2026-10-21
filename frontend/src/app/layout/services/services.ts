@@ -17,9 +17,17 @@ export class ServicesComponent implements OnInit {
   showAllServices = false;
   backendServices: Service[] = [];
 
-  get displayedServices(): { title: string; description: string; icon: string }[] {
+  get displayedServices() {
     const list = this.t().services.items;
     return this.showAllServices ? list : list.slice(0, 8);
+  }
+
+  getWhatsAppInquiryUrl(serviceTitle: string): string {
+    const isAr = this.languageService.currentLang() === 'ar';
+    const message = isAr
+      ? `مرحباً م. إبراهيم، أود الاستفسار وطلب تفاصيل خدمة: "${serviceTitle}".`
+      : `Hello Eng. Ibrahim, I would like to inquire about and request the service: "${serviceTitle}".`;
+    return `https://wa.me/201112540997?text=${encodeURIComponent(message)}`;
   }
 
   toggleShowMore() {

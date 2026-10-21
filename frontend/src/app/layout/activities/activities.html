@@ -10,8 +10,8 @@
         <div class="activity-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
           <div class="activity-card-body">
             <div class="activity-header">
-              <span class="category-badge badge-activity">
-                <i class="fa-solid fa-star"></i> {{ item.category }}
+              <span class="category-badge" [ngClass]="getCategoryClass(item.category)">
+                <i [class]="getCategoryIcon(item.category)"></i> {{ item.category }}
               </span>
               <span class="activity-date"><i class="fa-regular fa-calendar"></i> {{ item.date }}</span>
             </div>

@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   readonly currentLang = this.languageService.currentLang;
 
   siteInfo: SiteInfo = {
-    brandName: "Eng. Ibrahim Ahmed Hamada",
+    brandName: "Eng. Ibrahim Atef Hamada",
     heroTitle: "Software Engineer | QA Tester, Full-Stack Developer & AI Solutions",
     heroDesc: "Software Engineer & QA Automation Tester specialized in test automation (Selenium, Java, Postman), MEAN Stack web application development (Angular, Node.js, Express, MongoDB), and intelligent AI solutions.",
     aboutTitle: "Professional Background & Engineering Portfolio",

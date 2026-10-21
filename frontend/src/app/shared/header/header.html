@@ -1,8 +1,14 @@
 <header class="header-glass">
   <div class="header-container">
-    <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="logo-brand" aria-label="Eng. Ibrahim Ahmed Hamada Portfolio Home">
-      <img [src]="(siteInfo.logoImage || siteInfo.profileImage || 'https://github.com/ibrahimahamada27.png') | imgUrl" alt="Eng. Ibrahim Ahmed Hamada" class="brand-avatar" width="40" height="40" />
-      <span class="brand-text">Eng. Ibrahim A. <span class="gradient-text">Hamada</span></span>
+    <a href="javascript:void(0)" (click)="scrollToSection('home', $event)" class="logo-brand" [attr.aria-label]="isRtl() ? 'الصفحة الرئيسية - إبراهيم حمادة' : 'Ibrahim A. Hamada Portfolio Home'">
+      <div class="brand-avatar-box">
+        <img [src]="(siteInfo.logoImage || siteInfo.profileImage || 'https://github.com/ibrahimahamada27.png') | imgUrl" [alt]="isRtl() ? 'إبراهيم حمادة' : 'Ibrahim A. Hamada'" class="brand-avatar" width="40" height="40" />
+        <span class="online-indicator" title="Available for Hire"></span>
+      </div>
+      <div class="brand-title-wrap">
+        <span class="brand-text">{{ isRtl() ? 'إبراهيم حمادة' : 'Ibrahim A. Hamada' }}</span>
+        <span class="brand-sub-badge">{{ isRtl() ? 'مطور برمجيات وفحص جودة' : 'Software Engineer & QA' }}</span>
+      </div>
     </a>
 
     <nav class="nav-desktop">
@@ -51,36 +57,100 @@
         <span class="lang-code">{{ t().nav.switchLangLabel }}</span>
       </button>
 
-      <button class="theme-toggle-btn" (click)="toggleTheme()" aria-label="Toggle Theme">
+      <!-- Prominent Theme Switcher Pill -->
+      <button class="theme-toggle-btn" (click)="toggleTheme()" [title]="isDarkMode ? (isRtl() ? 'التحويل للوضع النهاري' : 'Switch to Light Mode') : (isRtl() ? 'التحويل للوضع الليلي' : 'Switch to Dark Mode')" aria-label="Toggle Dark/Light Theme">
         <i [class]="isDarkMode ? 'fa-solid fa-sun icon-sun' : 'fa-solid fa-moon icon-moon'"></i>
+        <span class="theme-label">{{ isDarkMode ? (isRtl() ? 'نهاري' : 'Light') : (isRtl() ? 'ليلي' : 'Dark') }}</span>
       </button>
 
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient header-cta">
-        <span>{{ t().nav.getInTouch }}</span>
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-
-      <button class="mobile-toggle-btn" (click)="toggleMobileMenu()" aria-label="Toggle Menu">
+      <button class="mobile-toggle-btn" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Toggle Mobile Navigation">
         <i [class]="isMobileMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
       </button>
     </div>
   </div>
 
   @if (isMobileMenuOpen) {
-    <div class="mobile-dropdown glass-card">
-      <button class="mobile-lang-btn" (click)="toggleLanguage(); toggleMobileMenu()">
-        <i class="fa-solid fa-globe"></i> {{ t().nav.switchLangLabel }}
-      </button>
-      <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="mobile-nav-link"><i class="fa-solid fa-user"></i> {{ t().nav.about }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> {{ t().nav.education }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="mobile-nav-link"><i class="fa-solid fa-code"></i> {{ t().nav.skills }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="mobile-nav-link"><i class="fa-solid fa-briefcase"></i> {{ t().nav.experience }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="mobile-nav-link"><i class="fa-solid fa-gears"></i> {{ t().nav.services }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="mobile-nav-link"><i class="fa-solid fa-laptop-code"></i> {{ t().nav.projects }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="mobile-nav-link"><i class="fa-solid fa-certificate"></i> {{ t().nav.certificates }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="mobile-nav-link"><i class="fa-solid fa-users-gear"></i> {{ t().nav.activities }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="mobile-nav-link"><i class="fa-solid fa-paper-plane"></i> {{ t().nav.contact }}</a>
-      <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient mobile-cta">{{ t().nav.getInTouch }}</a>
+    <div class="mobile-menu-overlay" (click)="isMobileMenuOpen = false">
+      <div class="mobile-drawer glass-card" (click)="$event.stopPropagation()">
+        <div class="mobile-drawer-header">
+          <div class="mobile-drawer-user">
+            <img [src]="(siteInfo.logoImage || siteInfo.profileImage || 'https://github.com/ibrahimahamada27.png') | imgUrl" alt="Ibrahim A. Hamada" class="drawer-user-img" />
+            <div>
+              <span class="drawer-user-name">{{ isRtl() ? 'إبراهيم حمادة' : 'Ibrahim A. Hamada' }}</span>
+              <span class="drawer-user-role">{{ isRtl() ? 'مطور برمجيات وفحص جودة' : 'Software Engineer & QA' }}</span>
+            </div>
+          </div>
+          <button class="mobile-drawer-close" (click)="isMobileMenuOpen = false" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="mobile-drawer-actions">
+          <button class="mobile-lang-btn" (click)="toggleLanguage(); isMobileMenuOpen = false">
+            <i class="fa-solid fa-globe"></i>
+            <span>{{ t().nav.switchLangLabel }}</span>
+          </button>
+          <button class="mobile-theme-btn" (click)="toggleTheme()">
+            <i [class]="isDarkMode ? 'fa-solid fa-sun icon-sun' : 'fa-solid fa-moon icon-moon'"></i>
+            <span>{{ isDarkMode ? (isRtl() ? 'الوضع النهاري' : 'Light Mode') : (isRtl() ? 'الوضع الليلي' : 'Dark Mode') }}</span>
+          </button>
+        </div>
+
+        <div class="mobile-nav-grid">
+          <a href="javascript:void(0)" (click)="scrollToSection('about', $event)" class="mobile-nav-link" [class.active]="activeSection === 'about' || activeSection === 'home'">
+            <i class="fa-solid fa-user icon-about"></i>
+            <span>{{ t().nav.about }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('education', $event)" class="mobile-nav-link" [class.active]="activeSection === 'education'">
+            <i class="fa-solid fa-graduation-cap icon-edu"></i>
+            <span>{{ t().nav.education }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('skills', $event)" class="mobile-nav-link" [class.active]="activeSection === 'skills'">
+            <i class="fa-solid fa-code icon-skills"></i>
+            <span>{{ t().nav.skills }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('experience', $event)" class="mobile-nav-link" [class.active]="activeSection === 'experience'">
+            <i class="fa-solid fa-briefcase icon-exp"></i>
+            <span>{{ t().nav.experience }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('services', $event)" class="mobile-nav-link" [class.active]="activeSection === 'services'">
+            <i class="fa-solid fa-gears icon-services"></i>
+            <span>{{ t().nav.services }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('projects', $event)" class="mobile-nav-link" [class.active]="activeSection === 'projects'">
+            <i class="fa-solid fa-laptop-code icon-projects"></i>
+            <span>{{ t().nav.projects }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('certificates', $event)" class="mobile-nav-link" [class.active]="activeSection === 'certificates'">
+            <i class="fa-solid fa-certificate icon-cert"></i>
+            <span>{{ t().nav.certificates }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('activities', $event)" class="mobile-nav-link" [class.active]="activeSection === 'activities'">
+            <i class="fa-solid fa-users-gear icon-activities"></i>
+            <span>{{ t().nav.activities }}</span>
+          </a>
+          <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="mobile-nav-link" [class.active]="activeSection === 'contact'">
+            <i class="fa-solid fa-paper-plane icon-contact"></i>
+            <span>{{ t().nav.contact }}</span>
+          </a>
+        </div>
+
+        <div class="mobile-drawer-footer">
+          <a href="javascript:void(0)" (click)="scrollToSection('contact', $event)" class="btn-gradient mobile-cta">
+            <span>{{ t().nav.getInTouch }}</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
     </div>
   }
 </header>
+
+<!-- Floating Always-Visible Theme Switcher Pill -->
+<button class="floating-theme-toggle" (click)="toggleTheme()" [title]="isDarkMode ? (isRtl() ? 'التحويل للوضع النهاري' : 'Switch to Light Mode') : (isRtl() ? 'التحويل للوضع الليلي' : 'Switch to Dark Mode')" aria-label="Toggle Theme Mode">
+  <div class="floating-theme-inner">
+    <i [class]="isDarkMode ? 'fa-solid fa-sun icon-sun' : 'fa-solid fa-moon icon-moon'"></i>
+    <span class="floating-theme-label">{{ isDarkMode ? (isRtl() ? 'نهاري' : 'Light') : (isRtl() ? 'ليلي' : 'Dark') }}</span>
+  </div>
+</button>
+

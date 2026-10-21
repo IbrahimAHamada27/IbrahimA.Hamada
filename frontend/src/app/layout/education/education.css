@@ -89,17 +89,17 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-left: 2px dashed var(--border-color);
-  padding-left: 16px;
+  border-inline-start: 2px dashed var(--border-color);
+  padding-inline-start: 16px;
   position: relative;
-  margin-left: 6px;
+  margin-inline-start: 8px;
 }
 
 @media (min-width: 640px) {
   .timeline {
     gap: 24px;
-    padding-left: 24px;
-    margin-left: 10px;
+    padding-inline-start: 24px;
+    margin-inline-start: 12px;
   }
 }
 
@@ -145,7 +145,7 @@
 
 .timeline-node {
   position: absolute;
-  left: -25px;
+  inset-inline-start: -25px;
   top: 20px;
   width: 14px;
   height: 14px;
@@ -157,7 +157,7 @@
 
 @media (min-width: 640px) {
   .timeline-node {
-    left: -33px;
+    inset-inline-start: -33px;
     top: 24px;
     width: 16px;
     height: 16px;

@@ -28,7 +28,7 @@
   padding: 0;
   overflow: hidden;
   position: relative;
-  border-left: 4px solid var(--primary-color);
+  border-inline-start: 4px solid var(--primary-color);
   border-radius: 18px;
 }
 

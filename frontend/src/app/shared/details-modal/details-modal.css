@@ -48,7 +48,7 @@
 .modal-close-btn {
   position: absolute;
   top: 14px;
-  right: 14px;
+  inset-inline-end: 14px;
   z-index: 10;
   width: 36px;
   height: 36px;
@@ -207,4 +207,30 @@
   padding: 12px 20px;
   font-size: 0.95rem;
   text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding: 8px;
+  }
+  .modal-card {
+    max-height: 94vh;
+    border-radius: 16px;
+  }
+  .modal-banner-box {
+    height: 180px;
+  }
+  .modal-body-content {
+    padding: 18px 16px;
+  }
+  .modal-item-title {
+    font-size: 1.25rem;
+  }
+  .modal-item-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+  }
+  .modal-section-box {
+    padding: 12px 14px;
+  }
 }

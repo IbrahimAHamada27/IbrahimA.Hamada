@@ -1,27 +1,39 @@
-<section class="section-padding section-bg" id="testimonials">
+<section class="testimonials-section section-padding" id="testimonials">
   <div class="container">
-    <div class="section-title text-center" data-aos="fade-up">
-      <h2>{{ t().testimonials.title }}</h2>
-      <p>{{ t().testimonials.subtitle }}</p>
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="section-title"><span class="gradient-text">{{ t().testimonials.title }}</span></h2>
+      <p class="section-subtitle">{{ t().testimonials.subtitle }}</p>
     </div>
 
     <div class="testimonials-grid">
-      @for (item of testimonials; track item._id) {
-        <div class="testimonial-item" data-aos="zoom-in" data-aos-delay="100">
-          <div class="testimonial-content">
-            <p>
-              <i class="fa-solid fa-quote-left quote-icon"></i>
-              {{ item.message }}
-              <i class="fa-solid fa-quote-right quote-icon"></i>
-            </p>
+      @for (item of displayTestimonials; track item._id; let idx = $index) {
+        <div class="testimonial-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
+          <div class="testimonial-top">
+            <div class="star-rating" title="5 out of 5 stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <i class="fa-solid fa-quote-right quote-watermark"></i>
           </div>
+
+          <p class="testimonial-message">
+            "{{ item.message }}"
+          </p>
+
           <div class="testimonial-author">
             @if (item.image) {
-              <img [src]="item.image" [alt]="item.name ? item.name + ' - Client Testimonial' : 'Client Testimonial'" width="60" height="60" loading="lazy" decoding="async" class="author-img">
+              <img [src]="item.image" [alt]="item.name + ' - Review'" width="48" height="48" loading="lazy" decoding="async" class="author-img">
+            } @else {
+              <div class="author-avatar-fallback">
+                <i class="fa-solid fa-user"></i>
+              </div>
             }
             <div class="author-info">
-              <h4>{{ item.name }}</h4>
-              <span>{{ item.position }}</span>
+              <h4 class="author-name">{{ item.name }}</h4>
+              <span class="author-position">{{ item.position }}</span>
             </div>
           </div>
         </div>

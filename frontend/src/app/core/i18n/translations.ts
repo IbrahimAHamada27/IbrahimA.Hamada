@@ -90,10 +90,13 @@ export interface TranslationSchema {
     subtitle: string;
     showMore: string;
     showLess: string;
+    orderNow: string;
     items: {
       title: string;
       description: string;
       icon: string;
+      badge?: string;
+      features?: string[];
     }[];
   };
   projects: {
@@ -225,7 +228,7 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
     hero: {
       statusBadge: 'Available for Full-Time & Project Opportunities',
       greeting: "Hi, I'm",
-      name: 'Eng. Ibrahim Ahmed Hamada',
+      name: 'Ibrahim A. Hamada',
       title: 'Software Engineer | QA Tester, Full-Stack Developer & AI Solutions',
       description: 'Software Engineer & QA Automation Tester specialized in test automation (Selenium, Java, Postman), MEAN Stack web application development (Angular, Node.js, Express, MongoDB), and intelligent AI solutions.',
       terminalTitle: 'ibrahim-qa-engine --env=production',
@@ -340,60 +343,81 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
       ]
     },
     services: {
-      title: 'Professional Services',
-      subtitle: 'Comprehensive QA testing, automation engineering, and custom web application development.',
+      title: 'Professional Services & Web Solutions',
+      subtitle: 'Custom websites for companies & commercial shops, intelligent online booking systems, business management dashboards, and enterprise QA test automation.',
       showMore: 'View More Services',
       showLess: 'Show Less Services',
+      orderNow: 'Request Service / Start Project',
       items: [
         {
-          title: 'Test Automation & QA Engineering (Selenium & Java)',
-          description: 'Designing and architecting robust automated testing suites using Selenium WebDriver, Java, and TestNG. Implementing Page Object Model (POM), data-driven testing, cross-browser execution, and automated Allure reporting.',
-          icon: 'fa-solid fa-vial-circle-check'
+          title: 'Corporate & Company Official Websites',
+          description: 'Comprehensive digital identity and corporate web platforms for businesses and enterprises. Showcasing company divisions, portfolios, RFQ quote requests, official branded emails, and dynamic bilingual content management (English & Arabic).',
+          icon: 'fa-solid fa-building-columns',
+          badge: 'Most Popular for Businesses',
+          features: ['Complete Corporate Identity', 'Custom Domain Branded Email', 'Intuitive Admin CMS Dashboard', 'Bilingual (EN / AR) with Instant Toggle', 'Ultra-fast Speed & Schema SEO']
         },
         {
-          title: 'RESTful API Testing & Automated Postman Collections',
-          description: 'End-to-end API validation with Postman. Writing automated test scripts, validating JSON payload schemas, asserting status codes and response latency, and setting up regression test collections.',
-          icon: 'fa-solid fa-network-wired'
+          title: 'Commercial Shops & Retail E-Commerce Portals',
+          description: 'Modern, high-conversion web portals for retail stores, boutiques, and commercial businesses. Featuring responsive product catalogs, instant WhatsApp ordering, checkout integrations, and seamless mobile usability.',
+          icon: 'fa-solid fa-store',
+          badge: 'Sales Growth',
+          features: ['Interactive Product Showcase', 'Direct 1-Click WhatsApp Ordering', 'Inventory & Price Management', '100% Mobile Responsive Design']
         },
         {
-          title: 'Manual QA & Software Quality Assurance (ISTQB)',
-          description: 'ISTQB-aligned software testing methodologies, comprehensive test plan design, boundary value analysis, exploratory testing, bug lifecycle management, and defect documentation.',
-          icon: 'fa-solid fa-list-check'
+          title: 'Intelligent Online Booking & Reservation Systems',
+          description: 'Automated 24/7 appointment scheduling systems for clinics, consultation centers, and commercial service providers. Features automated date selection, staff assignment, WhatsApp/Email booking notifications, and conflict prevention.',
+          icon: 'fa-solid fa-calendar-check',
+          badge: 'Automated Scheduling',
+          features: ['24/7 Online Booking System', 'Instant WhatsApp Alerts & Confirmations', 'Schedule Conflict Prevention', 'Appointments Analytics & Reports']
         },
         {
-          title: 'Full-Stack Web Development (MEAN Stack)',
-          description: 'Building scalable, high-performance web applications using Angular 21 (Signals & Standalone), Node.js, Express.js, TypeScript, and MongoDB with secure JWT auth and REST APIs.',
-          icon: 'fa-solid fa-layer-group'
+          title: 'Custom Admin Dashboards & ERP Business Systems',
+          description: 'Tailor-made cloud management systems and administrative dashboards to streamline business operations, client pipelines, invoice records, inventory tracking, role-based access control, and real-time revenue analytics.',
+          icon: 'fa-solid fa-chart-line',
+          badge: 'Operations Control',
+          features: ['Clients & Invoices Management', 'Role-Based User Permissions', 'Real-Time Performance Analytics', 'Enterprise Data Protection']
         },
         {
-          title: 'Restaurant & Cafe Digital Menus (Smart QR)',
-          description: 'Interactive digital QR menu systems for restaurants & cafes with dynamic categories, item modifiers, real-time bill calculations, customer reviews, and administrative menu management.',
-          icon: 'fa-solid fa-utensils'
+          title: 'Smart QR Code Menu Systems for Restaurants & Cafes',
+          description: 'Next-generation contactless QR menu systems for dining establishments. Enabling patrons to scan at their tables, explore dynamic menus with photos and modifiers, calculate bills in real-time, and eliminate printing costs.',
+          icon: 'fa-solid fa-utensils',
+          badge: 'Cost Efficient',
+          features: ['Contactless Table QR Scanning', 'Instant Menu & Price Updates', 'Automatic Bill Totaling', 'Zero Monthly Commissions']
         },
         {
-          title: 'Medical Clinics & Doctor Digital Portals',
-          description: 'Custom healthcare platforms featuring patient appointment booking, doctor schedules, medical service catalogs, patient testimonials, and SEO-optimized accessibility.',
-          icon: 'fa-solid fa-hospital-user'
+          title: 'Medical Clinics & Doctor Healthcare Portals',
+          description: 'Specialized healthcare web platforms for medical practitioners and multi-branch dental clinics. Providing doctor specialties showcase, online appointment booking, verified patient reviews, and medical Schema.org SEO.',
+          icon: 'fa-solid fa-hospital-user',
+          badge: 'Healthcare Sector',
+          features: ['Patient Consultation Bookings', 'Doctor Specialties & Profiles', 'Verified Patient Reviews', 'Medical Schema.org Google SEO']
         },
         {
-          title: 'E-Commerce Stores & Commercial Platforms',
-          description: 'High-conversion online stores with dynamic product catalogs, multi-criteria filtering, shopping carts, checkout workflows, and administrative inventory control.',
-          icon: 'fa-solid fa-cart-shopping'
+          title: 'Software Quality Assurance & Automation Testing',
+          description: 'Rigorous end-to-end software quality assurance and automated test suite architecture using Selenium WebDriver, Java, TestNG, and Page Object Model (POM). Validating cross-browser compatibility and generating interactive Allure reports.',
+          icon: 'fa-solid fa-vial-circle-check',
+          badge: 'ISTQB Standards',
+          features: ['Selenium WebDriver & Java Suites', 'RESTful API Testing with Postman', 'Interactive Allure Test Reports', 'Cross-Browser Stability Assurance']
+        },
+        {
+          title: 'High-Converting Campaign Landing Pages',
+          description: 'High-performance, ultra-fast landing pages engineered to maximize sales conversions and paid ad campaigns (Google Ads & Meta). Featuring captivating glassmorphism aesthetics, lead capture funnels, and tracking pixels.',
+          icon: 'fa-solid fa-bullhorn',
+          badge: 'High Conversion',
+          features: ['Top Google PageSpeed Score (95+)', 'Lead Generation Capture Forms', 'Pixel & Google Analytics Ready', 'Fluid Micro-animations']
+        },
+        {
+          title: 'Full-Stack Web Applications (MEAN Stack)',
+          description: 'Scalable, modern web applications built with Angular 21 (Reactive Signals), Node.js, Express.js, TypeScript, and MongoDB. Featuring secure JWT authentication, RESTful APIs, and cloud hosting architecture.',
+          icon: 'fa-solid fa-layer-group',
+          badge: 'Full-Stack Architecture',
+          features: ['Angular 21 Modern Frontend', 'High-throughput Node.js Engine', 'MongoDB Cloud Database', 'JWT Secure Authentication']
         },
         {
           title: 'Interactive 3D Web & AI Solutions',
-          description: 'Immersive 3D web applications and educational simulations utilizing Three.js, React Three Fiber, Framer Motion, and WebGL with responsive glassmorphism UI/UX and AI workflows.',
-          icon: 'fa-solid fa-brain'
-        },
-        {
-          title: 'High-Converting Business Landing Pages',
-          description: 'Ultra-fast, mobile-first responsive landing pages crafted to maximize conversion rates, featuring modern glassmorphism aesthetics, fluid micro-animations, and lead capture forms.',
-          icon: 'fa-solid fa-laptop-code'
-        },
-        {
-          title: 'Digital Event & Luxury Wedding Invitation Portals',
-          description: 'Tailored interactive digital invitations featuring real-time countdown timers, interactive RSVP management, venue GPS coordinates, and ambient multimedia sound effects.',
-          icon: 'fa-solid fa-envelope-open-text'
+          description: 'State-of-the-art interactive web experiences combining Three.js 3D graphics, WebGL rendering, and intelligent AI workflows to give your brand a distinctive and unforgettable competitive advantage.',
+          icon: 'fa-solid fa-brain',
+          badge: 'Advanced Tech',
+          features: ['Three.js 3D Interactive Graphics', 'AI Integration & Workflows', 'Cinematic Glassmorphism UI', 'Unique Visual Differentiation']
         }
       ]
     },
@@ -579,7 +603,7 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
       title: 'Privacy Policy',
       lastUpdated: 'Last Updated: September 2026',
       sec1Title: '1. Introduction',
-      sec1Desc: 'Welcome to the official portfolio of Eng. Ibrahim Ahmed Hamada. We respect your privacy and are committed to protecting any personal information you share when contacting us or exploring this website.',
+      sec1Desc: 'Welcome to the official portfolio of Eng. Ibrahim Atef Hamada. We respect your privacy and are committed to protecting any personal information you share when contacting us or exploring this website.',
       sec2Title: '2. Information We Collect',
       sec2Desc: 'When you use the contact form, we collect the details you voluntarily provide: Your Name, Your Email Address, and Your Message Content. This information is used solely to respond to your inquiries or project discussions.',
       sec3Title: '3. Data Security & Confidentiality',
@@ -610,36 +634,36 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
     hero: {
       statusBadge: 'متاح للعمل بدوام كامل وللمشاريع الهندسية',
       greeting: 'مرحبًا، أنا',
-      name: 'م. إبراهيم أحمد حمادة',
-      title: 'مهندس برمجيات | تيستر وفاحص جودة، مطور Full-Stack وحلول AI',
-      description: 'مهندس برمجيات واختبار جودة برمجيات (تيستر QA Automation & Manual) متخصص في تصميم سايت احترافي، تطوير فرونت اند Frontend وباك اند Backend بأنظمة MEAN Stack وحلول الذكاء الاصطناعي AI والمشاريع الهندسية.',
+      name: 'إبراهيم عاطف حمادة',
+      title: 'مهندس جودة واختبار البرمجيات (QA Automation) ومطور Full-Stack',
+      description: 'مهندس برمجيات متخصص في فحص واختبار جودة الأنظمة (QA Automation & Manual Testing)، أتمتة الاختبارات عبر Selenium و Java و Postman، وتطوير تطبيقات الويب المتكاملة بمعمارية MEAN Stack وحلول الذكاء الاصطناعي.',
       terminalTitle: 'ibrahim-qa-engine --env=production',
       terminalBadge: 'جميع الاختبارات ناجحة 100%',
       terminalSelenium: 'اختبارات Selenium المؤتمتة: فحص شامل عبر متصفحات Chrome و Firefox و Edge بنظام POM',
       terminalApi: 'فحص واجهات APIs: أكثر من 28 مجموعة Postman ناجحة بمطابقة تامة لمخططات JSON',
       terminalMean: 'معمارية MEAN Stack: واجهات فرونت اند Angular 21 ونظام باك اند Express/Node.js',
-      chip1: 'تيستر & QA Automation',
-      chip2: 'تصميم سايت & فرونت اند',
-      chip3: 'باك اند & APIs (Node.js)',
-      chip4: 'مشاريع هندسية & AI',
+      chip1: 'فحص الجودة وأتمتة الاختبارات (QA)',
+      chip2: 'تطوير واجهات الويب (Frontend)',
+      chip3: 'الأنظمة الخلفية والـ APIs (Backend)',
+      chip4: 'مشاريع برمجية وحلول AI',
       viewCv: 'استعراض السيرة الذاتية',
       contactMe: 'تواصل معي',
       viewProjects: 'مشاهدة المشاريع'
     },
     about: {
       title: 'نبذة عني',
-      subtitle: 'اكتشف خلفيتي الهندسية، خبراتي التقنية، وفلسفتي في جودة وتطوير البرمجيات.',
-      role: 'مهندس برمجيات وفاحص جودة (تيستر)',
+      subtitle: 'اكتشف خلفيتي الهندسية، خبراتي التقنية، ورؤيتي في جودة وهندسة وتطوير البرمجيات.',
+      role: 'مهندس جودة واختبار برمجيات ومطور ويب',
       location: 'مدينة العبور، القليوبية، مصر',
       study: 'علوم الحاسب بالجامعة العربية المفتوحة',
       previewCv: 'معاينة السيرة الذاتية الرسمية',
       heading: 'الخلفية المهنية والخبرات',
-      desc1: 'مهندس برمجيات واختبار جودة برمجيات (QA Tester & Web Developer) يتمتع بخبرة عملية في الاختبار اليدوي، فحص واجهات الـ APIs، اختبار قواعد البيانات، وأتمتة الاختبارات عبر Selenium WebDriver و TestNG و Java. متدرب عبر مبادرة رواد مصر الرقمية (DEPI - وزارة الاتصالات وتكنولوجيا المعلومات)، المعهد القومي للاتصالات (NTI)، و Orange Digital Center.',
-      desc2: 'طالب جامعي بكلية دراسات الحاسوب - قسم علوم الحاسب بالجامعة العربية المفتوحة (AOU). متمرس في تصميم حالات الاختبار وتوثيق تقارير العيوب عبر Jira و Excel، وبناء واجهات الـ RESTful API، وتطوير مواقع الويب والسايتات الحديثة باستخدام تقنيات MEAN Stack (MongoDB, Express.js, Angular, Node.js) وتكاملات الذكاء الاصطناعي AI.',
+      desc1: 'مهندس برمجيات وفحص جودة (QA Engineer & Web Developer) أمتلك خبرة عملية في أتمتة الاختبارات (Automation Testing) باستخدام Selenium WebDriver و Java و TestNG بنظام Page Object Model (POM)، بجانب فحص واجهات الـ RESTful APIs عبر Postman، والاختبار اليدوي الشامل، واختبار قواعد البيانات. حاصل على تدريب مكثف بمبادرة رواد مصر الرقمية (DEPI) التابعة لوزارة الاتصالات وتكنولوجيا المعلومات، والمعهد القومي للاتصالات (NTI)، ومختبرات Orange Digital Center.',
+      desc2: 'طالب في الفرقة الثانية بكلية دراسات الحاسوب - قسم علوم الحاسب بالجامعة العربية المفتوحة (AOU). متمرس في تصميم خطط وحالات الاختبار (Test Cases) وتتبع العيوب وإدارتها عبر Jira و Excel، وبناء وتطوير تطبيقات الويب الحديثة باستخدام تقنيات MEAN Stack (Angular 21, Node.js, Express.js, MongoDB, TypeScript) ودمج حلول الذكاء الاصطناعي.',
       academicCardTitle: 'المسار الأكاديمي',
-      academicCardDesc: 'الجامعة العربية المفتوحة (AOU)، كلية دراسات الحاسوب، قسم علوم الحاسب (سبتمبر 2025 - الحالي) — دراسة جامعية بالفرقة الثانية مع التركيز على هياكل البيانات والخوارزميات والبرمجة كائنية التوجه وهندسة البرمجيات.',
+      academicCardDesc: 'الجامعة العربية المفتوحة (AOU)، كلية دراسات الحاسوب، قسم علوم الحاسب (سبتمبر 2025 - الحالي) — دراسة جامعية بالفرقة الثانية مع التركيز على هياكل البيانات والخوارزميات والبرمجة كائنية التوجه OOP وهندسة البرمجيات وتصميم قواعد البيانات.',
       philosophyCardTitle: 'معايير الجودة الهندسية',
-      philosophyCardDesc: 'تطبيق مبادئ ISTQB العالمية، دورة حياة تطوير البرمجيات SDLC ودورة الاختبار STLC، أتمتة الاختبارات بنموذج Page Object Model، وبناء أنظمة برمجية سريعة ومحمية.'
+      philosophyCardDesc: 'تطبيق منهجيات ISTQB العالمية، دورة حياة تطوير البرمجيات SDLC ودورة الاختبار STLC، أتمتة الاختبارات بنموذج Page Object Model، وبناء أنظمة برمجية سريعة، مستقرة، ومحمية.'
     },
     education: {
       title: 'المسار الأكاديمي والبرامج التخصصية',
@@ -725,60 +749,81 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
       ]
     },
     services: {
-      title: 'الخدمات المهنية والهندسية',
-      subtitle: 'خدمات فحص جودة واختبار البرمجيات، أتمتة الاختبارات، تصميم سايت، وتطوير مواقع الويب المتكاملة.',
+      title: 'الخدمات البرمجية وحلول الويب المتكاملة',
+      subtitle: 'تصميم مواقع الشركات والمحلات التجارية، أنظمة الحجز الإلكتروني الذكية، لوحات التحكم وإدارة الأعمال، وخدمات فحص جودة البرمجيات.',
       showMore: 'عرض المزيد من الخدمات',
       showLess: 'عرض خدمات أقل',
+      orderNow: 'اطلب الخدمة / ابدأ مشروعك',
       items: [
         {
-          title: 'فحص واختبار البرمجيات (تيستر & QA Automation)',
-          description: 'تصميم وبناء أطر أتمتة الاختبارات باستخدام Selenium WebDriver و Java و TestNG بمفهوم Page Object Model (POM)، الفحص عبر مختلف المتصفحات، وتوليد تقارير Allure تفاعلية.',
-          icon: 'fa-solid fa-vial-circle-check'
+          title: 'تصميم وبرمجة مواقع الشركات والمؤسسات الرسمية',
+          description: 'مواقع وهوية رقمية متكاملة للشركات والمؤسسات تبرز الأقسام، سابقة الأعمال، طلب عروض الأسعار، مع بريد رسمي ولوحة تحكم لإدارة المحتوى ودعم اللغتين العربية والإنجليزية.',
+          icon: 'fa-solid fa-building-columns',
+          badge: 'الأكثر طلباً للشركات',
+          features: ['هوية مؤسسية متكاملة', 'إيميل رسمي بالدومين', 'لوحة تحكم إدارية', 'ثنائي اللغة (عربي / إنجليزي)', 'سرعة فائقة وتهيئة SEO']
         },
         {
-          title: 'فحص واختبار واجهات الـ APIs (Postman)',
-          description: 'اختبار تكاملي شامل للـ RESTful APIs باستخدام Postman، التحقق من مخططات JSON schemas، وفحص الأداء والاستجابة، وبناء مجموعات اختبار انحداري مؤتمتة.',
-          icon: 'fa-solid fa-network-wired'
+          title: 'تصميم مواقع ومتاجر المحلات التجارية والأنشطة',
+          description: 'مواقع ومتاجر إلكترونية حديثة للمحلات التجارية والبراندات، كتالوج منتجات متفاعل، ربط مباشر بطلبات الواتساب وتأكيد الدفع، فلاتر بحث سريعة وتجاوب كامل مع الموبايل.',
+          icon: 'fa-solid fa-store',
+          badge: 'زيادة المبيعات',
+          features: ['كتالوج منتجات تفاعلي', 'طلب مباشر عبر واتساب', 'إدارة المخزون والأسعار', 'تجاوب فائق مع الجوال']
         },
         {
-          title: 'فحص برمجيات يدوي (Manual QA Tester - ISTQB)',
-          description: 'تطبيق منهجيات ISTQB في اختبار البرمجيات، تصميم خطط الاختبار الشاملة، كتابة وتوثيق حالات الاختبار والـ Bug Reports لضمان أعلى جودة للمنتج.',
-          icon: 'fa-solid fa-list-check'
+          title: 'أنظمة الحجز الإلكتروني وإدارة المواعيد (Online Booking)',
+          description: 'سيستم حجز متكامل للعيادات والمراكز والمكاتب، يتيح للعملاء اختيار الخدمة والموعد والموظف المسؤول مع تأكيد تلقائي عبر واتساب ورسائل الإيميل ومنع تضارب الأوقات.',
+          icon: 'fa-solid fa-calendar-check',
+          badge: 'أتمتة المواعيد',
+          features: ['حجز مؤتمت 24/7', 'تنبيهات فورية بواتساب', 'منع تضارب المواعيد', 'تقارير وإحصائيات الحجوزات']
         },
         {
-          title: 'تصميم سايت وتطوير فرونت اند وباك اند (Full-Stack)',
-          description: 'تصميم سايت احترافي وتطوير تطبيقات ويب متكاملة باستخدام Angular للفرونت اند و Node.js/Express للباك اند مع قواعد بيانات MongoDB وحماية JWT.',
-          icon: 'fa-solid fa-layer-group'
+          title: 'لوحات التحكم والأنظمة الإدارية المخصصة (Custom Dashboards & ERP)',
+          description: 'بناء وتطوير أنظمة سحابية ولوحات تحكم مخصصة لإدارة العمليات اليومية، العملاء، الفواتير، تقارير الأداء، وإدارة صلاحيات المستخدمين بأعلى معايير الأمان.',
+          icon: 'fa-solid fa-chart-line',
+          badge: 'إدارة شاملة',
+          features: ['إدارة العملاء والفواتير', 'صلاحيات متعددة للمستخدمين', 'تقارير بيانية دقيقة', 'أمان وحماية للبيانات']
         },
         {
-          title: 'تصميم وتطوير المنيو الذكي (Smart QR Menu)',
-          description: 'نظام منيو رقمي ذكي عبر QR Code للمطاعم والكافيهات، يدعم التصنيفات الديناميكية وحساب الفاتورة المباشر وتحديثات لوحة التحكم.',
-          icon: 'fa-solid fa-utensils'
+          title: 'نظام القائمة الذكية للمطاعم والكافيهات (Smart QR Code Menu)',
+          description: 'سيستم منيو إلكتروني ذكي للمطاعم والكافيهات يعمل برمز QR، يتيح للعميل استعراض الأصناف والأسعار والطلب المباشر من الطاولة، مع حساب الفاتورة تلقائياً.',
+          icon: 'fa-solid fa-utensils',
+          badge: 'توفير التكاليف',
+          features: ['طلب مباشر بالـ QR من الطاولة', 'تحديث فوري للأسعار والمنيو', 'حساب تلقائي للفاتورة', 'بدون أي عمولات شهرية']
         },
         {
-          title: 'بوابات العيادات الطبية وحجز المواعيد',
-          description: 'منصات طبية مخصصة للعيادات والأطباء تتيح حجز المواعيد، عرض التخصصات، واستعراض آراء المرضى بتصميم متوافق مع كافة الأجهزة.',
-          icon: 'fa-solid fa-hospital-user'
+          title: 'بوابات العيادات والمراكز الطبية الرقمية',
+          description: 'منصات طبية مخصصة للعيادات والمراكز الصحية تضم استعراض التخصصات والأطباء، حجز المواعيد، استشارات عن بعد، وسجل آراء المرضى وفق أفضل معايير تجربة المستخدم.',
+          icon: 'fa-solid fa-hospital-user',
+          badge: 'القطاع الطبي',
+          features: ['حجز الكشوفات والاستشارات', 'استعراض التخصصات والأطباء', 'آراء وتوصيات المرضى', 'تهيئة طبية لمحركات البحث']
         },
         {
-          title: 'تصميم المتاجر الإلكترونية والمنصات التجارية',
-          description: 'متاجر إلكترونية عالية التحويل مع كتالوج منتجات ديناميكي، فلاتر بحث متعددة، سلة مشتريات، ولوحة إدارة للمخزون والطلبات.',
-          icon: 'fa-solid fa-cart-shopping'
+          title: 'فحص وجودة البرمجيات وأتمتة الاختبارات (QA Automation & Testing)',
+          description: 'خدمات فحص شامل واختبارات مؤتمتة للمواقع والأنظمة قبل الإطلاق للتأكد من خلوها من الأخطاء والثغرات، وتحمل الضغط العالي وسرعة الاستجابة.',
+          icon: 'fa-solid fa-vial-circle-check',
+          badge: 'معايير ISTQB',
+          features: ['أتمتة الفحص بـ Selenium و Java', 'فحص واجهات APIs بـ Postman', 'تقارير Allure تفاعلية', 'اختبار الأداء والتوافق']
         },
         {
-          title: 'حلول الويب الذكية والذكاء الاصطناعي (AI Solutions & 3D)',
-          description: 'تكامل حلول الذكاء الاصطناعي (AI) وتجارب الويب التفاعلية ثلاثية الأبعاد Three.js لتحقيق أقصى درجات التفاعل وتطوير مشاريع هندسية ذكية.',
-          icon: 'fa-solid fa-brain'
+          title: 'صفحات الهبوط المخصصة للحملات الإعلانية (High-Converting Landing Pages)',
+          description: 'صفحات هبوط فائقة السرعة والتأثير مصممة خصيصاً للحملات الممولة والإعلانات لرفع معدل المبيعات وجمع بيانات العملاء المهتمين بدقة.',
+          icon: 'fa-solid fa-bullhorn',
+          badge: 'أعلى تحويل',
+          features: ['سرعة تحميل قياسية (PageSpeed 95+)', 'نماذج جمع بيانات العملاء (Leads)', 'ربط أدوات التتبع والـ Pixel', 'تصميم متوافق مع كافة الشاشات']
         },
         {
-          title: 'تصميم سايت هبوط عالي التحويل (Landing Pages)',
-          description: 'صفحات هبوط فائقة السرعة ومتوافقة مع الجوال، مبنية بأحدث تقنيات الفرونت اند لزيادة معدل التحويل واكتساب العملاء.',
-          icon: 'fa-solid fa-laptop-code'
+          title: 'تطوير تطبيقات الويب المتكاملة بمعمارية MEAN Stack',
+          description: 'تطوير منصات برمجية تفاعلية متطورة باستخدام Angular للواجهات الأمامية و Node.js/Express للأنظمة الخلفية وقواعد بيانات MongoDB السحابية.',
+          icon: 'fa-solid fa-layer-group',
+          badge: 'Full-Stack',
+          features: ['معمارية Angular 21 الحديثة', 'سيرفرات Node.js فائقة السرعة', 'قواعد بيانات سحابية MongoDB', 'حماية المصادقة JWT']
         },
         {
-          title: 'دعوات إلكترونية تفاعلية للمناسبات والفعاليات',
-          description: 'بطاقات ودعوات رقمية ذكية مع عد تنازلي مباشر، تأكيد حضور تفاعلي (RSVP)، وخريطة موقع جغرافية وتأثيرات بصرية مميزة.',
-          icon: 'fa-solid fa-envelope-open-text'
+          title: 'حلول الذكاء الاصطناعي والمشاريع التفاعلية ثلاثية الأبعاد (AI & 3D)',
+          description: 'دمج تقنيات الذكاء الاصطناعي وتطوير مجسمات وتجارب ويب ثلاثية الأبعاد تفاعلية Three.js تمنح الموقع تميزاً فريداً عن كافة المنافسين.',
+          icon: 'fa-solid fa-brain',
+          badge: 'تقنيات متقدمة',
+          features: ['تجارب 3D تفاعلية Three.js', 'تكاملات نماذج الـ AI الذكية', 'واجهات Glassmorphism سينمائية', 'مؤثرات بصرية مبهرة']
         }
       ]
     },
@@ -938,7 +983,7 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
       sendBtn: 'إرسال الرسالة'
     },
     footer: {
-      brandTagline: 'مهندس برمجيات واختبار جودة برمجيات (تيستر QA Automation & Manual)، متخصص في تصميم سايت احترافي، تطوير واجهات فرونت اند Frontend، وأنظمة باك اند Backend، وحلول الذكاء الاصطناعي AI والمشاريع الهندسية.',
+      brandTagline: 'مهندس برمجيات واختبار جودة الأنظمة (QA Automation & Manual Testing)، متخصص في أتمتة الاختبارات، تطوير تطبيقات الويب الحديثة (Angular & Node.js)، وحلول الذكاء الاصطناعي والمشاريع الهندسية.',
       quickLinks: 'روابط التنقل السريع',
       contactDirect: 'الاتصال المباشر',
       privacyLink: 'سياسة الخصوصية',
@@ -964,7 +1009,7 @@ export const TRANSLATIONS: Record<'en' | 'ar', TranslationSchema> = {
       title: 'سياسة الخصوصية',
       lastUpdated: 'آخر تحديث: سبتمبر 2026',
       sec1Title: '1. مقدمة',
-      sec1Desc: 'مرحبًا بكم في الموقع الرسمي للمهندس إبراهيم أحمد حمادة. نحن نلتزم باحترام خصوصيتكم وحماية أي بيانات يتم تقديمها عبر نموذج التواصل أو أثناء استعراض خدمات فحص جودة البرمجيات وتطوير الويب.',
+      sec1Desc: 'مرحبًا بكم في الموقع الرسمي للمهندس إبراهيم عاطف حمادة. نحن نلتزم باحترام خصوصيتكم وحماية أي بيانات يتم تقديمها عبر نموذج التواصل أو أثناء استعراض خدمات فحص جودة البرمجيات وتطوير الويب.',
       sec2Title: '2. البيانات التي نقوم بجمعها',
       sec2Desc: 'عند استخدام نموذج التواصل، نقوم بجمع البيانات التي تقدمها طواعية: اسمك، بريدك الإلكتروني، ومحتوى رسالتك. تُستخدم هذه البيانات حصرًا للرد على استفسارك ومناقشة متطلبات المشروع.',
       sec3Title: '3. أمان وسرية البيانات',

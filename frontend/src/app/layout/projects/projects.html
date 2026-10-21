@@ -1,26 +1,55 @@
-<section id="projects" class="projects-section">
+<section id="projects" class="projects-section section-padding">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
       <h2 class="section-title"><span class="gradient-text">{{ t().projects.title }}</span></h2>
       <p class="section-subtitle">{{ t().projects.subtitle }}</p>
     </div>
 
+    <!-- Category Filter Tabs -->
+    <div class="filter-tabs-row" data-aos="fade-up" data-aos-delay="100">
+      @for (cat of categories; track cat.id) {
+        <button class="filter-pill-btn" [class.active]="selectedCategory === cat.id" (click)="setCategory(cat.id)">
+          <i [class]="cat.icon"></i>
+          <span>{{ isArabic() ? cat.labelAr : cat.labelEn }}</span>
+          <span class="pill-count">{{ cat.count }}</span>
+        </button>
+      }
+    </div>
+
     <div class="projects-grid">
       @for (project of displayedProjects; track project._id; let idx = $index) {
-        <div class="project-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 100">
+        <div class="project-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 3) * 80">
           
-          @if (project.imageUrl) {
-            <div class="project-banner-outer">
-              <img [src]="project.imageUrl | imgUrl" [alt]="project.title + ' - Eng. Ibrahim Ahmed Hamada Project'" class="project-outer-img" loading="lazy" decoding="async" />
+          <div class="project-banner-outer">
+            @if (project.imageUrl) {
+              <img [src]="project.imageUrl | imgUrl" [alt]="project.title + ' - Eng. Ibrahim Atef Hamada Project'" class="project-outer-img" loading="lazy" decoding="async" />
+            } @else {
+              <div class="project-banner-fallback">
+                <i class="fa-solid fa-code fallback-banner-icon"></i>
+                <span class="fallback-banner-title">{{ project.title }}</span>
+              </div>
+            }
+            <div class="project-category-tag">
+              @if (getCategoryForProject(project) === 'qa') {
+                <span class="cat-tag qa-tag"><i class="fa-solid fa-vial-circle-check"></i> QA & Test Automation</span>
+              } @else if (getCategoryForProject(project) === 'medical') {
+                <span class="cat-tag med-tag"><i class="fa-solid fa-hospital-user"></i> Medical Platform</span>
+              } @else if (getCategoryForProject(project) === 'commercial') {
+                <span class="cat-tag com-tag"><i class="fa-solid fa-store"></i> Commercial & QR</span>
+              } @else {
+                <span class="cat-tag web-tag"><i class="fa-solid fa-layer-group"></i> Web & Full-Stack</span>
+              }
             </div>
-          }
+          </div>
 
           <div class="project-card-body">
             <div class="project-header">
               <h3 class="project-title">{{ project.title }}</h3>
-              <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="project-external-link" title="Open Project" [attr.aria-label]="'Open live demo for ' + project.title">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
+              @if (project.link) {
+                <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="project-external-link" title="Open Project" [attr.aria-label]="'Open live demo for ' + project.title">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              }
             </div>
 
             <p class="project-desc">{{ project.description }}</p>
@@ -31,24 +60,31 @@
               }
             </div>
 
-            <button class="btn-show-more" (click)="openDetails(project)">
-              <i class="fa-solid fa-circle-info"></i>
-              <span>{{ t().projects.showDetails }}</span>
-            </button>
+            <div class="project-actions-row">
+              <button class="btn-show-more" (click)="openDetails(project)">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>{{ t().projects.showDetails }}</span>
+              </button>
+              @if (project.link) {
+                <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="btn-link-icon" [title]="'Visit ' + project.title">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              }
+            </div>
           </div>
         </div>
       } @empty {
         <div class="empty-state glass-card" data-aos="fade-up">
           <i class="fa-solid fa-laptop-code empty-icon"></i>
-          <p>No projects added yet.</p>
+          <p>No projects match this category.</p>
         </div>
       }
     </div>
 
-    @if (projects.length > 6) {
+    @if (filteredProjects.length > 6) {
       <div class="show-more-container" data-aos="fade-up">
         <button class="btn-gradient show-more-btn" (click)="toggleShowMore()">
-          <span>{{ showAllProjects ? t().projects.showLess : t().projects.showMore + ' (' + (projects.length - 6) + '+)' }}</span>
+          <span>{{ showAllProjects ? t().projects.showLess : t().projects.showMore + ' (' + (filteredProjects.length - 6) + '+)' }}</span>
           <i [class]="showAllProjects ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'"></i>
         </button>
       </div>

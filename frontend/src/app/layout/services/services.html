@@ -8,17 +8,40 @@
     <div class="services-grid">
       @for (item of displayedServices; track item.title; let idx = $index) {
         <div class="service-card glass-card" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="(idx % 4) * 80">
-          <div class="service-icon-box">
-            @if (item.icon && item.icon.startsWith('http')) {
-              <img [src]="item.icon" [alt]="item.title" class="service-img" />
-            } @else if (item.icon) {
-              <i [class]="item.icon"></i>
-            } @else {
-              <i class="fa-solid fa-gears"></i>
+          <div class="service-card-header">
+            <div class="service-icon-box">
+              @if (item.icon && item.icon.startsWith('http')) {
+                <img [src]="item.icon" [alt]="item.title" class="service-img" />
+              } @else if (item.icon) {
+                <i [class]="item.icon"></i>
+              } @else {
+                <i class="fa-solid fa-gears"></i>
+              }
+            </div>
+            @if (item.badge) {
+              <span class="service-badge">{{ item.badge }}</span>
             }
           </div>
           <h3 class="service-title">{{ item.title }}</h3>
           <p class="service-desc">{{ item.description }}</p>
+
+          @if (item.features && item.features.length) {
+            <ul class="service-features-list">
+              @for (feat of item.features; track feat) {
+                <li>
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>{{ feat }}</span>
+                </li>
+              }
+            </ul>
+          }
+
+          <div class="service-action-wrap">
+            <a [href]="getWhatsAppInquiryUrl(item.title)" target="_blank" rel="noopener noreferrer" class="service-inquire-btn">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>{{ t().services.orderNow }}</span>
+            </a>
+          </div>
         </div>
       }
     </div>

@@ -14,8 +14,12 @@
             @if (cert.imageUrl) {
               <img [src]="cert.imageUrl | imgUrl" [alt]="cert.title + ' - Certified by ' + cert.issuer" class="cert-outer-img" loading="lazy" decoding="async" />
             } @else {
-              <div class="cert-fallback-icon">
-                <i class="fa-solid fa-award"></i>
+              <div class="cert-diploma-banner">
+                <div class="cert-ribbon-badge">
+                  <i class="fa-solid fa-award"></i>
+                </div>
+                <span class="cert-banner-issuer">{{ cert.issuer }}</span>
+                <span class="cert-badge-pill"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
               </div>
             }
           </div>

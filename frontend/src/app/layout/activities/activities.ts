@@ -19,6 +19,22 @@ export class ActivitiesComponent {
 
   constructor() {}
 
+  getCategoryClass(category?: string): string {
+    const cat = (category || '').toLowerCase();
+    if (cat.includes('hackathon') || cat.includes('هاكاثون') || cat.includes('space')) return 'badge-hackathon';
+    if (cat.includes('club') || cat.includes('طلابي') || cat.includes('web')) return 'badge-club';
+    if (cat.includes('volunteering') || cat.includes('تطوع')) return 'badge-volunteering';
+    return 'badge-activity';
+  }
+
+  getCategoryIcon(category?: string): string {
+    const cat = (category || '').toLowerCase();
+    if (cat.includes('hackathon') || cat.includes('هاكاثون') || cat.includes('space')) return 'fa-solid fa-rocket';
+    if (cat.includes('club') || cat.includes('طلابي') || cat.includes('web')) return 'fa-solid fa-laptop-code';
+    if (cat.includes('volunteering') || cat.includes('تطوع')) return 'fa-solid fa-hand-holding-heart';
+    return 'fa-solid fa-star';
+  }
+
   openDetails(item: any) {
     this.selectedItem = {
       title: item.title,
